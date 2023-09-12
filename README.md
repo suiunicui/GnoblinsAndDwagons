@@ -7,37 +7,11 @@
  
 
 Gnoblins & Dwagons: Temple of the Book of Lost Knowledge 
-
- 
-
- 
-
  
 
 In the second game of the riveting and critically unacclaimed Gnoblins & Dwagons game-series, is the Temple of the Book of Lost Knowledge coming for PC this Christmas. 
 
  
-
- 
-
-Sune Andreas Dyrbye 
-
-201205948 
-
-Anders Hundahl 
-
-202007859 
-
-Lukas Mandrup 
-
-201804423 
-
-Luyen Nhu Vu 
-
-202007393 
-
- 
-
 Outline 
 
  
@@ -55,21 +29,6 @@ Character
 
 The game lets the player choose which main character they would like to play as. The characters are four heroes from four different factions or races. They have the same objective to retrieve The Book of Lost Knowledge and are equally motivated to retrieve it to stop evildoers from retrieving it first. The characters have different stats which will influence the style of play for the player. Below are the concept arts for each main character: 
 
-Et billede, der indeholder pixelEt billede, der indeholder pixelEt billede, der indeholder pixel
-
-Automatisk genereret beskrivelseTekstfeltOgre 
-
- 
-
- 
-
- 
-
- 
-
-TekstfeltTekstfeltTekstfelt  
-
- 
 
 Having returned from the quest for the Sword of Destiny, the mighty hero must once more venture into the fray of battle.  
 
@@ -119,13 +78,6 @@ The aim of the game is to keep the player entertained and engaged at one time, b
 
 As the game at the very start offers a choice of races, every playthrough will be different and the equipment you get can force you to go in a direction you might not have anticipated. This allows for great replay ability. 
 
- 
-
- 
-
- 
-
- 
 
 Gameplay Mechanics 
 
@@ -161,9 +113,7 @@ Character stats
 
 The different starting characters will have different stats and starting equipment, which allows for different playstyles, aside from this they will have their own special modifiers. 
 
- 
 
- 
 
 Enemies 
 
@@ -177,9 +127,6 @@ Each floor of the Temple has new enemies and challenges that they need to overco
 
 Should the hero make it to the bottom of the dungeon, the evil demonic overlord that has turned the once peaceful Temple into a lair of despotic chaos, guards the Book of Lost Knowledge. Only total victory may save the hero's people.  
 
- 
-
- 
 
 Bonus 
 
@@ -202,9 +149,6 @@ Procedurally generated dungeon:
 
 Every dive is a new experience as the dungeon gets generated from scratch every time you start a new dive. This means the location of enemies, what enemies and their drops get randomized. The rooms’ location and their connections get randomized. And of course, the location of the boss, the staircases and the puzzle rooms get randomized. 
 
- 
-
- 
 
 Monetisation 
 
