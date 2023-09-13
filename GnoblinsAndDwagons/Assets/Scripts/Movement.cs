@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,10 @@ public class Movement : MonoBehaviour
     public float speed;
     public float scale;
     private bool isMoving = false;
+
     private Vector2 input;
     private Animator animator;
+    public LayerMask solidObjectsLayer;
 
     private void Awake()
     {
@@ -30,13 +33,28 @@ public class Movement : MonoBehaviour
                 var targetPos = transform.position;
                 targetPos.x += input.x * scale;
                 targetPos.y += input.y * scale;
-
-                StartCoroutine(Move(targetPos));
+                
+                if (isWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
             }
         }
 
         animator.SetBool("isMoving", isMoving);
 
+    }
+
+    private bool isWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.04f, solidObjectsLayer) != null) 
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     IEnumerator Move(Vector3 targetPos)
