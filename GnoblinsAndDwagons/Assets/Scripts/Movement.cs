@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private Vector2 input;
     private Animator animator;
     public LayerMask solidObjectsLayer;
+    public LayerMask interactableLayer;
 
     private void Awake()
     {
@@ -43,11 +44,30 @@ public class Movement : MonoBehaviour
 
         animator.SetBool("isMoving", isMoving);
 
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            interact();
+        }
+        
+    }
+
+    void interact()
+    {
+        Vector3 faceDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPos = transform.position + 2*faceDir*scale;
+        
+        Debug.DrawLine(transform.position, interactPos, Color.red, 0.2f);
+
+        var collider = Physics2D.OverlapCircle(interactPos, scale, interactableLayer);
+        if (collider != null)
+        {
+            Debug.Log("NPC spotted");
+        }
     }
 
     private bool isWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.04f, solidObjectsLayer) != null) 
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null || Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null) 
         {
             return false;
         }
