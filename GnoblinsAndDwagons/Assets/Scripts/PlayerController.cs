@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float scale;
@@ -56,12 +56,12 @@ public class Movement : MonoBehaviour
         Vector3 faceDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + 2*faceDir*scale;
         
-        Debug.DrawLine(transform.position, interactPos, Color.red, 0.2f);
+        Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
 
         var collider = Physics2D.OverlapCircle(interactPos, scale, interactableLayer);
         if (collider != null)
         {
-            Debug.Log("NPC spotted");
+            collider.GetComponent<Interactable>()?.Interact();
         }
     }
 
