@@ -698,11 +698,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1309438247895876709, guid: d9d822e9f4eb3af4a94aace9f92148f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.67
+      value: -2.54
       objectReference: {fileID: 0}
     - target: {fileID: 1309438247895876709, guid: d9d822e9f4eb3af4a94aace9f92148f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.37
+      value: -0.62
       objectReference: {fileID: 0}
     - target: {fileID: 1309438247895876709, guid: d9d822e9f4eb3af4a94aace9f92148f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30713,18 +30713,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 1e32dc12ac7f8cd47a89791819ed3c31, type: 3}
   m_PrefabInstance: {fileID: 1104396809}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1063264524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063264520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273a827ec1a8d61408b781b602a9ad38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1063264525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30770,6 +30758,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9375, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1063264528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063264520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0b08403e0cb4d4b8253e161ba8064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - You cannot pass!
+    - Its not ready yet...
 --- !u!1001 &1104396809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30847,7 +30851,7 @@ PrefabInstance:
       addedObject: {fileID: 1063264525}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 1e32dc12ac7f8cd47a89791819ed3c31, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1063264524}
+      addedObject: {fileID: 1063264528}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 1e32dc12ac7f8cd47a89791819ed3c31, type: 3}
 --- !u!1 &1365305898
 GameObject:
