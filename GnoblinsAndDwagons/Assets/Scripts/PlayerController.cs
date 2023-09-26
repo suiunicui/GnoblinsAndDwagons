@@ -15,9 +15,30 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
 
+    [SerializeField] GameStateMemory gameState;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        Vector3 startPos;
+
+        if (gameState.inDungeon)
+        {
+            startPos = new Vector3(-14f, 12f, 0f);
+        }
+        else if (gameState.leaveDungeon)
+        {
+            startPos = new Vector3(14f, 3.6f, 0f);
+        }
+        else
+        {
+            startPos = new Vector3(-16f, 5.5f, 0f);
+        }
+        transform.position = startPos;
     }
 
     public void HandleUpdate()
