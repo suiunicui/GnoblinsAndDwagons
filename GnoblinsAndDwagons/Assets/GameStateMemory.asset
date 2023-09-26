@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inDungeon: 0
   leaveDungeon: 1
+  playerAgility: 0
+  playerStrength: 0
+  playerToughness: 0
+  playerDexterity: 0
