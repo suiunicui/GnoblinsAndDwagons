@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
@@ -14,6 +15,9 @@ public class DialogManager : MonoBehaviour
     public event Action onHideDialog;
 
     public static DialogManager instance { get; private set; }
+
+    private bool sceneChange;
+    private string sceneHolder;
 
     private void Awake()
     {
@@ -37,13 +41,20 @@ public class DialogManager : MonoBehaviour
                 currentLine = 0;
                 dialogBox.SetActive(false);
                 onHideDialog?.Invoke();
+                if(sceneChange)
+                {
+                    SceneManager.LoadScene(sceneHolder);
+                }
             }
 
         }
     }
 
-    public void showDialog(Dialog dialog)
+    public void showDialog(Dialog dialog, bool changeScene = false, string newScene = "")
     {
+        sceneChange = changeScene;
+        sceneHolder = newScene;
+
         onShowDialog?.Invoke();
         this.dialog = dialog;
         dialogBox.SetActive(true);
