@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace ItemThings
 {
@@ -16,9 +19,10 @@ public enum ItemType
     Armor,
     Shield
 }
-
+[CreateAssetMenu]
 public class Item
 {
+    public Sprite icon;
     private int Strength;
     private int Toughness;
     private int Dexterity;
@@ -37,6 +41,7 @@ public class Item
         this.Rarity = rarity;
         this.Type =type;
         this.Name = name;
+        this.icon = Resources.Load<Sprite>("Items_Inventory/Sprites/" + type);
     }
 
     public int getStrength(){
