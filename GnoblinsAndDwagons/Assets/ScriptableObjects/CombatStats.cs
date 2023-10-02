@@ -1,17 +1,22 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerStats", menuName = "Persistance")]
+[CreateAssetMenu(fileName = "PlayerStats", menuName = "Persistance/CombatStats")]
 public class CombatStats : ScriptableObject
 {
-    //player stats
-    public int playerAgility = 0;
-    public int playerStrength = 0;
-    public int playerToughness = 0;
-    public int playerDexterity = 0;
+    public int Agility = 0;
+    public int Strength = 0;
+    public int Toughness = 0;
+    public int Dexterity = 0;
 
-    //enemy stats
-    public int enemyAgility = 0;
-    public int enemyStrength = 0;
-    public int enemyToughness = 0;
-    public int enemyDexterity = 0;
+
+
+    public CombatStats(int Agility, int Strength, int Dexterity, int Toughness)
+    {
+        this.Agility = Agility;
+        this.Strength = Strength;
+        this.Dexterity = Dexterity;
+        this.Toughness = Toughness;
+    }
+    
+
 }
