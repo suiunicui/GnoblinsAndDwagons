@@ -3136,8 +3136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bdc5f9618c87a249b68d1a8c810073c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog:
-    lines: []
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
 --- !u!212 &1640847354
 SpriteRenderer:
   m_ObjectHideFlags: 0
