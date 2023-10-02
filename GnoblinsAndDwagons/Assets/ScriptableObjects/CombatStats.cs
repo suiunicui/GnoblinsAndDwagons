@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatStats : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerStats", menuName = "Persistance")]
+public class CombatStats : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //player stats
+    public int playerAgility = 0;
+    public int playerStrength = 0;
+    public int playerToughness = 0;
+    public int playerDexterity = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //enemy stats
+    public int enemyAgility = 0;
+    public int enemyStrength = 0;
+    public int enemyToughness = 0;
+    public int enemyDexterity = 0;
 }
