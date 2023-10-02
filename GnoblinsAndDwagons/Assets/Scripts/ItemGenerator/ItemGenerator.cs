@@ -17,13 +17,15 @@ public class ItemGenerator
     private Item generateRandomItem()
         {
         Random random = new Random();
+        Rarity randomRarity = (Rarity)random.Next(0,5);
         int randomStrength = random.Next(1,10);
         int randomToughness = random.Next(1,10);
         int randomDexterity = random.Next(1,10);
         int randomAgility = random.Next(1,10);
-        Rarity randomRarity = (Rarity)random.Next(0,5);
-        ItemType randomType = (ItemType)random.Next(0,3);
+        ItemType randomType = (ItemType)random.Next(0,5);
         string itemName;
+
+
 
         if(randomStrength>randomToughness && randomStrength> randomDexterity && randomStrength >randomAgility)
             itemName = "of the Giant";

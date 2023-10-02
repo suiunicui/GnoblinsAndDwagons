@@ -7,13 +7,19 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject slotPrefab;
     public List<InventorySlot> inventorySlots = new List<InventorySlot>(35);
+    [SerializeField] public PlayerInventory playerInventory;
 
     private void OnEnable(){
-        Inventory.OnInventoryChange += DrawInventory;
+        PlayerInventory.OnInventoryChange += DrawInventory;
+    }
+
+    private void Start(){
+        List<Item> emptyList = new List<Item>();
+        DrawInventory(emptyList);
     }
 
     private void OnDisable(){
-        Inventory.OnInventoryChange -= DrawInventory;
+        PlayerInventory.OnInventoryChange -= DrawInventory;
     }
 
     void ResetInventory()
@@ -49,5 +55,26 @@ public class InventoryManager : MonoBehaviour
         newSlotComponent.ClearSlot();
 
         inventorySlots.Add(newSlotComponent);
+    }
+
+    public void DeselectAllSlots(int id)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            slot.selectedShader.enabled = false;
+            slot.thisItemSelected = false;
+        }
+        bool itemFound = false;
+        foreach (Item item in playerInventory.inventory)
+        {
+            if (item.specificId == id)
+            {
+                playerInventory.selectedItem = item;
+                itemFound = true;
+            }
+
+        }
+        if (!itemFound)
+        playerInventory.selectedItem = null;
     }
 }
