@@ -1,4 +1,4 @@
-?using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,25 +11,25 @@ public static class WallTypesHelper
         0b0011,
         0b0010,
         0b1010,
-        0b1100,
         0b1110,
         0b1011,
-        0b0111
+        0b0111,
     };
 
     public static HashSet<int> wallSideLeft = new HashSet<int>
     {
-        0b0100
+        0b0100,
     };
 
     public static HashSet<int> wallSideRight = new HashSet<int>
     {
-        0b0001
+        0b0001,
     };
 
     public static HashSet<int> wallBottm = new HashSet<int>
     {
-        0b1000
+        0b1000,
+        0b1100,
     };
 
     public static HashSet<int> wallInnerCornerDownLeft = new HashSet<int>
