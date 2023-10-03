@@ -10,7 +10,9 @@ public class CombatUnit : MonoBehaviour
 	public int damage;
 	public int maxHP;
 	public int currentHP;
+	public HealthScript healthBar;
 	[SerializeField] public EnemyStats stats;
+	
 
 	public CombatUnit(string name, int level, int damage, int maxHp, EnemyStats stats)
 	{
@@ -18,6 +20,7 @@ public class CombatUnit : MonoBehaviour
 		unitLevel = level;
 		this.damage = damage;
 		maxHP = maxHp;
+		healthBar.SetMaxHealth(maxHP);
 		currentHP = maxHP;
 		this.stats = stats;
 	}
@@ -25,6 +28,7 @@ public class CombatUnit : MonoBehaviour
 	public bool TakeDamage(int dmg)
 	{
 		currentHP -= dmg;
+		healthBar.SetHealth(currentHP);
 
 		return currentHP <= 0;
 	}
