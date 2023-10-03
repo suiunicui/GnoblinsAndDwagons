@@ -43462,6 +43462,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1c86d2898522b4b98c2219288c75b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - Hmmm, so you have come to shop eh?
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
 --- !u!1 &2069367627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6081728757403706826, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
