@@ -9,6 +9,8 @@ public class ExitShopController : MonoBehaviour
     public void OnClick()
     {
         gameStateMemory.inShop = false;
+        gameStateMemory.inDungeon = false;
+        gameStateMemory.leaveDungeon = false;
         gameStateMemory.leaveShop = true;
         SceneManager.LoadScene("Camp");
     }
