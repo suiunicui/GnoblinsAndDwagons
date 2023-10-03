@@ -11,6 +11,6 @@ public class QuestGiverController : MonoBehaviour, Interactable
     {
         gameStateMemory.inDungeon = true;
         gameStateMemory.leaveDungeon = false;
-        DialogManager.instance.showDialog(dialog, true, "SmallDungeon");
+        DialogManager.instance.showDialog(dialog, true, "RandomDungeon");
     }
 }
