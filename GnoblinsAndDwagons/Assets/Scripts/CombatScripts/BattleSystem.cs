@@ -26,6 +26,9 @@ public class BattleSystem : MonoBehaviour
 	public Slider playerHealthSlider;
 	public Slider enemyHealthSlider;
 	
+	public Text enemyName;
+	public Text playerName;
+	
 	public BattleState state;
 
 	// Start is called before the first frame update
@@ -41,9 +44,11 @@ public class BattleSystem : MonoBehaviour
 	{
 		var playerObject = Instantiate(playerPrefab, playerBattleStation);
 		playerUnit = playerObject.GetComponent<CombatUnit>();
+		playerName.text = playerUnit.unitName;
 	    
 		var enemyObject = Instantiate(enemyPrefab, enemyBattleStation);
 		enemyUnit = enemyObject.GetComponent<CombatUnit>();
+		enemyName.text = enemyUnit.unitName;
 
 		yield return new WaitForSeconds(3f);
 	    
