@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: GameStateMemory
   m_EditorClassIdentifier: 
   inDungeon: 1
+  inShop: 0
+  leaveShop: 0
   leaveDungeon: 0
-  playerAgility: 0
-  playerStrength: 0
-  playerToughness: 0
-  playerDexterity: 0

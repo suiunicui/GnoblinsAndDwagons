@@ -49,7 +49,7 @@ public class TileMapVisualizer : MonoBehaviour
         wallTilemap.ClearAllTiles();
     }
 
-    internal void paintSingleWall(Vector2Int wallPos)
+    internal void paintSingleWall(Vector2Int wallPos, string binaryType)
     {
        paintSingleTile(wallTilemap, topWallTile, wallPos);
     }

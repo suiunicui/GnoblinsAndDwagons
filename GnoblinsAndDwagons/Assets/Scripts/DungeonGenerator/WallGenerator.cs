@@ -8,9 +8,28 @@ public static class WallGenerator
     public static void createWalls(HashSet<Vector2Int> floorPos, TileMapVisualizer tileMapVisualizer)
     {
         var basicWallPos = findWallsInDirections(floorPos, direction2D.cardinalDirList);
+        var cornerWallPos = findWallsInDirections(floorPos, direction2D.diagDirList);
+        createBasicWall(tileMapVisualizer, basicWallPos, floorPos);
+    }
+
+    private static void createBasicWall(TileMapVisualizer tileMapVisualizer, HashSet<Vector2Int> basicWallPos, HashSet<Vector2Int> floorPos)
+    {
         foreach (var wall in basicWallPos)
         {
-            tileMapVisualizer.paintSingleWall(wall);
+            string neighboursBinary = "";
+            foreach (var direction in direction2D.cardinalDirList)
+            {
+                var neighbourPos = wall + direction;
+                if (floorPos.Contains(neighbourPos))
+                {
+                    neighboursBinary += "1";
+                }
+                else
+                {
+                    neighboursBinary += "0";
+                }
+            }
+            tileMapVisualizer.paintSingleWall(wall, neighboursBinary);
         }
     }
 
