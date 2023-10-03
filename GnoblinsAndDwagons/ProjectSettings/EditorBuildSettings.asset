@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Camp.unity
     guid: c2714361499b9f24da17397c7105f492
   - enabled: 1
+    path: Assets/Scenes/RandomDungeon.unity
+    guid: 998df7189e978b34f90c76444279b3a3
+  - enabled: 1
     path: Assets/Scenes/Combat.unity
     guid: 959d95e7bdea083408fa5b290b486301
   - enabled: 1
