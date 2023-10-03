@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517469aca82cca14fbd7c8dec2316314, type: 3}
   m_Name: GameStateMemory
   m_EditorClassIdentifier: 
-  inDungeon: 1
+  inDungeon: 0
+  inShop: 0
+  leaveShop: 0
   leaveDungeon: 0
-  playerAgility: 0
-  playerStrength: 0
-  playerToughness: 0
-  playerDexterity: 0
