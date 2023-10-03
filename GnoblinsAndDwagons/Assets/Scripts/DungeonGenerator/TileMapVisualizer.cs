@@ -13,7 +13,13 @@ public class TileMapVisualizer : MonoBehaviour
     private Tilemap wallTilemap;
 
     [SerializeField]
-    private TileBase wallTile;
+    private TileBase topWallTile;
+    [SerializeField]
+    private TileBase leftWallTile; 
+    [SerializeField]
+    private TileBase rightWallTile;
+    [SerializeField]
+    private TileBase bottomWallTile;
 
     [SerializeField]
     private TileBase floorTile;
@@ -45,6 +51,6 @@ public class TileMapVisualizer : MonoBehaviour
 
     internal void paintSingleWall(Vector2Int wallPos)
     {
-       paintSingleTile(wallTilemap, wallTile, wallPos);
+       paintSingleTile(wallTilemap, topWallTile, wallPos);
     }
 }
