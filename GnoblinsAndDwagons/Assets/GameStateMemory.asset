@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517469aca82cca14fbd7c8dec2316314, type: 3}
   m_Name: GameStateMemory
   m_EditorClassIdentifier: 
-  inDungeon: 0
-  leaveDungeon: 1
+  inDungeon: 1
+  leaveDungeon: 0
   playerAgility: 0
   playerStrength: 0
   playerToughness: 0
