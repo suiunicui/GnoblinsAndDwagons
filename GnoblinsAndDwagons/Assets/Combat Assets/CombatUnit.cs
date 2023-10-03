@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatUnit
+public class CombatUnit : MonoBehaviour
 {
 	
 	public string unitName;
