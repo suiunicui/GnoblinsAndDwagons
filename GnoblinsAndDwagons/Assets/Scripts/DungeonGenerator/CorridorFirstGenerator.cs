@@ -27,7 +27,7 @@ public class CorridorFirstGenerator : SimpleRandomWalkGenerator
         createCorridors(floorPos, potentialRoomPos);
 
         HashSet<Vector2Int> roomPos = CreateRooms(potentialRoomPos);
-        Debug.Log("test");
+
         List<Vector2Int> deadEnds = findDeadEnds(floorPos);
 
         CreateRoomsAtDeadEnds(deadEnds, roomPos);

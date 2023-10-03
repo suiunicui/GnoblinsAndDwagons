@@ -16,12 +16,8 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     [Range(0,10)]
     private int offset = 1;
 
-    [SerializeField]
-    private bool randomWalkRooms = false;
-
     protected override void runProceduralGeneration()
     {
-        Debug.Log("Room First Started");
         createRooms();
     }
 
@@ -54,7 +50,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         var currentRoomCenter = roomCenters[Random.Range(0, roomCenters.Count)];
         roomCenters.Remove(currentRoomCenter);
 
-        Debug.Log("connect Loop starts");
         while (roomCenters.Count > 0)
         {
             Vector2Int closest = FindClosestPointTo(currentRoomCenter, roomCenters);
@@ -73,7 +68,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         Vector2Int position = currentRoomCenter;
         corridor.Add(position);
 
-        Debug.Log("X starts");
         while (position.y != destination.y)
         {
             if (destination.y > position.y)
@@ -98,8 +92,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             }
             corridor.Add(position);
         }
-
-        Debug.Log("Y Done");
         return corridor;
     }
 
