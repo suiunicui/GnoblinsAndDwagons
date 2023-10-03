@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameStateMemory", menuName = "Persistance") ]
+[CreateAssetMenu(fileName = "GameStateMemory", menuName = "Persistance/GameState") ]
 public class GameStateMemory : ScriptableObject
 {
     public bool inDungeon = false;
