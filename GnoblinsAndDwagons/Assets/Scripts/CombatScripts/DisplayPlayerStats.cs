@@ -19,12 +19,4 @@ public class DisplayPlayerStats : MonoBehaviour
         Toughness.text = "Toughness: " + stats.Toughness.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Strength.text = "Strength: " + stats.Strength.ToString();
-        Dexterity.text = "Dexterity: " + stats.Dexterity.ToString();
-        Agility.text = "Agility: " + stats.Agility.ToString();
-        Toughness.text = "Toughness: " + stats.Toughness.ToString();
-    }
 }

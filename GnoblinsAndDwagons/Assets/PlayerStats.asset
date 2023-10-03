@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914430092af096f4595801ccfc75197b, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  playerAgility: 0
-  playerStrength: 0
-  playerToughness: 0
-  playerDexterity: 0
+  Agility: 10
+  Strength: 20
+  Toughness: 30
+  Dexterity: 21
