@@ -20,8 +20,8 @@ public class CombatUnit : MonoBehaviour
 		unitLevel = level;
 		this.damage = damage;
 		maxHP = maxHp;
-		healthBar.SetMaxHealth(maxHP);
 		currentHP = maxHP;
+		healthBar.SetHealth(currentHP);
 		this.stats = stats;
 	}
 
