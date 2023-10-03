@@ -5,6 +5,7 @@ public class GameStateMemory : ScriptableObject
 {
     public bool inDungeon = false;
     public bool leaveDungeon = false;
+    public bool leaveMerchant = false;
 
     //player stats
     public int playerAgility = 0;
