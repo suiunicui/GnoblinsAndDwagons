@@ -16,11 +16,4 @@ public class DisplayEnemyStats : MonoBehaviour
         HP.text = enemies.enemies[0].currentHP.ToString();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Name.text = enemies.enemies[0].unitName;
-        HP.text = enemies.enemies[0].currentHP.ToString();
-    }
 }
