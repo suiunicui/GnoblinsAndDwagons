@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -21,12 +22,17 @@ public class BattleSystem : MonoBehaviour
 
 	private CombatUnit playerUnit;
 	private CombatUnit enemyUnit;
+
+	public Slider playerHealthSlider;
+	public Slider enemyHealthSlider;
 	
 	public BattleState state;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
+		Debug.Log("hi");
+		
 		state = BattleState.Start;
 		StartCoroutine(SetupBattle());
 	}
@@ -97,7 +103,8 @@ public class BattleSystem : MonoBehaviour
 		
 		var isDead = enemyUnit.TakeDamage(damageDealt);
 		
-		// TODO: Set UI to reflect damage to enemy
+		SetHealthSlider(playerHealthSlider, playerUnit.currentHP, playerUnit.maxHP);
+		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHP, enemyUnit.maxHP);
 		
 		yield return new WaitForSeconds(2f);
 
@@ -121,10 +128,11 @@ public class BattleSystem : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 		var isDead = playerUnit.TakeDamage(damageDealt);
-		
-		// TODO: Set UI to reflect damage to player
-		
+
 		yield return new WaitForSeconds(1f);
+		
+		SetHealthSlider(playerHealthSlider, playerUnit.currentHP, playerUnit.maxHP);
+		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHP, enemyUnit.maxHP);
 
 		if (isDead)
 		{
@@ -186,5 +194,11 @@ public class BattleSystem : MonoBehaviour
 		// Calculate flee chance based on player's agility.
 		// You can customize the formula as needed.
 		return playerAgility * 0.01f; // 1% chance per agility point.
+	}
+	
+	private static void SetHealthSlider(Slider slider, int currentHealth, int maxHealth)
+	{
+		var healthPercent = Mathf.Clamp01((float)currentHealth / maxHealth);
+		slider.value = healthPercent;
 	}
 }
