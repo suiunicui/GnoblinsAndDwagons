@@ -43746,12 +43746,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2489705975942732330, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489705975942732330, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: gameState
       value: 
       objectReference: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
     - target: {fileID: 5454538813015156100, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: m_Name
       value: hero1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658609771775034414, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+      propertyPath: orthographic size
+      value: 3.6709094
       objectReference: {fileID: 0}
     - target: {fileID: 7784859302863277840, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43858,6 +43866,10 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 805363094}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: gameStateMemory
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
     - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
       propertyPath: playerController
       value: 
