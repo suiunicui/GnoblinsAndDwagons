@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemThings;
 
-public class InventoryManager : MonoBehaviour
+public class ShopManager : MonoBehaviour
 {
     public GameObject slotPrefab;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>(35);
+    public List<ShopSlot> shopSlots = new List<ShopSlot>(42);
+    private ItemGenerator itemGenerator = new ItemGenerator();
+    private List<Item> shopList = new List<Item>();
     [SerializeField] public PlayerInventory playerInventory;
 
     private void OnEnable(){
-        PlayerInventory.OnInventoryChange += DrawInventory;
+        //PlayerInventory.OnInventoryChange += DrawInventory;
     }
 
     private void Start(){
-        List<Item> emptyList = new List<Item>();
-        DrawInventory(emptyList);
+        shopList = itemGenerator.generateItems(42);
+        DrawInventory(shopList);
     }
 
     private void OnDisable(){
-        PlayerInventory.OnInventoryChange -= DrawInventory;
+        //PlayerInventory.OnInventoryChange -= DrawInventory;
     }
 
     void ResetInventory()
@@ -28,48 +30,48 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(childTransform.gameObject);
         }
-        inventorySlots = new List<InventorySlot>(35);
+        shopSlots = new List<ShopSlot>(42);
     }
 
     void DrawInventory(List<Item> inventory)
     {
         ResetInventory();
 
-        for (int i = 0; i < inventorySlots.Capacity; i++)
+        for (int i = 0; i < shopSlots.Capacity; i++)
         {
-            CreateInventorySlot();
+            CreateShopSlot();
         }
 
         for (int i = 0; i < inventory.Count; i++)
         {
-            inventorySlots[i].DrawSlot(inventory[i]);
+            shopSlots[i].DrawSlot(inventory[i]);
         }
     }
 
-    void CreateInventorySlot()
+    void CreateShopSlot()
     {
         GameObject newSlot = Instantiate(slotPrefab);
         newSlot.transform.SetParent(transform, false);
 
-        InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
+        ShopSlot newSlotComponent = newSlot.GetComponent<ShopSlot>();
         newSlotComponent.ClearSlot();
 
-        inventorySlots.Add(newSlotComponent);
+        shopSlots.Add(newSlotComponent);
     }
 
-    public void DeselectAllSlots(int id =-1)
+    public void DeselectAllSlots(int id = -1)
     {
-        foreach (InventorySlot slot in inventorySlots)
+        foreach (ShopSlot slot in shopSlots)
         {
             slot.selectedShader.enabled = false;
             slot.thisItemSelected = false;
         }
         bool itemFound = false;
-        foreach (Item item in playerInventory.inventory)
+        foreach (Item item in shopList)
         {
             if (item.specificId == id)
             {
-                playerInventory.selectedItem = new SelectedItem(item,false);
+                playerInventory.selectedItem = new SelectedItem(item,true);
                 itemFound = true;
             }
 
