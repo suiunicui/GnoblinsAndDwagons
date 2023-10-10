@@ -5,6 +5,7 @@ public class GameStateMemory : ScriptableObject
 {
     public bool inDungeon = false;
     public bool inShop = false;
+    public bool inCombat = false;
     public bool leaveShop = false;
     public bool leaveDungeon = false;
     public bool leaveCombat = false;

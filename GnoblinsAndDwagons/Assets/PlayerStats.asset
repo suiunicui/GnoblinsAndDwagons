@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914430092af096f4595801ccfc75197b, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  unitName: 
+  type: 
   Agility: 10
-  Strength: 10
+  Strength: 100
   Toughness: 10
   Dexterity: 10

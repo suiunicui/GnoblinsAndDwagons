@@ -151,3 +151,4 @@ MonoBehaviour:
   dialog:
     lines:
     - Oh no! It's a Mimic!
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
