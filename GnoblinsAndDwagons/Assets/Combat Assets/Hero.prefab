@@ -99,7 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Hero
   unitLevel: 99
-  damage: 10
-  maxHP: 30
-  currentHP: 25
+  maxHp: 100
+  currentHp: 100
   stats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
