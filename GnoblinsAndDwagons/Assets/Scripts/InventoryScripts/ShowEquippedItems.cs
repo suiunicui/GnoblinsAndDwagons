@@ -20,6 +20,10 @@ public class ShowEquippedItems : MonoBehaviour
         PlayerInventory.OnEquipmentChange -= DrawSlots;
     }
 
+    private void Start(){
+        DrawSlots();
+    }
+
     private void DrawSlots()
     {
         if (playerInventory.equippedItems.equippedHead != null)
