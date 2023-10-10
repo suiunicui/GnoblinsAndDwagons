@@ -36,7 +36,7 @@ public class PlayerInventory : ScriptableObject
         if(selectedItem.selectedItem.getSlot() == Slot.MainHand)
         {
             if (equippedItems.equippedMainHand.getValue() != 0)
-            oldEquippedItem = equippedItems.equippedMainHand;
+				oldEquippedItem = equippedItems.equippedMainHand;
             equippedItems.equippedMainHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
@@ -44,7 +44,7 @@ public class PlayerInventory : ScriptableObject
         if(selectedItem.selectedItem.getSlot() == Slot.OffHand)
         {
             if (equippedItems.equippedOffHand.getValue() != 0)
-            oldEquippedItem = equippedItems.equippedOffHand;
+				oldEquippedItem = equippedItems.equippedOffHand;
             equippedItems.equippedOffHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
@@ -52,7 +52,7 @@ public class PlayerInventory : ScriptableObject
         if(selectedItem.selectedItem.getSlot() == Slot.HeadWear)
         {
             if (equippedItems.equippedHead.getValue() != 0)
-            oldEquippedItem = equippedItems.equippedHead;
+				oldEquippedItem = equippedItems.equippedHead;
             equippedItems.equippedHead = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
@@ -60,7 +60,7 @@ public class PlayerInventory : ScriptableObject
         if(selectedItem.selectedItem.getSlot() == Slot.Armor)
         {
             if (equippedItems.equippedChest.getValue() != 0)
-            oldEquippedItem = equippedItems.equippedChest;
+				oldEquippedItem = equippedItems.equippedChest;
             equippedItems.equippedChest = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
@@ -68,11 +68,12 @@ public class PlayerInventory : ScriptableObject
         if(selectedItem.selectedItem.getSlot() == Slot.FootWear)
         {
             if (equippedItems.equippedBoots.getValue() != 0 )
-            oldEquippedItem = equippedItems.equippedBoots;
+				oldEquippedItem = equippedItems.equippedBoots;
             equippedItems.equippedBoots = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
         inventory.Remove(selectedItem.selectedItem);
+        selectedItem = null;
         if (oldEquippedItem != null)
         {
             inventory.Add(oldEquippedItem);
