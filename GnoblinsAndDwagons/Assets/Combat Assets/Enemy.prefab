@@ -102,3 +102,4 @@ MonoBehaviour:
   damage: 10
   maxHP: 50
   currentHP: 30
+  stats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
