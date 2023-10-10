@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   Agility: 10
-  Strength: 20
-  Toughness: 30
-  Dexterity: 21
+  Strength: 10
+  Toughness: 10
+  Dexterity: 10
