@@ -10,7 +10,7 @@ public class CombatUnit : MonoBehaviour
 	public int damage;
 	public int maxHP;
 	public int currentHP;
-	[SerializeField] public Stats stats;
+	[SerializeField] public CombatStats stats;
 
 	public bool TakeDamage(int dmg)
 	{
