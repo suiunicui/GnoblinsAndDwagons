@@ -102,3 +102,8 @@ MonoBehaviour:
   damage: 10
   maxHP: 30
   currentHP: 25
+  stats:
+    strength: 10
+    agility: 10
+    dexterity: 10
+    toughness: 10
