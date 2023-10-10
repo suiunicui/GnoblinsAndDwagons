@@ -991,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9815046283cd8aa4c9ac62e1536ede6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   victorydialog:
     lines:
     - You are Victorious
