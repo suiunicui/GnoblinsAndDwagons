@@ -57,7 +57,7 @@ public class InventoryManager : MonoBehaviour
         inventorySlots.Add(newSlotComponent);
     }
 
-    public void DeselectAllSlots(int id)
+    public void DeselectAllSlots(int id =-1)
     {
         foreach (InventorySlot slot in inventorySlots)
         {
@@ -69,7 +69,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (item.specificId == id)
             {
-                playerInventory.selectedItem = item;
+                playerInventory.selectedItem = new SelectedItem(item,false);
                 itemFound = true;
             }
 

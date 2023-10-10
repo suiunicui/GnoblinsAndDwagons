@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using Random = UnityEngine.Random;
 
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
@@ -17,11 +20,16 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private int offset = 1;
 
     [SerializeField]
-    private bool randomWalkRooms = false;
+    private GameObject levelExit;
+
+    [SerializeField]
+    private GameStateMemory gameStateMemory;
+
+    //Generated data
+    private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
 
     protected override void runProceduralGeneration()
     {
-        Debug.Log("Room First Started");
         createRooms();
     }
 
@@ -45,6 +53,24 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
         tileMapVisualizer.paintFloor(floor);
         WallGenerator.createWalls(floor, tileMapVisualizer);
+
+        populateRooms(roomList, corridors);
+    }
+
+    private void populateRooms(List<BoundsInt> roomList, HashSet<Vector2Int> corridors)
+    {
+        BoundsInt room = roomList[Random.Range(0, roomList.Count)];
+         
+        gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center);
+        Debug.Log(gameStateMemory.DungeonStartPos);
+
+        roomList.Remove(room);
+        room = roomList[Random.Range(0, roomList.Count)];
+        Vector3Int spawnPos = new Vector3Int(Random.Range(room.min.x+offset + 1, room.max.x - 1), Random.Range(room.min.y+offset + 1, room.max.y - 1), 0);
+
+
+
+        Instantiate(levelExit, spawnPos, Quaternion.identity);
     }
 
     private HashSet<Vector2Int> connectRooms(List<Vector2Int> roomCenters)
@@ -54,7 +80,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         var currentRoomCenter = roomCenters[Random.Range(0, roomCenters.Count)];
         roomCenters.Remove(currentRoomCenter);
 
-        Debug.Log("connect Loop starts");
         while (roomCenters.Count > 0)
         {
             Vector2Int closest = FindClosestPointTo(currentRoomCenter, roomCenters);
@@ -73,7 +98,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         Vector2Int position = currentRoomCenter;
         corridor.Add(position);
 
-        Debug.Log("X starts");
         while (position.y != destination.y)
         {
             if (destination.y > position.y)
@@ -98,8 +122,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             }
             corridor.Add(position);
         }
-
-        Debug.Log("Y Done");
         return corridor;
     }
 
@@ -123,6 +145,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private HashSet<Vector2Int> createSimpleRooms(List<BoundsInt> roomList)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+        HashSet<Vector2Int> tmpRoom = new HashSet<Vector2Int>();
 
         foreach (var room in roomList)
         {
@@ -131,9 +154,12 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
                 for(int row = offset; row < room.size.y; row++)
                 {
                     Vector2Int pos = (Vector2Int)room.min + new Vector2Int(col, row);
+                    tmpRoom.Add(pos);
                     floor.Add(pos);
                 }
             }
+            roomDict.Add((Vector2Int)Vector3Int.RoundToInt(room.center), tmpRoom);
+            tmpRoom.Clear();
         }
         return floor;
     }

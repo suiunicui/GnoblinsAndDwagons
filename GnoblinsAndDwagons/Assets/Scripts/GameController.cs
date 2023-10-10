@@ -12,11 +12,19 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] GameStateMemory gameStateMemory;
+    [SerializeField] DungeonController dungeonController;
 
     GameState state;
 
     private void Start()
     {
+        if (gameStateMemory.inDungeon)
+        {
+            dungeonController.handleStart();
+        }
+        playerController.handleStart();
+
         DialogManager.instance.onShowDialog += () =>
         {
             state = GameState.DIALOG;

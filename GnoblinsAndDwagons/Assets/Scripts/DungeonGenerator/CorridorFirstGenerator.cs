@@ -13,6 +13,11 @@ public class CorridorFirstGenerator : SimpleRandomWalkGenerator
     [SerializeField]
     [Range(0.1f, 1)]
     private float roomPercent = 0.8f;
+
+    //Generated data
+    private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+
+    private HashSet<Vector2Int> floorPositions, corridorPositions;
    
     protected override void runProceduralGeneration()
     {
@@ -26,16 +31,22 @@ public class CorridorFirstGenerator : SimpleRandomWalkGenerator
 
         createCorridors(floorPos, potentialRoomPos);
 
+        corridorPositions = floorPos;
+
         HashSet<Vector2Int> roomPos = CreateRooms(potentialRoomPos);
-        Debug.Log("test");
+
         List<Vector2Int> deadEnds = findDeadEnds(floorPos);
 
         CreateRoomsAtDeadEnds(deadEnds, roomPos);
 
         floorPos.UnionWith(roomPos);
+        
+        floorPositions = floorPos;
 
         tileMapVisualizer.paintFloor(floorPos);
         WallGenerator.createWalls(floorPos, tileMapVisualizer);
+
+
     }
 
     private void CreateRoomsAtDeadEnds(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomPos)
@@ -81,6 +92,7 @@ public class CorridorFirstGenerator : SimpleRandomWalkGenerator
         foreach (var room in roomToCreate)
         {
             var roomFloor = runRandomWalk(randomParams, room);
+            roomDict.Add(room, roomFloor);
             roomPos.UnionWith(roomFloor);
         }
         return roomPos;
