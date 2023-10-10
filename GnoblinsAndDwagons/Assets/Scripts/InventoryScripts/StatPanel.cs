@@ -13,6 +13,7 @@ public class StatPanel : MonoBehaviour
     public Text Dexterity;
     public Text Agility;
     public Text Slot;
+    public Text Value;
     public void ClearSlot()
     {
         Name.text = "No item selected!";
@@ -21,20 +22,22 @@ public class StatPanel : MonoBehaviour
         Dexterity.text = "";
         Agility.text = "";
         Slot.text = "";
+        Value.text = "";
     }
 
-    public void DrawSlot()
+    public void Draw()
     {
         if (playerInventory.selectedItem == null)
         {
             ClearSlot();
             return;
         }
-        Name.text = playerInventory.selectedItem.getName();
-        Strength.text = "Strength: " + playerInventory.selectedItem.getStrength().ToString();
-        Toughness.text = "Toughness: "+ playerInventory.selectedItem.getToughness().ToString();
-        Dexterity.text = "Dexterity: "+ playerInventory.selectedItem.getDexterity().ToString();
-        Agility.text = "Agility: "+ playerInventory.selectedItem.getAgility().ToString();
-        Slot.text = "Slot: "+ playerInventory.selectedItem.getSlot().ToString();
+        Name.text = playerInventory.selectedItem.selectedItem.getName();
+        Strength.text = "Strength: " + playerInventory.selectedItem.selectedItem.getStrength().ToString();
+        Toughness.text = "Toughness: "+ playerInventory.selectedItem.selectedItem.getToughness().ToString();
+        Dexterity.text = "Dexterity: "+ playerInventory.selectedItem.selectedItem.getDexterity().ToString();
+        Agility.text = "Agility: "+ playerInventory.selectedItem.selectedItem.getAgility().ToString();
+        Slot.text = "Slot: "+ playerInventory.selectedItem.selectedItem.getSlot().ToString();
+        Value.text = "Value: "+ playerInventory.selectedItem.selectedItem.getValue().ToString();
     }
 }

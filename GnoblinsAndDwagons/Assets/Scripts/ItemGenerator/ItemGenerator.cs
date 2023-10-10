@@ -16,27 +16,32 @@ public class ItemGenerator
 
     private Item generateRandomItem()
         {
+        int[] numbers = { 1, 3, 5, 10, 20 };
         Random random = new Random();
-        Rarity randomRarity = (Rarity)random.Next(0,5);
+        int randomIndex = random.Next(0, numbers.Length);
+        Rarity randomRarity =(Rarity) numbers[randomIndex];
         int randomStrength = random.Next(1,10);
         int randomToughness = random.Next(1,10);
         int randomDexterity = random.Next(1,10);
         int randomAgility = random.Next(1,10);
         ItemType randomType = (ItemType)random.Next(0,5);
         string itemName;
+        int value;
 
 
 
         if(randomStrength>randomToughness && randomStrength> randomDexterity && randomStrength >randomAgility)
-            itemName = "of the Giant";
+            itemName = "of the giant";
         else if (randomToughness>randomDexterity && randomToughness >randomAgility)
-            itemName = "of the Survivor";
+            itemName = "of the survivor";
         else if (randomDexterity >randomAgility)
-            itemName = "of the Fleetfooted";
+            itemName = "of the fleetfooted";
         else
-            itemName = "of the Rabbit";
+            itemName = "of the rabbit";
 
         itemName = $"{randomRarity} {randomType} {itemName}";
+
+        value = (randomStrength+randomToughness+randomDexterity+randomAgility)*(int)(randomRarity);
 
         return new Item(
             randomStrength,
@@ -45,7 +50,8 @@ public class ItemGenerator
             randomAgility,
             randomRarity,
             randomType,
-            itemName
+            itemName,
+            value
         );
     
     }
