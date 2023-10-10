@@ -6,11 +6,11 @@ using UnityEngine;
 namespace ItemThings
 {
 public enum Rarity{
-    Common,
-    Uncommon,
-    Rare,
-    Gnepic,
-    Legendary 
+    Common=1,
+    Uncommon=3,
+    Rare=5,
+    Gnepic=10,
+    Legendary=20 
 }
 
 public enum ItemType
@@ -34,10 +34,10 @@ public class Item
     private static int id =0;
     public int specificId;
     public Sprite icon;
-    private int? Strength = 0;
-    private int? Toughness = 0;
-    private int? Dexterity = 0;
-    private int? Agility = 0;
+    private int Strength = 0;
+    private int Toughness = 0;
+    private int Dexterity = 0;
+    private int Agility = 0;
     private Rarity Rarity;
     private ItemType Type;
     private string Name;
@@ -45,7 +45,7 @@ public class Item
     private Slot slot;
 
 
-    public Item(int? str,int? tou, int? dex, int? agi, Rarity rarity, ItemType type, string name)
+    public Item(int str,int tou, int dex, int agi, Rarity rarity, ItemType type, string name, int Value)
     {
         this.specificId = id;
         id++;
@@ -57,6 +57,7 @@ public class Item
         this.Type =type;
         this.Name = name;
         this.icon = Resources.Load<Sprite>("Items_Inventory/Sprites/" + type);
+        this.Value = Value;
 
         if (this.getType()==ItemType.Sword)
         {
@@ -104,6 +105,9 @@ public class Item
     }
     public Slot getSlot(){
         return this.slot;
+    }
+    public int getValue(){
+        return this.Value;
     }
 }
 }

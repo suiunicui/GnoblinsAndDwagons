@@ -9,7 +9,7 @@ public class PlayerInventory : ScriptableObject
 {
     public static event Action<List<Item>> OnInventoryChange;
     public static event Action OnEquipmentChange;
-    public Item selectedItem;
+    public SelectedItem selectedItem;
     public List<Item> inventory = new List<Item>(35);
     public PlayerEquippedItems equippedItems = new PlayerEquippedItems();
 
@@ -32,48 +32,48 @@ public class PlayerInventory : ScriptableObject
     public void Equip()
     {
         Item oldEquippedItem = null;
-        if(selectedItem.getSlot() == Slot.MainHand)
+        if(selectedItem.selectedItem.getSlot() == Slot.MainHand)
         {
             if (equippedItems.equippedMainHand != null)
             oldEquippedItem = equippedItems.equippedMainHand;
-            equippedItems.equippedMainHand = selectedItem;
+            equippedItems.equippedMainHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
 
-        if(selectedItem.getSlot() == Slot.OffHand)
+        if(selectedItem.selectedItem.getSlot() == Slot.OffHand)
         {
             if (equippedItems.equippedOffHand != null)
             oldEquippedItem = equippedItems.equippedOffHand;
-            equippedItems.equippedOffHand = selectedItem;
+            equippedItems.equippedOffHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
 
-        if(selectedItem.getSlot() == Slot.HeadWear)
+        if(selectedItem.selectedItem.getSlot() == Slot.HeadWear)
         {
             oldEquippedItem = equippedItems.equippedHead;
-            equippedItems.equippedHead = selectedItem;
+            equippedItems.equippedHead = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
 
-        if(selectedItem.getSlot() == Slot.Armor)
+        if(selectedItem.selectedItem.getSlot() == Slot.Armor)
         {
             if (equippedItems.equippedChest!= null)
             oldEquippedItem = equippedItems.equippedChest;
-            equippedItems.equippedChest = selectedItem;
+            equippedItems.equippedChest = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
 
-        if(selectedItem.getSlot() == Slot.FootWear)
+        if(selectedItem.selectedItem.getSlot() == Slot.FootWear)
         {
             oldEquippedItem = equippedItems.equippedBoots;
-            equippedItems.equippedBoots = selectedItem;
+            equippedItems.equippedBoots = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
         }
+        inventory.Remove(selectedItem.selectedItem);
         if (oldEquippedItem != null)
         {
             inventory.Add(oldEquippedItem);
         }
-        inventory.Remove(selectedItem);
         OnInventoryChange?.Invoke(inventory);
         Debug.Log($"Player Strength: {equippedItems.getTotalStrength()}");
         Debug.Log($"Player Toughness: {equippedItems.getTotalToughness()}");
