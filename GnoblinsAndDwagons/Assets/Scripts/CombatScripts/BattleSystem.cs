@@ -1,9 +1,16 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class BattleSystem : MonoBehaviour
 {
+	public event Action StartCombat;
+
+	public static BattleSystem instance { get; private set;}
+	
 	public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost, Fled }
 
 	private enum PlayerAction
@@ -13,6 +20,9 @@ public class BattleSystem : MonoBehaviour
 		QuickAttack,
 		Flee
 	}
+	[SerializeField] public Dialog victorydialog;
+	[SerializeField] public Dialog defeatdialog;
+	[SerializeField] public Dialog fleddialog;
 	
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
@@ -31,12 +41,18 @@ public class BattleSystem : MonoBehaviour
 	
 	public BattleState state;
 
+
+	private void Awake()
+	{
+		instance = this;
+	}
 	// Start is called before the first frame update
 	private void Start()
 	{
 		Debug.Log("hi");
 		
 		state = BattleState.Start;
+		StartCombat?.Invoke();
 		StartCoroutine(SetupBattle());
 	}
 
@@ -128,7 +144,7 @@ public class BattleSystem : MonoBehaviour
 	private IEnumerator EnemyTurn()
 	{
 		// TODO: Enemy Turn UI changes
-
+		
 		var damageDealt = CalculateDamage(enemyUnit.stats.Strength, playerUnit.stats.Toughness);
 
 		yield return new WaitForSeconds(1f);
@@ -156,10 +172,13 @@ public class BattleSystem : MonoBehaviour
 		switch (state)
 		{
 			case BattleState.Won:
-				// TODO: Set UI to reflect victory
+				DialogManager.instance.showDialog(victorydialog,true,"RandomDungeon");
 				break;
 			case BattleState.Lost:
-				// TODO: Set UI to reflect loss
+				DialogManager.instance.showDialog(defeatdialog,true,"Camp");
+				break;
+			case BattleState.Fled:
+				DialogManager.instance.showDialog(fleddialog,true,"Camp");
 				break;
 		}
 	}
