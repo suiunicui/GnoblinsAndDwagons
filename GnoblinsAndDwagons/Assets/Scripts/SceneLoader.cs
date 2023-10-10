@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour, Interactable
 {
     [SerializeField] GameStateMemory gameStateMemory;
+    [SerializeField] CombatStats playerStats;
     [SerializeField] public string sceneToLoad;
     public void Interact()
     {
@@ -14,5 +15,9 @@ public class SceneLoader : MonoBehaviour, Interactable
         gameStateMemory.leaveDungeon = false;
         gameStateMemory.leaveShop = false;
         SceneManager.LoadScene(sceneToLoad);
+        playerStats.Strength = 2;
+        playerStats.Toughness = 2;
+        playerStats.Dexterity = 2;
+        playerStats.Agility = 2;
     }
 }

@@ -12,6 +12,7 @@ public class PlayerInventory : ScriptableObject
     public SelectedItem selectedItem;
     public List<Item> inventory = new List<Item>(35);
     public PlayerEquippedItems equippedItems = new PlayerEquippedItems();
+    [SerializeField] public CombatStats playerStats;
 
 
     private void OnEnable(){
@@ -34,7 +35,7 @@ public class PlayerInventory : ScriptableObject
         Item oldEquippedItem = null;
         if(selectedItem.selectedItem.getSlot() == Slot.MainHand)
         {
-            if (equippedItems.equippedMainHand != null)
+            if (equippedItems.equippedMainHand.getValue() != 0)
             oldEquippedItem = equippedItems.equippedMainHand;
             equippedItems.equippedMainHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
@@ -42,7 +43,7 @@ public class PlayerInventory : ScriptableObject
 
         if(selectedItem.selectedItem.getSlot() == Slot.OffHand)
         {
-            if (equippedItems.equippedOffHand != null)
+            if (equippedItems.equippedOffHand.getValue() != 0)
             oldEquippedItem = equippedItems.equippedOffHand;
             equippedItems.equippedOffHand = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
@@ -50,6 +51,7 @@ public class PlayerInventory : ScriptableObject
 
         if(selectedItem.selectedItem.getSlot() == Slot.HeadWear)
         {
+            if (equippedItems.equippedHead.getValue() != 0)
             oldEquippedItem = equippedItems.equippedHead;
             equippedItems.equippedHead = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
@@ -57,7 +59,7 @@ public class PlayerInventory : ScriptableObject
 
         if(selectedItem.selectedItem.getSlot() == Slot.Armor)
         {
-            if (equippedItems.equippedChest!= null)
+            if (equippedItems.equippedChest.getValue() != 0)
             oldEquippedItem = equippedItems.equippedChest;
             equippedItems.equippedChest = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
@@ -65,6 +67,7 @@ public class PlayerInventory : ScriptableObject
 
         if(selectedItem.selectedItem.getSlot() == Slot.FootWear)
         {
+            if (equippedItems.equippedBoots.getValue() != 0 )
             oldEquippedItem = equippedItems.equippedBoots;
             equippedItems.equippedBoots = selectedItem.selectedItem;
             OnEquipmentChange?.Invoke();
@@ -75,11 +78,10 @@ public class PlayerInventory : ScriptableObject
             inventory.Add(oldEquippedItem);
         }
         OnInventoryChange?.Invoke(inventory);
-        Debug.Log($"Player Strength: {equippedItems.getTotalStrength()}");
-        Debug.Log($"Player Toughness: {equippedItems.getTotalToughness()}");
-        Debug.Log($"Player Dexterity: {equippedItems.getTotalDexterity()}");
-        Debug.Log($"Player Agility: {equippedItems.getTotalAgility()}");
-
+        playerStats.Strength = equippedItems.getTotalStrength()+2;
+        playerStats.Toughness = equippedItems.getTotalToughness()+2;
+        playerStats.Dexterity = equippedItems.getTotalDexterity()+2;
+        playerStats.Agility = equippedItems.getTotalAgility()+2;
     }
 
     public void Remove(Item item)
