@@ -100,5 +100,5 @@ MonoBehaviour:
   unitName: big bad guy
   unitLevel: 5
   damage: 10
-  maxHP: 30
+  maxHP: 50
   currentHP: 30
