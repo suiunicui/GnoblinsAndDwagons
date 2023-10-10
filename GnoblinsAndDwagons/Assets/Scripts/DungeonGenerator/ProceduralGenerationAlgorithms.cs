@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -107,7 +106,7 @@ public static class ProceduralGenerationAlgorithms
     }
 }
 
-public static class direction2D 
+public static class direction2D
 {
     public static List<Vector2Int> cardinalDirList = new List<Vector2Int>()
     {
@@ -116,6 +115,27 @@ public static class direction2D
         new Vector2Int(0,-1),//down
         new Vector2Int(-1,0), //left
     };
+
+    public static List<Vector2Int> diagDirList = new List<Vector2Int>()
+    {
+        new Vector2Int(1,1), //upRight
+        new Vector2Int(1,-1), //rightDown
+        new Vector2Int(-1,-1),//downLeft
+        new Vector2Int(-1,1), //leftUp
+    };
+
+    public static List<Vector2Int> eightDirList = new List<Vector2Int>()
+    {
+        new Vector2Int(0,1), //up
+        new Vector2Int(1,1), //upRight
+        new Vector2Int(1,0), //right
+        new Vector2Int(1,-1), //rightDown
+        new Vector2Int(0,-1),//down
+        new Vector2Int(-1,-1),//downLeft
+        new Vector2Int(-1,0), //left
+        new Vector2Int(-1,1), //leftUp
+    };
+
 
     public static Vector2Int getRandomDirection()
     {

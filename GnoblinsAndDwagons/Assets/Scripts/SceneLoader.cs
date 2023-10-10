@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitController : MonoBehaviour, Interactable
+public class SceneLoader : MonoBehaviour, Interactable
 {
     [SerializeField] GameStateMemory gameStateMemory;
+    [SerializeField] public string sceneToLoad;
     public void Interact()
     {
         gameStateMemory.inShop = false;
         gameStateMemory.inDungeon = false;
-        gameStateMemory.leaveDungeon = true;
+        gameStateMemory.leaveDungeon = false;
         gameStateMemory.leaveShop = false;
-        gameStateMemory.dungeonLevel = 0;
-        SceneManager.LoadScene("Camp");
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

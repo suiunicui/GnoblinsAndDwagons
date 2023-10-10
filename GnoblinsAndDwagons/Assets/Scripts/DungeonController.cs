@@ -10,7 +10,7 @@ public class DungeonController : MonoBehaviour
     private CorridorFirstGenerator corridorFirstGenerator;
 
     // Start is called before the first frame update
-    void Start()
+    public void handleStart()
     {
         roomFirstGenerator.generateDungeon();
     }
