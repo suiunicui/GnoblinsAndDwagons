@@ -6229,6 +6229,7 @@ MonoBehaviour:
   dungeonHeight: 50
   offset: 3
   levelExit: {fileID: 6230106102254936353, guid: 1a7bc4744d22005409bf059b96b5e902, type: 3}
+  emptyChest: {fileID: 4227950179420794555, guid: 89da925b9c03a6d4b89fe3710cecd1cd, type: 3}
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
 --- !u!4 &708075080
 Transform:
