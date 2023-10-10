@@ -221,7 +221,6 @@ public class BattleSystem : MonoBehaviour
 	private static float CalculateFleeChance(int playerAgility)
 	{
 		// Calculate flee chance based on player's agility.
-		// You can customize the formula as needed.
 		return playerAgility * 0.01f; // 1% chance per agility point.
 	}
 	
