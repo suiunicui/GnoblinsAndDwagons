@@ -20,9 +20,13 @@ public class ShowEquippedItems : MonoBehaviour
         PlayerInventory.OnEquipmentChange -= DrawSlots;
     }
 
+    private void Start(){
+        DrawSlots();
+    }
+
     private void DrawSlots()
     {
-        if (playerInventory.equippedItems.equippedHead != null)
+        if (playerInventory.equippedItems.equippedHead.getValue() != 0)
         {
             Image BorderWithTexture = equippedHead.transform.Find("Border_With_Texture").GetComponent<Image>();
             Image Border = equippedHead.transform.Find("Border").GetComponent<Image>();
@@ -32,7 +36,7 @@ public class ShowEquippedItems : MonoBehaviour
             Icon.enabled = true;
             Icon.sprite = playerInventory.equippedItems.equippedHead.icon;
         }
-        if (playerInventory.equippedItems.equippedChest != null)
+        if (playerInventory.equippedItems.equippedChest.getValue() != 0)
         {
             Image BorderWithTexture = equippedChest.transform.Find("Border_With_Texture").GetComponent<Image>();
             Image Border = equippedChest.transform.Find("Border").GetComponent<Image>();
@@ -42,7 +46,7 @@ public class ShowEquippedItems : MonoBehaviour
             Icon.enabled = true;
             Icon.sprite = playerInventory.equippedItems.equippedChest.icon;
         }
-        if (playerInventory.equippedItems.equippedBoots != null)
+        if (playerInventory.equippedItems.equippedBoots.getValue() != 0)
         {
             Image BorderWithTexture = equippedBoots.transform.Find("Border_With_Texture").GetComponent<Image>();
             Image Border = equippedBoots.transform.Find("Border").GetComponent<Image>();
@@ -52,7 +56,7 @@ public class ShowEquippedItems : MonoBehaviour
             Icon.enabled = true;
             Icon.sprite = playerInventory.equippedItems.equippedBoots.icon;
         }
-        if (playerInventory.equippedItems.equippedMainHand != null)
+        if (playerInventory.equippedItems.equippedMainHand.getValue() != 0)
         {
             Image BorderWithTexture = equippedMainHand.transform.Find("Border_With_Texture").GetComponent<Image>();
             Image Border = equippedMainHand.transform.Find("Border").GetComponent<Image>();
@@ -62,7 +66,7 @@ public class ShowEquippedItems : MonoBehaviour
             Icon.enabled = true;
             Icon.sprite = playerInventory.equippedItems.equippedMainHand.icon;
         }
-        if (playerInventory.equippedItems.equippedOffHand != null)
+        if (playerInventory.equippedItems.equippedOffHand.getValue() != 0)
         {
             Image BorderWithTexture = equippedOffHand.transform.Find("Border_With_Texture").GetComponent<Image>();
             Image Border = equippedOffHand.transform.Find("Border").GetComponent<Image>();

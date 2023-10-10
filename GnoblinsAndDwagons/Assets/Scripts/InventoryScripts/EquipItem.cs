@@ -30,18 +30,21 @@ public class EquipItem : MonoBehaviour
 
     public void OnChange()
     {
-        if (playerInventory.selectedItem.inShop ==false)
+        if (playerInventory.selectedItem != null)
         {
-            buttonText.text = "Equip selected item";
-            button.enabled= true;
-            button.image.enabled = true;
-            buttonText.enabled = true;
-        }
-        else
-        {
-            button.enabled= false;
-            button.image.enabled = false;
-            buttonText.enabled = false;
+            if (playerInventory.selectedItem.inShop ==false)
+            {
+                buttonText.text = "Equip selected item";
+                button.enabled= true;
+                button.image.enabled = true;
+                buttonText.enabled = true;
+            }
+            else
+            {
+                button.enabled= false;
+                button.image.enabled = false;
+                buttonText.enabled = false;
+            }
         }
     }
 }

@@ -14,8 +14,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     private void Start(){
-        List<Item> emptyList = new List<Item>();
-        DrawInventory(emptyList);
+        DrawInventory(playerInventory.inventory);
     }
 
     private void OnDisable(){

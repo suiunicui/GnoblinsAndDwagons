@@ -99,6 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: big bad guy
   unitLevel: 5
-  damage: 10
-  maxHP: 50
-  currentHP: 30
+  maxHp: 100
+  currentHp: 100
+  stats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
