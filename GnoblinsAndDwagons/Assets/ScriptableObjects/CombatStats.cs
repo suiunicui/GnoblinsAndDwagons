@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Persistance/CombatStats")]
 public class CombatStats : ScriptableObject
 {
+    public string unitName;
+    public string type;
     public int Agility = 0;
     public int Strength = 0;
     public int Toughness = 0;
