@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using Random = UnityEngine.Random;
@@ -20,7 +21,13 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private int offset = 1;
 
     [SerializeField]
-    private GameObject levelExit;
+    private GameObject levelExit, emptyChest, crate1, crate2;
+
+    [SerializeField]
+    private GameObject npcMiner;
+
+    [SerializeField]
+    private GameObject enemyMimic, enemyGnoblin, enemySkelington;
 
     [SerializeField]
     private GameStateMemory gameStateMemory;
@@ -60,11 +67,28 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private void populateRooms(List<BoundsInt> roomList, HashSet<Vector2Int> corridors)
     {
         BoundsInt room = roomList[Random.Range(0, roomList.Count)];
-         
-        gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center);
-        Debug.Log(gameStateMemory.DungeonStartPos);
+
+        List<GameObject> clutter = new List<GameObject>();
+        clutter.Add(crate1);
+        clutter.Add(crate2);
+        clutter.Add(emptyChest);
+
+        gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center + new Vector3(0.5f, 0.5f, 0));
+
+        for(int i = 0; i<Random.Range(5,10); i++)
+        {
+            Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if(entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                Instantiate(clutter[Random.Range(0,clutter.Count)], entityPos+new Vector3(0.5f,0.5f,0), Quaternion.identity);
+            }
+        }
+
 
         roomList.Remove(room);
+
+
+
         room = roomList[Random.Range(0, roomList.Count)];
         Vector3Int spawnPos = new Vector3Int(Random.Range(room.min.x+offset + 1, room.max.x - 1), Random.Range(room.min.y+offset + 1, room.max.y - 1), 0);
 

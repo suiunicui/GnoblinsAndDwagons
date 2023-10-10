@@ -15,6 +15,6 @@ MonoBehaviour:
   inDungeon: 1
   inShop: 0
   leaveShop: 0
-  leaveDungeon: 1
-  dungeonLevel: 0
-  DungeonStartPos: {x: -18, y: 6, z: 0}
+  leaveDungeon: 0
+  dungeonLevel: 1
+  DungeonStartPos: {x: -26, y: -30, z: 0}
