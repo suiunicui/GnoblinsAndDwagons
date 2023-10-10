@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ItemThings;
 using UnityEngine.EventSystems;
+using System;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
@@ -12,14 +13,16 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     public int itemId;
     public Image selectedShader;
     public bool thisItemSelected;
+    private ShopManager shopManager;
     private InventoryManager inventoryManager;
     private StatPanel statPanel;
-    [SerializeField] public PlayerInventory playerInventory;
 
+    public static event Action OnInventoryItemClicked;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
+        shopManager = GameObject.Find("Shop_panel").GetComponent<ShopManager>();
         statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
     }
     public void ClearSlot()
@@ -57,10 +60,12 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 
     private void OnLeftClick()
     {
+        shopManager.DeselectAllSlots();
         inventoryManager.DeselectAllSlots(itemId);
         selectedShader.enabled= true;
         thisItemSelected = true;
-        statPanel.DrawSlot();
+        statPanel.Draw();
+        OnInventoryItemClicked?.Invoke();
     }
     private void OnRightClick(){}
 }

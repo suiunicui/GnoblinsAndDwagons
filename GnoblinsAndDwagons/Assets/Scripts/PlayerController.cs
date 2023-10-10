@@ -22,22 +22,27 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    public void handleStart()
     {
         Vector3 startPos;
 
         if (gameState.inDungeon)
         {
-            startPos = new Vector3(0f, 0f, 0f);
+            startPos = gameState.DungeonStartPos;
         }
         else if (gameState.leaveDungeon)
         {
             startPos = new Vector3(14f, 3.6f, 0f);
         }
+        else if (gameState.leaveShop)
+        {
+            startPos = new Vector3(-4.7f,-2.8f,0f);
+        }
         else
         {
             startPos = new Vector3(-16f, 5.5f, 0f);
         }
+        Debug.Log(startPos);
         transform.position = startPos;
     }
 
