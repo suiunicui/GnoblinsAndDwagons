@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if (gameStateMemory.inDungeon)
+        if (gameStateMemory.inDungeon && gameStateMemory.leaveCombat == false)
         {
             dungeonController.handleStart();
         }

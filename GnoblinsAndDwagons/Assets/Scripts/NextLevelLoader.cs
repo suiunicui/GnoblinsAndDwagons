@@ -12,6 +12,8 @@ public class NetxLevelLoader : MonoBehaviour, Interactable
         gameStateMemory.inDungeon = true;
         gameStateMemory.leaveDungeon = true;
         gameStateMemory.leaveShop = false;
+        gameStateMemory.inCombat = false;
+        gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel++;
         SceneManager.LoadScene("RandomDungeon");
     }

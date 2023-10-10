@@ -10,8 +10,10 @@ public class ExitController : MonoBehaviour, Interactable
     {
         gameStateMemory.inShop = false;
         gameStateMemory.inDungeon = false;
+        gameStateMemory.inCombat = false;
         gameStateMemory.leaveDungeon = true;
         gameStateMemory.leaveShop = false;
+        gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel = 0;
         SceneManager.LoadScene("Camp");
     }

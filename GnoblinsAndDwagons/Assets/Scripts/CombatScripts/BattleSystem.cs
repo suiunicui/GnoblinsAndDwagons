@@ -177,13 +177,17 @@ public class BattleSystem : MonoBehaviour
 			case BattleState.Lost:
 				_gameStateMemory.leaveDungeon = true;
 				_gameStateMemory.inDungeon = false;
-				DialogManager.instance.showDialog(defeatdialog,true,"Camp");
+                _gameStateMemory.leaveCombat = true;
+                _gameStateMemory.inCombat = false;
+                DialogManager.instance.showDialog(defeatdialog,true,"Camp");
 				break;
 			case BattleState.Fled:
 				_gameStateMemory.leaveDungeon = true;
 				_gameStateMemory.inDungeon = false;
-				
-				DialogManager.instance.showDialog(fleddialog,true,"Camp");
+                _gameStateMemory.leaveCombat = true;
+                _gameStateMemory.inCombat = false;
+
+                DialogManager.instance.showDialog(fleddialog,true,"Camp");
 				break;
 		}
 	}
