@@ -6230,6 +6230,12 @@ MonoBehaviour:
   offset: 3
   levelExit: {fileID: 6230106102254936353, guid: 1a7bc4744d22005409bf059b96b5e902, type: 3}
   emptyChest: {fileID: 4227950179420794555, guid: 89da925b9c03a6d4b89fe3710cecd1cd, type: 3}
+  crate1: {fileID: 6214423537943087119, guid: a9ee50d563cec17409d8a585b8a02a29, type: 3}
+  crate2: {fileID: 6712424181209090271, guid: 057a78bd8c625d6409bfce2e7c82df24, type: 3}
+  npcMiner: {fileID: 4352767741435273477, guid: 0469e59fc6fb5a244943c953ec26326c, type: 3}
+  enemyMimic: {fileID: 4227950179420794555, guid: 9720b70f73621864eb9245850b9c57a4, type: 3}
+  enemyGnoblin: {fileID: 0}
+  enemySkelington: {fileID: 0}
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
 --- !u!4 &708075080
 Transform:
