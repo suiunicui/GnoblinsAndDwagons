@@ -5,31 +5,33 @@ namespace ItemThings
 {
     public class PlayerEquippedItems
     {
-        public Item equippedHead;
-        public Item equippedChest;
-        public Item equippedBoots;
-        public Item equippedMainHand;
-        public Item equippedOffHand;
+        public Item equippedHead  = new Item();
+        public Item equippedChest = new Item();
+        public Item equippedBoots = new Item();
+        public Item equippedMainHand = new Item();
+        public Item equippedOffHand = new Item();
 
+        public PlayerEquippedItems()
+        {}
 
-        public int? getTotalStrength()
+        public int getTotalStrength()
         {
-            return equippedHead?.getStrength() + equippedChest?.getStrength() + equippedBoots?.getStrength() + equippedOffHand?.getStrength() + equippedMainHand?.getStrength();
+            return equippedHead.getStrength() + equippedChest.getStrength() + equippedBoots.getStrength() + equippedOffHand.getStrength() + equippedMainHand.getStrength();
         }
 
-        public int? getTotalToughness()
+        public int getTotalToughness()
         {
-            return equippedHead?.getToughness() + equippedChest?.getToughness() + equippedBoots?.getToughness() + equippedOffHand?.getToughness() + equippedMainHand?.getToughness();
+            return equippedHead.getToughness() + equippedChest.getToughness() + equippedBoots.getToughness() + equippedOffHand.getToughness() + equippedMainHand.getToughness();
         }
 
-        public int? getTotalDexterity()
+        public int getTotalDexterity()
         {
-            return equippedHead?.getDexterity() + equippedChest?.getDexterity() + equippedBoots?.getDexterity() + equippedOffHand?.getDexterity() + equippedMainHand?.getDexterity();
+            return equippedHead.getDexterity() + equippedChest.getDexterity() + equippedBoots.getDexterity() + equippedOffHand.getDexterity() + equippedMainHand.getDexterity();
         }
 
-        public int? getTotalAgility()
+        public int getTotalAgility()
         {
-            return equippedHead?.getAgility() + equippedChest?.getAgility() + equippedBoots?.getAgility() + equippedOffHand?.getAgility() + equippedMainHand?.getAgility();
+            return equippedHead.getAgility() + equippedChest.getAgility() + equippedBoots.getAgility() + equippedOffHand.getAgility() + equippedMainHand.getAgility();
         }
     }
 }

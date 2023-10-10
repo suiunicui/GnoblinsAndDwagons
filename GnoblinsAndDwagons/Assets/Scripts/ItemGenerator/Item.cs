@@ -29,6 +29,7 @@ public enum Slot
     Armor,
     FootWear
 }
+
 public class Item
 {
     private static int id =0;
@@ -41,9 +42,11 @@ public class Item
     private Rarity Rarity;
     private ItemType Type;
     private string Name;
-    private int Value;
+    private int Value = 0;
     private Slot slot;
 
+
+    public Item(){}
 
     public Item(int str,int tou, int dex, int agi, Rarity rarity, ItemType type, string name, int Value)
     {
@@ -82,16 +85,16 @@ public class Item
         
     }
 
-    public int? getStrength(){
+    public int getStrength(){
         return this.Strength;
     }
-    public int? getToughness(){
+    public int getToughness(){
         return this.Toughness;
     }
-    public int? getDexterity(){
+    public int getDexterity(){
         return this.Dexterity;
     }
-    public int? getAgility(){
+    public int getAgility(){
         return this.Agility;
     }
     public Rarity getRarity(){
