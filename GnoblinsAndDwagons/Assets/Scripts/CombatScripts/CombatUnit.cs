@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class CombatUnit : MonoBehaviour
 {
-	
 	public string unitName;
 	public int unitLevel;
-	public int damage;
-	public int maxHP;
-	public int currentHP;
+	public int maxHp;
+	public int currentHp;
 	[SerializeField] public CombatStats stats;
 
 	public bool TakeDamage(int dmg)
 	{
-		currentHP -= dmg;
+		currentHp -= dmg;
 
-		return currentHP <= 0;
+		return currentHp <= 0;
 	}
 }

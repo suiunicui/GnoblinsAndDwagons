@@ -7,7 +7,6 @@ public class DisplayEnemyStats : MonoBehaviour
 {
     public Text Name;
     
- 
     void Start()
     {
 	    Name.text = "stor fyr";

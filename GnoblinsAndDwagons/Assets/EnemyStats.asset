@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914430092af096f4595801ccfc75197b, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  Agility: 0
-  Strength: 0
-  Toughness: 0
-  Dexterity: 0
+  Agility: 10
+  Strength: 10
+  Toughness: 10
+  Dexterity: 10

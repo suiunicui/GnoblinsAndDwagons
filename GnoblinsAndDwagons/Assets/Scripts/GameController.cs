@@ -36,6 +36,10 @@ public class GameController : MonoBehaviour
                 state = GameState.FREE_ROAM;
             }
         };
+        BattleSystem.instance.StartCombat += () =>
+        {
+            state = GameState.BATTLE;
+        };
     }
 
     private void Update()
@@ -46,6 +50,10 @@ public class GameController : MonoBehaviour
         }else if (state == GameState.DIALOG)
         {
             DialogManager.instance.HandleUpdate();
+        }else if (state == GameState.BATTLE)
+        {
+          
         }
     }
+    
 }

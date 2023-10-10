@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
+using CombatScripts;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class BattleSystem : MonoBehaviour
 {
+	public event Action StartCombat;
+
+	public static BattleSystem instance { get; private set;}
+	
 	public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost, Fled }
 
 	private enum PlayerAction
@@ -13,6 +21,9 @@ public class BattleSystem : MonoBehaviour
 		QuickAttack,
 		Flee
 	}
+	[SerializeField] public Dialog victorydialog;
+	[SerializeField] public Dialog defeatdialog;
+	[SerializeField] public Dialog fleddialog;
 	
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
@@ -30,11 +41,19 @@ public class BattleSystem : MonoBehaviour
 	public Text playerName;
 	
 	public BattleState state;
+	
+	public CombatLog combatLog;
 
+
+	private void Awake()
+	{
+		instance = this;
+	}
 	// Start is called before the first frame update
 	private void Start()
 	{
 		state = BattleState.Start;
+		StartCombat?.Invoke();
 		StartCoroutine(SetupBattle());
 	}
 
@@ -48,7 +67,7 @@ public class BattleSystem : MonoBehaviour
 		enemyUnit = enemyObject.GetComponent<CombatUnit>();
 		enemyName.text = enemyUnit.unitName;
 
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(1f);
 	    
 		state = BattleState.PlayerTurn;
 		PlayerTurn();
@@ -65,20 +84,24 @@ public class BattleSystem : MonoBehaviour
 		{
 			case PlayerAction.NormalAttack:
 				damageDealt = CalculateDamage(playerUnit.stats.Strength, enemyUnit.stats.Toughness);
+				combatLog.AddLogMessage($"Player used Normal Attack and dealt {damageDealt} damage to the enemy.");
 				Debug.Log("Player used Normal Attack and dealt " + damageDealt + " damage to the enemy.");
 				break;
 
 			case PlayerAction.HeavyAttack:
 				damageDealt = CalculateDamage(playerUnit.stats.Strength * 2, enemyUnit.stats.Toughness);
+				combatLog.AddLogMessage($"Player used Heavy Attack and dealt {damageDealt} damage to the enemy.");
 				Debug.Log("Player used Heavy Attack and dealt " + damageDealt + " damage to the enemy.");
 				break;
 
 			case PlayerAction.QuickAttack:
 				damageDealt = CalculateDamage(playerUnit.stats.Agility, enemyUnit.stats.Toughness);
+				combatLog.AddLogMessage($"Player used Quick Attack and dealt {damageDealt} damage to the enemy.");
 				Debug.Log("Player used Quick Attack and dealt " + damageDealt + " damage to the enemy.");
 				break;
 
 			case PlayerAction.Flee:
+				combatLog.AddLogMessage("Player chose to Flee.");
 				Debug.Log("Player chose to Flee.");
 				var fleeChance = CalculateFleeChance(playerUnit.stats.Agility);
 				var randomValue = Random.Range(0f, 1f);
@@ -101,15 +124,10 @@ public class BattleSystem : MonoBehaviour
 				break;
 		}
 
-		if (damageDealt == 0)
-			yield break;
-		
 		var isDead = enemyUnit.TakeDamage(damageDealt);
 		
-		SetHealthSlider(playerHealthSlider, playerUnit.currentHP, playerUnit.maxHP);
-		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHP, enemyUnit.maxHP);
-		
-		yield return new WaitForSeconds(2f);
+		SetHealthSlider(playerHealthSlider, playerUnit.currentHp, playerUnit.maxHp);
+		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHp, enemyUnit.maxHp);
 
 		if (isDead)
 		{
@@ -119,23 +137,21 @@ public class BattleSystem : MonoBehaviour
 		else
 		{
 			state = BattleState.EnemyTurn;
+			yield return new WaitForSeconds(1f);
 			StartCoroutine(EnemyTurn());
 		}
 	}
 
 	private IEnumerator EnemyTurn()
 	{
-		// TODO: Enemy Turn UI changes
-
 		var damageDealt = CalculateDamage(enemyUnit.stats.Strength, playerUnit.stats.Toughness);
 
 		yield return new WaitForSeconds(1f);
 		var isDead = playerUnit.TakeDamage(damageDealt);
+		combatLog.AddLogMessage($"Enemy dealt {damageDealt} damage to the player.");
 
-		yield return new WaitForSeconds(1f);
-		
-		SetHealthSlider(playerHealthSlider, playerUnit.currentHP, playerUnit.maxHP);
-		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHP, enemyUnit.maxHP);
+		SetHealthSlider(playerHealthSlider, playerUnit.currentHp, playerUnit.maxHp);
+		SetHealthSlider(enemyHealthSlider, enemyUnit.currentHp, enemyUnit.maxHp);
 
 		if (isDead)
 		{
@@ -154,10 +170,13 @@ public class BattleSystem : MonoBehaviour
 		switch (state)
 		{
 			case BattleState.Won:
-				// TODO: Set UI to reflect victory
+				DialogManager.instance.showDialog(victorydialog,true,"RandomDungeon");
 				break;
 			case BattleState.Lost:
-				// TODO: Set UI to reflect loss
+				DialogManager.instance.showDialog(defeatdialog,true,"Camp");
+				break;
+			case BattleState.Fled:
+				DialogManager.instance.showDialog(fleddialog,true,"Camp");
 				break;
 		}
 	}
