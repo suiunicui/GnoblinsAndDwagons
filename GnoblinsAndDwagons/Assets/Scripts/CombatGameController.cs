@@ -11,7 +11,7 @@ public class CombatGameController : MonoBehaviour
 
     private void Start()
     {
-        
+
         DialogManager.instance.onShowDialog += () =>
         {
             state = GameState.DIALOG;

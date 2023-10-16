@@ -11,6 +11,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField] Text dialogText;
     [SerializeField] int lettersPerSecond;
 
+    [SerializeField] GameStateMemory gameStateMemory;
+
     public event Action onShowDialog;
     public event Action onHideDialog;
 
@@ -43,7 +45,21 @@ public class DialogManager : MonoBehaviour
                 onHideDialog?.Invoke();
                 if(sceneChange)
                 {
-                    SceneManager.LoadScene(sceneHolder);
+                    if(gameStateMemory.inCombat)
+                    {
+                        if (gameStateMemory.leaveCombat) {
+                            gameStateMemory.inCombat = false;
+                            SceneManager.UnloadScene("Combat");
+                        }
+                        else
+                        {
+                            SceneManager.LoadScene(sceneHolder, LoadSceneMode.Additive);
+                        }
+                    } 
+                    else
+                    {
+                        SceneManager.LoadScene(sceneHolder);
+                    }
                 }
             }
 

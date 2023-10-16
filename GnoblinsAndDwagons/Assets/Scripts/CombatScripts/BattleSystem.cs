@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 public class BattleSystem : MonoBehaviour
 {
+	[SerializeField] private GameStateMemory _gameStateMemory;
 	public event Action StartCombat;
 
 	public static BattleSystem instance { get; private set;}
@@ -170,13 +171,23 @@ public class BattleSystem : MonoBehaviour
 		switch (state)
 		{
 			case BattleState.Won:
+				_gameStateMemory.leaveCombat = true;
 				DialogManager.instance.showDialog(victorydialog,true,"RandomDungeon");
 				break;
 			case BattleState.Lost:
-				DialogManager.instance.showDialog(defeatdialog,true,"Camp");
+				_gameStateMemory.leaveDungeon = true;
+				_gameStateMemory.inDungeon = false;
+                _gameStateMemory.leaveCombat = true;
+                _gameStateMemory.inCombat = false;
+                DialogManager.instance.showDialog(defeatdialog,true,"Camp");
 				break;
 			case BattleState.Fled:
-				DialogManager.instance.showDialog(fleddialog,true,"Camp");
+				_gameStateMemory.leaveDungeon = true;
+				_gameStateMemory.inDungeon = false;
+                _gameStateMemory.leaveCombat = true;
+                _gameStateMemory.inCombat = false;
+
+                DialogManager.instance.showDialog(fleddialog,true,"Camp");
 				break;
 		}
 	}
@@ -214,7 +225,6 @@ public class BattleSystem : MonoBehaviour
 	private static float CalculateFleeChance(int playerAgility)
 	{
 		// Calculate flee chance based on player's agility.
-		// You can customize the formula as needed.
 		return playerAgility * 0.01f; // 1% chance per agility point.
 	}
 	

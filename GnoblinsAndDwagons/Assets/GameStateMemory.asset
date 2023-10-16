@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inDungeon: 1
   inShop: 0
+  inCombat: 0
   leaveShop: 0
   leaveDungeon: 0
+  leaveCombat: 0
   dungeonLevel: 1
-  DungeonStartPos: {x: -5, y: -16, z: 0}
+  DungeonStartPos: {x: -5, y: 10, z: 0}
