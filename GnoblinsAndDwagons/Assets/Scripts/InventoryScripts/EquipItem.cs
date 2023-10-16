@@ -34,17 +34,19 @@ public class EquipItem : MonoBehaviour
         {
             if (playerInventory.selectedItem.inShop ==false)
             {
-                buttonText.text = "Equip selected item";
+                button.image.CrossFadeAlpha(1,0.0f,false);
                 button.enabled= true;
-                button.image.enabled = true;
-                buttonText.enabled = true;
             }
             else
             {
                 button.enabled= false;
-                button.image.enabled = false;
-                buttonText.enabled = false;
+                button.image.CrossFadeAlpha(0.2f,0.0f,false);
             }
+        }
+        else
+        {
+                button.enabled= false;
+                button.image.CrossFadeAlpha(0.2f,0.0f,false);
         }
     }
 }
