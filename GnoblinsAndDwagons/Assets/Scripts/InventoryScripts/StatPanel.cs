@@ -38,6 +38,9 @@ public class StatPanel : MonoBehaviour
         Dexterity.text = "Dexterity: "+ playerInventory.selectedItem.selectedItem.getDexterity().ToString();
         Agility.text = "Agility: "+ playerInventory.selectedItem.selectedItem.getAgility().ToString();
         Slot.text = "Slot: "+ playerInventory.selectedItem.selectedItem.getSlot().ToString();
-        Value.text = "Value: "+ playerInventory.selectedItem.selectedItem.getValue().ToString();
+        if (playerInventory.selectedItem.panel == Panel.Shop)
+            Value.text = "Value: "+ playerInventory.selectedItem.selectedItem.getShopValue().ToString();
+        else
+            Value.text = "Value: "+ playerInventory.selectedItem.selectedItem.getValue().ToString();
     }
 }

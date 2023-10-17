@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
+    [SerializeField] List<NPCController> npcControllers = new List<NPCController>();
 
     GameState state;
 
@@ -47,6 +48,10 @@ public class GameController : MonoBehaviour
         if (state == GameState.FREE_ROAM)
         {
             playerController.HandleUpdate();
+            foreach (NPCController controller in npcControllers)
+            {
+                controller.HandleUpdate();
+            }
         }else if (state == GameState.DIALOG)
         {
             DialogManager.instance.HandleUpdate();

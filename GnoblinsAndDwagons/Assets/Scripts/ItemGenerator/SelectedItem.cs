@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ItemThings
 {
+    public enum Panel{
+        Shop,
+        Inventory,
+        Equipped_Items
+    }
+
+
     public class SelectedItem
     {
         public Item selectedItem;
-        public bool inShop;
+        public Panel? panel;
 
-        public SelectedItem(Item item, bool inShop)
+        public SelectedItem(Item item, Panel panel)
         {
             this.selectedItem = item;
-            this.inShop = inShop;
+            this.panel = panel;
         }
     }
 }

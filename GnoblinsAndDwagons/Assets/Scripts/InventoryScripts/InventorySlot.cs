@@ -15,6 +15,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     public bool thisItemSelected;
     private ShopManager shopManager;
     private InventoryManager inventoryManager;
+    private ShowEquippedItems showEquippedItems;
     private StatPanel statPanel;
 
     public static event Action OnInventoryItemClicked;
@@ -24,6 +25,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
         shopManager = GameObject.Find("Shop_panel").GetComponent<ShopManager>();
         statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+        showEquippedItems = GameObject.Find("Equipped_Items").GetComponent<ShowEquippedItems>();
+        OnInventoryItemClicked?.Invoke();
     }
     public void ClearSlot()
     {
@@ -61,6 +64,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     private void OnLeftClick()
     {
         shopManager.DeselectAllSlots();
+        showEquippedItems.DeselectAllSlots();
         inventoryManager.DeselectAllSlots(itemId);
         selectedShader.enabled= true;
         thisItemSelected = true;
@@ -68,4 +72,23 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         OnInventoryItemClicked?.Invoke();
     }
     private void OnRightClick(){}
+
+    public void FakeLeftClick()
+    {
+        this.Start();
+        shopManager.DeselectAllSlots();
+        showEquippedItems.DeselectAllSlots();
+        inventoryManager.DeselectAllSlots(itemId);
+        selectedShader.enabled= true;
+        thisItemSelected = true;
+        statPanel.Draw();
+        OnInventoryItemClicked?.Invoke();
+    }
+
+    public void DeselectSlot()
+    {
+        this.Start();
+        statPanel.Draw();
+        OnInventoryItemClicked?.Invoke();
+    }
 }

@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour, Interactable
 {
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] CombatStats playerStats;
+    [SerializeField] PlayerInventory playerInventory;
     [SerializeField] public string sceneToLoad;
     public void Interact()
     {
@@ -19,5 +20,6 @@ public class SceneLoader : MonoBehaviour, Interactable
         playerStats.Toughness = 2;
         playerStats.Dexterity = 2;
         playerStats.Agility = 2;
+        playerInventory.gold = 200;
     }
 }
