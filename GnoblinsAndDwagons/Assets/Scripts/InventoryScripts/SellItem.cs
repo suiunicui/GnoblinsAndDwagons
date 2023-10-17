@@ -5,14 +5,14 @@ using ItemThings;
 using UnityEngine.UI;
 using System;
 
-public class EquipItem : MonoBehaviour
+public class SellItem : MonoBehaviour
 {
     [SerializeField] public PlayerInventory playerInventory;
     public Button button;
     public Text buttonText;
+    public Text goldText;
 
-    public static event Action OnItemEquipped;
-    public static event Action OnItemUnequipped;
+    public static event Action OnItemSold;
 
     private void OnEnable(){
         InventorySlot.OnInventoryItemClicked += OnChange;
@@ -28,10 +28,10 @@ public class EquipItem : MonoBehaviour
 
     public void OnClick(){
         if (playerInventory.selectedItem.panel == Panel.Inventory)
-            OnItemEquipped?.Invoke();
-
-        else if (playerInventory.selectedItem.panel == Panel.Equipped_Items)
-            OnItemUnequipped?.Invoke();
+        {
+            OnItemSold?.Invoke();
+            goldText.text = "Gold: " + playerInventory.gold;
+        }
     }
 
     public void OnChange()
@@ -40,26 +40,20 @@ public class EquipItem : MonoBehaviour
         {
             if (playerInventory.selectedItem.panel == Panel.Inventory)
             {
-                buttonText.text = "Equip selected item";
-                button.image.CrossFadeAlpha(1,0.0f,false);
-                button.enabled= true;
-            }
-            else if (playerInventory.selectedItem.panel == Panel.Equipped_Items)
-            {
-                buttonText.text = "Unequip selected item";
+                buttonText.text = "Sell item for " + playerInventory.selectedItem.selectedItem.getValue() + " gold";
                 button.image.CrossFadeAlpha(1,0.0f,false);
                 button.enabled= true;
             }
             else
             {
-                buttonText.text = "Equip selected item";
+                buttonText.text = "Sell selected item";
                 button.enabled= false;
                 button.image.CrossFadeAlpha(0.2f,0.0f,false);
             }
         }
         else
         {
-            buttonText.text = "Equip selected item";
+            buttonText.text = "Sell selected item";
             button.enabled= false;
             button.image.CrossFadeAlpha(0.2f,0.0f,false);
         }

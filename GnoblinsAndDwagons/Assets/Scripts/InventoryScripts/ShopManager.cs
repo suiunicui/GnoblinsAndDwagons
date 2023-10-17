@@ -12,19 +12,21 @@ public class ShopManager : MonoBehaviour
     [SerializeField] public PlayerInventory playerInventory;
 
     private void OnEnable(){
-        //PlayerInventory.OnInventoryChange += DrawInventory;
+        AddItem.OnItemPurchased += Remove;
+        SellItem.OnItemSold += Add;
     }
 
     private void Start(){
         shopList = itemGenerator.generateItems(42);
-        DrawInventory(shopList);
+        DrawShopList(shopList);
     }
 
     private void OnDisable(){
-        //PlayerInventory.OnInventoryChange -= DrawInventory;
+        AddItem.OnItemPurchased -= Remove;
+        SellItem.OnItemSold -= Add;
     }
 
-    void ResetInventory()
+    void ResetShopList()
     {
         foreach(Transform childTransform in transform)
         {
@@ -33,9 +35,9 @@ public class ShopManager : MonoBehaviour
         shopSlots = new List<ShopSlot>(42);
     }
 
-    void DrawInventory(List<Item> inventory)
+    void DrawShopList(List<Item> inventory)
     {
-        ResetInventory();
+        ResetShopList();
 
         for (int i = 0; i < shopSlots.Capacity; i++)
         {
@@ -71,12 +73,36 @@ public class ShopManager : MonoBehaviour
         {
             if (item.specificId == id)
             {
-                playerInventory.selectedItem = new SelectedItem(item,true);
+                playerInventory.selectedItem = new SelectedItem(item,Panel.Shop);
                 itemFound = true;
             }
 
         }
         if (!itemFound)
         playerInventory.selectedItem = null;
+    }
+
+    private void Remove(Item item)
+    {
+        foreach (Item listItem in shopList)
+        {
+            if (listItem.specificId == item.specificId)
+            {
+                shopList.Remove(listItem);
+                DrawShopList(shopList);
+                return;
+            }
+
+        }
+    }
+    private void Add()
+    {
+            if (shopList.Count < 42)
+            {
+                shopList.Add(playerInventory.selectedItem.selectedItem);
+                DrawShopList(shopList);
+                playerInventory.selectedItem = null;
+                shopSlots[0].DeselectSlot();
+            }
     }
 }

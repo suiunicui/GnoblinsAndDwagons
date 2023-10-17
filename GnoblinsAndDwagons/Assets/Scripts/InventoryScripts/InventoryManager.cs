@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemThings;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     public GameObject slotPrefab;
     public List<InventorySlot> inventorySlots = new List<InventorySlot>(35);
+    public Text goldText;
     [SerializeField] public PlayerInventory playerInventory;
 
     private void OnEnable(){
         PlayerInventory.OnInventoryChange += DrawInventory;
+        PlayerInventory.ItemBought += SelectItem;
+        PlayerInventory.ClearSelection += DeselectSlotsCall;
     }
 
     private void Start(){
         DrawInventory(playerInventory.inventory);
+        goldText.text = "Gold: " + playerInventory.gold;
     }
 
     private void OnDisable(){
         PlayerInventory.OnInventoryChange -= DrawInventory;
+        PlayerInventory.ItemBought -= SelectItem;
+        PlayerInventory.ClearSelection -= DeselectSlotsCall;
     }
 
     void ResetInventory()
@@ -68,12 +75,34 @@ public class InventoryManager : MonoBehaviour
         {
             if (item.specificId == id)
             {
-                playerInventory.selectedItem = new SelectedItem(item,false);
+                playerInventory.selectedItem = new SelectedItem(item,Panel.Inventory);
                 itemFound = true;
             }
 
         }
         if (!itemFound)
         playerInventory.selectedItem = null;
+    }
+
+    private void SelectItem(Item item)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (item.specificId == slot.itemId)
+            {
+                slot.FakeLeftClick();
+            }
+
+        }
+    }
+
+    private void DeselectSlotsCall()
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            slot.selectedShader.enabled = false;
+            slot.thisItemSelected = false;
+        }
+        inventorySlots[0].DeselectSlot();
     }
 }

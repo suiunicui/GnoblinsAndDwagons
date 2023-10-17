@@ -112,5 +112,8 @@ public class Item
     public int getValue(){
         return this.Value;
     }
+    public int getShopValue(){
+        return this.Value*4;
+    }
 }
 }
