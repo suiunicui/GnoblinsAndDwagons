@@ -16,6 +16,6 @@ public class QuestGiverController : MonoBehaviour, Interactable
         gameStateMemory.inCombat = false;
         gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel = 1;
-        DialogManager.instance.showDialog(dialog, true, "RandomDungeon");
+        DialogManager.instance.showDialog(dialog, true, "EnterDungeon");
     }
 }

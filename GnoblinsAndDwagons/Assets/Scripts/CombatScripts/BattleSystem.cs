@@ -138,7 +138,7 @@ public class BattleSystem : MonoBehaviour
 		else
 		{
 			state = BattleState.EnemyTurn;
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0f);
 			StartCoroutine(EnemyTurn());
 		}
 	}
@@ -147,7 +147,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		var damageDealt = CalculateDamage(enemyUnit.stats.Strength, playerUnit.stats.Toughness);
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0f);
 		var isDead = playerUnit.TakeDamage(damageDealt);
 		combatLog.AddLogMessage($"Enemy dealt {damageDealt} damage to the player.");
 
