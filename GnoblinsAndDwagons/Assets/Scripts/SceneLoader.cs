@@ -15,6 +15,8 @@ public class SceneLoader : MonoBehaviour, Interactable
         gameStateMemory.inDungeon = false;
         gameStateMemory.leaveDungeon = false;
         gameStateMemory.leaveShop = false;
+        gameStateMemory.leaveCombat = false;
+        gameStateMemory.inCombat = false;
         SceneManager.LoadScene(sceneToLoad);
         playerStats.Strength = 2;
         playerStats.Toughness = 2;
