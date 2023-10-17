@@ -27,13 +27,6 @@ public class monsterController : MonoBehaviour, updatable
         {
             Debug.Log("Start combat");
         }
-        else if (Vector3.Distance(player.transform.position, transform.position) < 3)
-        {
-
-            Vector3 targetPos = player.transform.position;
-            StartCoroutine(Move(targetPos));
-
-        }
         else if (!isMoving)
         {
             Vector3 targetPos = new Vector3();
@@ -44,7 +37,7 @@ public class monsterController : MonoBehaviour, updatable
             else
             {
                 Vector3Int direction = (Vector3Int)getRandomDirection();
-                targetPos = transform.position + direction*2;
+                targetPos = transform.position + direction;
             }
             if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
             {
@@ -85,7 +78,6 @@ public class monsterController : MonoBehaviour, updatable
             yield return null;
         }
         transform.position = targetPos;
-
 
         isMoving = false;
     }
