@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517469aca82cca14fbd7c8dec2316314, type: 3}
   m_Name: GameStateMemory
   m_EditorClassIdentifier: 
-  inDungeon: 0
+  inDungeon: 1
   inShop: 0
-  inCombat: 1
+  inCombat: 0
   leaveShop: 0
   leaveDungeon: 0
   leaveCombat: 0
   dungeonLevel: 1
-  DungeonStartPos: {x: -20, y: -28, z: 0}
+  DungeonStartPos: {x: -7, y: -5, z: 0}
