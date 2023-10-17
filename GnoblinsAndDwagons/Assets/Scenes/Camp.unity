@@ -224,6 +224,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.9375}
   m_EdgeRadius: 0
+--- !u!114 &183549593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183549586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584d5975c57b08249a99db0a4dc507d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  moveDist: 10
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  player: {fileID: 5365024778287629313}
 --- !u!1 &210227915
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +521,14 @@ MonoBehaviour:
   dialog:
     lines:
     - An empty chest
+  speed: 0
+  moveDist: 0
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &396868854
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +782,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.625, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &481122462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481122454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0b08403e0cb4d4b8253e161ba8064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - I like running
+  speed: 2
+  moveDist: 5
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &555781608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: 612ae99df9fc9424184df4d964f4ac14, type: 3}
@@ -871,6 +923,14 @@ MonoBehaviour:
     lines:
     - This is a Dwagon
     - It looks hungry
+  speed: 0
+  moveDist: 0
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &805363094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1330689242357648581, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
@@ -1359,6 +1419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoyfulKidIdleSide
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -1369,11 +1433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.23566
+      value: -19.39
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.671427
+      value: -2.98
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1414,6 +1478,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 481122458}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 481122462}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 6591fc0009a577b4eb5c5e363660b7b1, type: 3}
 --- !u!1 &1044782931
 GameObject:
@@ -31035,11 +31102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: e7e9493ecdbdedf4b94df211554036f7, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: e7e9493ecdbdedf4b94df211554036f7, type: 3}
       propertyPath: m_SortingLayerID
-      value: 126812383
+      value: -1785679281
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: e7e9493ecdbdedf4b94df211554036f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43010,6 +43077,14 @@ MonoBehaviour:
     - Hello traveler.
     - Do you come seeking riches too?
     - I have found nothing...
+  speed: 0
+  moveDist: 0
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1535649603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 89345fd027233bd44a768479e04afee0, type: 3}
@@ -43035,6 +43110,14 @@ MonoBehaviour:
   dialog:
     lines:
     - Can't talk, gotta bonk
+  speed: 0
+  moveDist: 0
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1642200327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43406,6 +43489,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 183549590}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 183549593}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
 --- !u!1 &2060771067 stripped
 GameObject:
@@ -43656,6 +43742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1330689242357648581, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
+      propertyPath: m_Text
+      value: I have nothing to say to you
+      objectReference: {fileID: 0}
     - target: {fileID: 2196287419233005287, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -43890,6 +43980,26 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 5365024778287629313}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: gameObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: gameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 481122454}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: npcControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: npcControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 481122454}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: npcControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 183549586}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

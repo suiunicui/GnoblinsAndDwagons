@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             startPos = new Vector3(-16f, 5.5f, 0f);
         }
-        Debug.Log(startPos);
+
         transform.position = startPos;
     }
 

@@ -49,7 +49,7 @@ public class DialogManager : MonoBehaviour
                     {
                         if (gameStateMemory.leaveCombat) {
                             gameStateMemory.inCombat = false;
-                            SceneManager.UnloadScene("Combat");
+                            SceneManager.UnloadSceneAsync("Combat");
                         }
                         else
                         {
