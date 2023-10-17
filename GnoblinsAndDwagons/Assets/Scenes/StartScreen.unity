@@ -753,7 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
-  sceneToLoad: Camp
+  sceneToLoad: Cutscenes
 --- !u!4 &998516467
 Transform:
   m_ObjectHideFlags: 0
