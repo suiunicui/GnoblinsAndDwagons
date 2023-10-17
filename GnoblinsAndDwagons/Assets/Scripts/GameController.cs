@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
             {
-                controller.GetComponent<updatable>()?.HandleUpdate();
+                controller?.GetComponent<updatable>()?.HandleUpdate();
             }
         }else if (state == GameState.DIALOG)
         {
