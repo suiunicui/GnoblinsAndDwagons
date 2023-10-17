@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : MonoBehaviour, Interactable, updatable
+public class monsterController : MonoBehaviour, updatable
 {
-    [SerializeField] Dialog dialog;
-
     public float speed;
     public float moveDist;
     private bool isMoving = false;
@@ -13,12 +11,9 @@ public class NPCController : MonoBehaviour, Interactable, updatable
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
 
-    private Vector3 startPos;
+    public PlayerController player;
 
-    public void Interact()
-    {
-        DialogManager.instance.showDialog(dialog);
-    }
+    private Vector3 startPos;
 
     void Start()
     {
@@ -27,11 +22,30 @@ public class NPCController : MonoBehaviour, Interactable, updatable
 
     public void HandleUpdate()
     {
-        if (!isMoving)
-        {
-            Vector3Int direction = (Vector3Int)getRandomDirection();
-            Vector3 targetPos = transform.position + direction;
 
+        if (Vector3.Distance(player.transform.position, transform.position) < 1)
+        {
+            Debug.Log("Start combat");
+        }
+        else if (Vector3.Distance(player.transform.position, transform.position) < 3)
+        {
+
+            Vector3 targetPos = player.transform.position;
+            StartCoroutine(Move(targetPos));
+
+        }
+        else if (!isMoving)
+        {
+            Vector3 targetPos = new Vector3();
+            if (Vector3.Distance(player.transform.position, transform.position) < 3)
+            {
+                targetPos = player.transform.position;
+            }
+            else
+            {
+                Vector3Int direction = (Vector3Int)getRandomDirection();
+                targetPos = transform.position + direction*2;
+            }
             if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
             {
                 StartCoroutine(Move(targetPos));
@@ -70,7 +84,6 @@ public class NPCController : MonoBehaviour, Interactable, updatable
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             yield return null;
         }
-
         transform.position = targetPos;
 
 
