@@ -22,25 +22,30 @@ public class monsterController : MonoBehaviour, updatable
 
     public void HandleUpdate()
     {
-
-        if (Vector3.Distance(player.transform.position, transform.position) < 1)
+        if (!isMoving)
         {
-            Debug.Log("Start combat");
-        }
-        else if(Vector3.Distance(player.transform.position, transform.position) < 3)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        }
-        else if (!isMoving)
-        {
-            Vector3Int direction = (Vector3Int)getRandomDirection();
-            Vector3 targetPos = transform.position + direction;
-            
-            if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
+            if (Vector3.Distance(player.transform.position, transform.position) < 1)
             {
-                StartCoroutine(Move(targetPos));
+                Debug.Log("Start combat");
+            }
+            else if(Vector3.Distance(player.transform.position, transform.position) <= 3 && Vector3.Distance(transform.position, startPos) <= moveDist)
+            {
+                Debug.Log("chase player");
+                Debug.Log(transform.position);
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                Vector3Int direction = (Vector3Int)getRandomDirection();
+                Vector3 targetPos = transform.position + direction;
+            
+                if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
+                {
+                    StartCoroutine(Move(targetPos));
+                }
             }
         }
+        
     }
     private static Vector2Int getRandomDirection()
     {
