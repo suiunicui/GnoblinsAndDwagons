@@ -26,6 +26,24 @@ public class ShowEquippedItems : MonoBehaviour
 
     private void DrawSlots()
     {
+        List<Image> equippedThings = new List<Image>();
+        equippedThings.Add(equippedHead);
+        equippedThings.Add(equippedBoots);
+        equippedThings.Add(equippedChest);
+        equippedThings.Add(equippedOffHand);
+        equippedThings.Add(equippedMainHand);
+
+        foreach (var item in equippedThings)
+        {
+            Image BorderWithTexture = item.transform.Find("Border_With_Texture").GetComponent<Image>();
+            Image Border = item.transform.Find("Border").GetComponent<Image>();
+            Image Icon = item.transform.Find("Icon").GetComponent<Image>();
+            BorderWithTexture.enabled = true;
+            Border.enabled = false;
+            Icon.enabled = false;
+            Icon.sprite = null;
+        }
+
         if (playerInventory.equippedItems.equippedHead.getValue() != 0)
         {
             Image BorderWithTexture = equippedHead.transform.Find("Border_With_Texture").GetComponent<Image>();
@@ -76,5 +94,22 @@ public class ShowEquippedItems : MonoBehaviour
             Icon.enabled = true;
             Icon.sprite = playerInventory.equippedItems.equippedOffHand.icon;
         }
+    }
+
+    public void DeselectAllSlots(){
+        Image Selected = equippedHead.transform.Find("SelectedPanel").GetComponent<Image>();
+        Selected.enabled = false;
+
+        Selected = equippedChest.transform.Find("SelectedPanel").GetComponent<Image>();
+        Selected.enabled = false;
+
+        Selected = equippedBoots.transform.Find("SelectedPanel").GetComponent<Image>();
+        Selected.enabled = false;
+
+        Selected = equippedMainHand.transform.Find("SelectedPanel").GetComponent<Image>();
+        Selected.enabled = false;
+
+        Selected = equippedOffHand.transform.Find("SelectedPanel").GetComponent<Image>();
+        Selected.enabled = false;
     }
 }
