@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class monsterController : MonoBehaviour, updatable
 {
@@ -15,6 +19,33 @@ public class monsterController : MonoBehaviour, updatable
 
     private Vector3 startPos;
 
+    [SerializeField]
+    public string monsterName;
+    [SerializeField]
+    public string monsterType;
+
+    [SerializeField]
+    public CombatStats enemyStats;
+
+    [SerializeField]
+    public int Agility;
+
+    [SerializeField]
+    public int Strength;
+
+    [SerializeField]
+    public int Toughness;
+
+    [SerializeField]
+    public int Dexterity;
+
+    [SerializeField]
+    GameStateMemory gameStateMemory;
+
+    [SerializeField]
+    public Dialog dialog;
+
+
     void Start()
     {
         startPos = transform.position;
@@ -26,12 +57,10 @@ public class monsterController : MonoBehaviour, updatable
         {
             if (Vector3.Distance(player.transform.position, transform.position) < 1)
             {
-                Debug.Log("Start combat");
+                triggerCombat();
             }
             else if(Vector3.Distance(player.transform.position, transform.position) <= 3 && Vector3.Distance(transform.position, startPos) <= moveDist)
             {
-                Debug.Log("chase player");
-                Debug.Log(transform.position);
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             }
             else
@@ -47,6 +76,24 @@ public class monsterController : MonoBehaviour, updatable
         }
         
     }
+
+    private async void triggerCombat()
+    {
+        enemyStats.unitName = monsterName;
+        enemyStats.type = monsterType;
+        enemyStats.Agility = Agility;
+        enemyStats.Strength = Strength;
+        enemyStats.Toughness = Toughness;
+        enemyStats.Dexterity = Dexterity;
+
+        gameStateMemory.inDungeon = false;
+        gameStateMemory.inCombat = true;
+        gameStateMemory.leaveCombat = false;
+        DialogManager.instance.showDialog(dialog, true, "combat");
+        Destroy(gameObject);
+        
+    }
+
     private static Vector2Int getRandomDirection()
     {
         return cardinalDirList[Random.Range(0, cardinalDirList.Count)];

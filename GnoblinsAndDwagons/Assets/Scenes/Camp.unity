@@ -245,6 +245,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 5365024778287629313}
+  monsterName: Drunk Salesman
+  monsterType: Drunk
+  enemyStats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
+  Agility: 0
+  Strength: 0
+  Toughness: 0
+  Dexterity: 0
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+  dialog:
+    lines:
+    - I've been trying to reach you about your swords extended warranty.
 --- !u!1 &210227915
 GameObject:
   m_ObjectHideFlags: 0
@@ -43444,11 +43455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.66566
+      value: -17.720785
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4985728
+      value: 1.5018253
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43460,15 +43471,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 03b8a7ef8dd62f94ebad605cd4dd057c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
