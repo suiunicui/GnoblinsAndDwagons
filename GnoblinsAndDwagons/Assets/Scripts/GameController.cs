@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
-    [SerializeField] List<NPCController> npcControllers = new List<NPCController>();
+    [SerializeField] List<GameObject> npcControllers = new List<GameObject>();
 
     GameState state;
 
@@ -48,9 +48,9 @@ public class GameController : MonoBehaviour
         if (state == GameState.FREE_ROAM)
         {
             playerController.HandleUpdate();
-            foreach (NPCController controller in npcControllers)
+            foreach (var controller in npcControllers)
             {
-                controller.HandleUpdate();
+                controller.GetComponent<updatable>()?.HandleUpdate();
             }
         }else if (state == GameState.DIALOG)
         {
