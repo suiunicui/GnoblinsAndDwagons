@@ -15,6 +15,7 @@ public class PlayerInventory : ScriptableObject
 	public List<Item> inventory = new List<Item>(35);
 	public PlayerEquippedItems equippedItems = new PlayerEquippedItems();
 	public int gold = 200;
+	public int shopLevel = 0;
 	[SerializeField] public CombatStats playerStats;
 
 

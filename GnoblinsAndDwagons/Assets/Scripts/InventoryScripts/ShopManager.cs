@@ -17,7 +17,8 @@ public class ShopManager : MonoBehaviour
     }
 
     private void Start(){
-        shopList = itemGenerator.generateItems(42);
+        int itemsToGenerate = (playerInventory.shopLevel*6) + 12;
+        shopList = itemGenerator.generateItems(itemsToGenerate,playerInventory.shopLevel);
         DrawShopList(shopList);
     }
 
