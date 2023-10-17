@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Camp.unity
     guid: c2714361499b9f24da17397c7105f492
   - enabled: 1
+    path: Assets/Scenes/EnterDungeon.unity
+    guid: d96e431a8125bf8479c76af720ef6c27
+  - enabled: 1
     path: Assets/Scenes/RandomDungeon.unity
     guid: 998df7189e978b34f90c76444279b3a3
   - enabled: 1
