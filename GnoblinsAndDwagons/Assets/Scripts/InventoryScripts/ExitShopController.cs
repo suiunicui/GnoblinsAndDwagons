@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitShopController : MonoBehaviour
+namespace inventoryThings
 {
-    [SerializeField] GameStateMemory gameStateMemory;
-    public void OnClick()
+    public class ExitInventoryController : MonoBehaviour
     {
-        gameStateMemory.inShop = false;
-        gameStateMemory.inDungeon = false;
-        gameStateMemory.leaveDungeon = false;
-        gameStateMemory.leaveShop = true;
-        SceneManager.LoadScene("Camp");
+        [SerializeField] GameStateMemory gameStateMemory;
+        public void OnClick()
+        {
+            gameStateMemory.inShop = false;
+            gameStateMemory.inDungeon = false;
+            gameStateMemory.leaveDungeon = false;
+            gameStateMemory.leaveShop = true;
+            SceneManager.LoadScene("Camp");
+        }
     }
 }
