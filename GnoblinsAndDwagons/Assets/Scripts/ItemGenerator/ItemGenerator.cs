@@ -129,6 +129,48 @@ namespace ItemThings
 
         }
 
+        public Item generateRandomDungeonItem(int commonChance, int uncommonChance, int rareChance, int gnepicChance, int legendaryChance)
+        {
+            Random random = new Random();
+            Rarity randomRarity;
+
+            randomRarity = GenerateRandomRarity(commonChance, uncommonChance, rareChance, gnepicChance, legendaryChance);
+
+            int randomStrength = random.Next(1 * (int)randomRarity, 10 * (int)randomRarity);
+            int randomToughness = random.Next(1 * (int)randomRarity, 10 * (int)randomRarity);
+            int randomDexterity = random.Next(1 * (int)randomRarity, 10 * (int)randomRarity);
+            int randomAgility = random.Next(1 * (int)randomRarity, 10 * (int)randomRarity);
+            ItemType randomType = (ItemType)random.Next(0, 5);
+            string itemName;
+            int value;
+
+
+
+            if (randomStrength > randomToughness && randomStrength > randomDexterity && randomStrength > randomAgility)
+                itemName = "of the " + GenerateRandomHighStrengthItem();
+            else if (randomToughness > randomDexterity && randomToughness > randomAgility)
+                itemName = "of the " + GenerateRandomHighToughnessItem();
+            else if (randomDexterity > randomAgility)
+                itemName = "of the " + GenerateRandomHighDexterityItem();
+            else
+                itemName = "of the " + GenerateRandomHighAgilityItem();
+
+            itemName = $"{randomRarity} {randomType} {itemName}";
+
+            value = (randomStrength + randomToughness + randomDexterity + randomAgility) * (int)(randomRarity);
+
+            return new Item(
+                randomStrength,
+                randomToughness,
+                randomDexterity,
+                randomAgility,
+                randomRarity,
+                randomType,
+                itemName,
+                value
+            );
+        }
+
         private Rarity GenerateRandomRarity(int commonChance, int uncommonChance, int rareChance, int gnepicChance, int legendaryChance)
         {
             Random random = new Random();
