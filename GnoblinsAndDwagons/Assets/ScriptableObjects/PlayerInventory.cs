@@ -4,13 +4,14 @@ using UnityEngine;
 using ItemThings;
 using System;
 
-[CreateAssetMenu(fileName = "PlayerInventory",menuName = "Persistance/Inventory") ]
+[CreateAssetMenu(fileName = "PlayerInventory", menuName = "Persistance/Inventory")]
 public class PlayerInventory : ScriptableObject
 {
 	public static event Action<List<Item>> OnInventoryChange;
 	public static event Action OnEquipmentChange;
 	public static event Action<Item> ItemBought;
 	public static event Action ClearSelection;
+	public static event Action ShopLevelUp;
 	public SelectedItem selectedItem;
 	public List<Item> inventory = new List<Item>(35);
 	public PlayerEquippedItems equippedItems = new PlayerEquippedItems();
@@ -19,14 +20,16 @@ public class PlayerInventory : ScriptableObject
 	[SerializeField] public CombatStats playerStats;
 
 
-	private void OnEnable(){
+	private void OnEnable()
+	{
 		AddItem.OnItemPurchased += Add;
 		EquipItem.OnItemEquipped += Equip;
 		EquipItem.OnItemUnequipped += Unequip;
 		SellItem.OnItemSold += Remove;
 	}
 
-	private void OnDisable(){
+	private void OnDisable()
+	{
 		AddItem.OnItemPurchased -= Add;
 		EquipItem.OnItemEquipped -= Equip;
 		EquipItem.OnItemUnequipped -= Unequip;
@@ -44,7 +47,7 @@ public class PlayerInventory : ScriptableObject
 	public void Equip()
 	{
 		Item oldEquippedItem = null;
-		if(selectedItem.selectedItem.getSlot() == Slot.MainHand)
+		if (selectedItem.selectedItem.getSlot() == Slot.MainHand)
 		{
 			if (equippedItems.equippedMainHand.getValue() != 0)
 				oldEquippedItem = equippedItems.equippedMainHand;
@@ -52,7 +55,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		if(selectedItem.selectedItem.getSlot() == Slot.OffHand)
+		if (selectedItem.selectedItem.getSlot() == Slot.OffHand)
 		{
 			if (equippedItems.equippedOffHand.getValue() != 0)
 				oldEquippedItem = equippedItems.equippedOffHand;
@@ -60,7 +63,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		if(selectedItem.selectedItem.getSlot() == Slot.HeadWear)
+		if (selectedItem.selectedItem.getSlot() == Slot.HeadWear)
 		{
 			if (equippedItems.equippedHead.getValue() != 0)
 				oldEquippedItem = equippedItems.equippedHead;
@@ -68,7 +71,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		if(selectedItem.selectedItem.getSlot() == Slot.Armor)
+		if (selectedItem.selectedItem.getSlot() == Slot.Armor)
 		{
 			if (equippedItems.equippedChest.getValue() != 0)
 				oldEquippedItem = equippedItems.equippedChest;
@@ -76,9 +79,9 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		if(selectedItem.selectedItem.getSlot() == Slot.FootWear)
+		if (selectedItem.selectedItem.getSlot() == Slot.FootWear)
 		{
-			if (equippedItems.equippedBoots.getValue() != 0 )
+			if (equippedItems.equippedBoots.getValue() != 0)
 				oldEquippedItem = equippedItems.equippedBoots;
 			equippedItems.equippedBoots = selectedItem.selectedItem;
 			OnEquipmentChange?.Invoke();
@@ -90,16 +93,16 @@ public class PlayerInventory : ScriptableObject
 			inventory.Add(oldEquippedItem);
 		}
 		OnInventoryChange?.Invoke(inventory);
-		playerStats.Strength = equippedItems.getTotalStrength()+2;
-		playerStats.Toughness = equippedItems.getTotalToughness()+2;
-		playerStats.Dexterity = equippedItems.getTotalDexterity()+2;
-		playerStats.Agility = equippedItems.getTotalAgility()+2;
+		playerStats.Strength = equippedItems.getTotalStrength() + 2;
+		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
+		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
+		playerStats.Agility = equippedItems.getTotalAgility() + 2;
 		ClearSelection?.Invoke();
 	}
 
 	private void Unequip()
 	{
-		if(selectedItem.selectedItem.getSlot() == Slot.MainHand)
+		if (selectedItem.selectedItem.getSlot() == Slot.MainHand)
 		{
 			inventory.Add(equippedItems.equippedMainHand);
 			selectedItem = null;
@@ -107,7 +110,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		else if(selectedItem.selectedItem.getSlot() == Slot.OffHand)
+		else if (selectedItem.selectedItem.getSlot() == Slot.OffHand)
 		{
 			inventory.Add(equippedItems.equippedOffHand);
 			selectedItem = null;
@@ -115,7 +118,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		else if(selectedItem.selectedItem.getSlot() == Slot.HeadWear)
+		else if (selectedItem.selectedItem.getSlot() == Slot.HeadWear)
 		{
 			inventory.Add(equippedItems.equippedHead);
 			selectedItem = null;
@@ -123,7 +126,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		else if(selectedItem.selectedItem.getSlot() == Slot.Armor)
+		else if (selectedItem.selectedItem.getSlot() == Slot.Armor)
 		{
 			inventory.Add(equippedItems.equippedChest);
 			selectedItem = null;
@@ -131,7 +134,7 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 
-		else if(selectedItem.selectedItem.getSlot() == Slot.FootWear)
+		else if (selectedItem.selectedItem.getSlot() == Slot.FootWear)
 		{
 			inventory.Add(equippedItems.equippedBoots);
 			selectedItem = null;
@@ -139,18 +142,24 @@ public class PlayerInventory : ScriptableObject
 			OnEquipmentChange?.Invoke();
 		}
 		OnInventoryChange?.Invoke(inventory);
-		playerStats.Strength = equippedItems.getTotalStrength()+2;
-		playerStats.Toughness = equippedItems.getTotalToughness()+2;
-		playerStats.Dexterity = equippedItems.getTotalDexterity()+2;
-		playerStats.Agility = equippedItems.getTotalAgility()+2;
+		playerStats.Strength = equippedItems.getTotalStrength() + 2;
+		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
+		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
+		playerStats.Agility = equippedItems.getTotalAgility() + 2;
 		ClearSelection?.Invoke();
 	}
 
 	public void Remove()
-	{	
+	{
 		inventory.Remove(this.selectedItem.selectedItem);
 		gold = gold + this.selectedItem.selectedItem.getValue();
 		OnInventoryChange?.Invoke(inventory);
+	}
+
+	public void LevelUpShop()
+	{
+		shopLevel++;
+		ShopLevelUp?.Invoke();
 	}
 
 }

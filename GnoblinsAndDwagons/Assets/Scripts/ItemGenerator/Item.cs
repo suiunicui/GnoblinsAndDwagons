@@ -59,7 +59,7 @@ public class Item
         this.Rarity = rarity;
         this.Type =type;
         this.Name = name;
-        this.icon = Resources.Load<Sprite>("Items_Inventory/Sprites/" + type);
+        this.icon = Resources.Load<Sprite>("Items_Inventory/Sprites/"+ rarity + "/" + type);
         this.Value = Value;
 
         if (this.getType()==ItemType.Sword)
