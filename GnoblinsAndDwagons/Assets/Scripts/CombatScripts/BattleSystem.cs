@@ -5,6 +5,7 @@ using CombatScripts;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using System.Runtime.CompilerServices;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -135,7 +136,7 @@ public class BattleSystem : MonoBehaviour
 			state = BattleState.Won;
 			EndBattle();
 		}
-		else
+		else if(state != BattleState.EnemyTurn)
 		{
 			state = BattleState.EnemyTurn;
 			yield return new WaitForSeconds(0f);

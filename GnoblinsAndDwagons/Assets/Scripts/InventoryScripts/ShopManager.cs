@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemThings;
+using Unity.VisualScripting;
 
 public class ShopManager : MonoBehaviour
 {
@@ -11,25 +12,30 @@ public class ShopManager : MonoBehaviour
     private List<Item> shopList = new List<Item>();
     [SerializeField] public PlayerInventory playerInventory;
 
-    private void OnEnable(){
+    private void OnEnable()
+    {
         AddItem.OnItemPurchased += Remove;
         SellItem.OnItemSold += Add;
+        PlayerInventory.ShopLevelUp += Start;
     }
 
-    private void Start(){
-        int itemsToGenerate = (playerInventory.shopLevel*6) + 12;
-        shopList = itemGenerator.generateItems(itemsToGenerate,playerInventory.shopLevel);
+    private void Start()
+    {
+        int itemsToGenerate = (playerInventory.shopLevel * 6) + 12;
+        shopList = itemGenerator.generateItems(itemsToGenerate, playerInventory.shopLevel);
         DrawShopList(shopList);
     }
 
-    private void OnDisable(){
+    private void OnDisable()
+    {
         AddItem.OnItemPurchased -= Remove;
         SellItem.OnItemSold -= Add;
+        PlayerInventory.ShopLevelUp -= Start;
     }
 
     void ResetShopList()
     {
-        foreach(Transform childTransform in transform)
+        foreach (Transform childTransform in transform)
         {
             Destroy(childTransform.gameObject);
         }
@@ -74,13 +80,13 @@ public class ShopManager : MonoBehaviour
         {
             if (item.specificId == id)
             {
-                playerInventory.selectedItem = new SelectedItem(item,Panel.Shop);
+                playerInventory.selectedItem = new SelectedItem(item, Panel.Shop);
                 itemFound = true;
             }
 
         }
         if (!itemFound)
-        playerInventory.selectedItem = null;
+            playerInventory.selectedItem = null;
     }
 
     private void Remove(Item item)
@@ -98,12 +104,12 @@ public class ShopManager : MonoBehaviour
     }
     private void Add()
     {
-            if (shopList.Count < 42)
-            {
-                shopList.Add(playerInventory.selectedItem.selectedItem);
-                DrawShopList(shopList);
-                playerInventory.selectedItem = null;
-                shopSlots[0].DeselectSlot();
-            }
+        if (shopList.Count < 42)
+        {
+            shopList.Add(playerInventory.selectedItem.selectedItem);
+            DrawShopList(shopList);
+            playerInventory.selectedItem = null;
+            shopSlots[0].DeselectSlot();
+        }
     }
 }
