@@ -36,8 +36,8 @@ public class mimicController : MonoBehaviour, Interactable
         gameStateMemory.inDungeon = false;
         gameStateMemory.inCombat = true;
         gameStateMemory.leaveCombat = false;
-        Destroy(gameObject); 
         DialogManager.instance.showDialog(dialog, true, "combat");
+        Destroy(gameObject); 
 
     }
 }
