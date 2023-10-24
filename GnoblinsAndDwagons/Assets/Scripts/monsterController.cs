@@ -67,7 +67,7 @@ public class monsterController : MonoBehaviour, updatable
             {
                 Vector3Int direction = (Vector3Int)getRandomDirection();
                 Vector3 targetPos = transform.position + direction;
-            
+                Debug.Log(targetPos);
                 if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
                 {
                     StartCoroutine(Move(targetPos));
@@ -77,7 +77,7 @@ public class monsterController : MonoBehaviour, updatable
         
     }
 
-    private async void triggerCombat()
+    private void triggerCombat()
     {
         enemyStats.unitName = monsterName;
         enemyStats.type = monsterType;

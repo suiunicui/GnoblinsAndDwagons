@@ -31,7 +31,7 @@ public class DialogManager : MonoBehaviour
     Dialog dialog;
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0)) 
         {
             ++currentLine;
             if(currentLine < dialog.Lines.Count)
