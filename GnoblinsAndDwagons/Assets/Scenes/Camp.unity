@@ -596,6 +596,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnoblin
       objectReference: {fileID: 0}
+    - target: {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961720792471400298, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961720792471400298, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1785679281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

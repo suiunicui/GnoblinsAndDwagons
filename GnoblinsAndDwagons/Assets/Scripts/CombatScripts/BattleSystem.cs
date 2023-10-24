@@ -172,7 +172,7 @@ public class BattleSystem : MonoBehaviour
 		switch (state)
 		{
 			case BattleState.Won:
-				_gameStateMemory.leaveCombat = true;
+                _gameStateMemory.leaveCombat = true;
 				DialogManager.instance.showDialog(victorydialog,true,"RandomDungeon");
 				break;
 			case BattleState.Lost:

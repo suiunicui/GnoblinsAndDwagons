@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class monsterController : MonoBehaviour, updatable
 {
@@ -15,7 +16,7 @@ public class monsterController : MonoBehaviour, updatable
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
 
-    public PlayerController player;
+    public GameObject player;
 
     private Vector3 startPos;
 
@@ -45,6 +46,12 @@ public class monsterController : MonoBehaviour, updatable
     [SerializeField]
     public Dialog dialog;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -61,20 +68,37 @@ public class monsterController : MonoBehaviour, updatable
             }
             else if(Vector3.Distance(player.transform.position, transform.position) <= 3 && Vector3.Distance(transform.position, startPos) <= moveDist)
             {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                if(isWalkable((player.transform.position + transform.position) / 2))
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                }
+                else 
+                { 
+                    randomWalk(); 
+                }
             }
             else
             {
-                Vector3Int direction = (Vector3Int)getRandomDirection();
-                Vector3 targetPos = transform.position + direction;
-                Debug.Log(targetPos);
-                if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
-                {
-                    StartCoroutine(Move(targetPos));
-                }
+                randomWalk();
             }
         }
         
+    }
+
+    private void randomWalk()
+    {
+        Vector3Int direction = (Vector3Int)getRandomDirection();
+        animator.SetFloat("moveX", direction.x);
+        Vector3 targetPos = transform.position + direction;
+        if (isWalkable(targetPos) && Vector3.Distance(targetPos, startPos) <= moveDist)
+        {
+            StartCoroutine(Move(targetPos));
+        }
+    }
+
+    public void setPlayerObject(GameObject player)
+    {
+        this.player = player;
     }
 
     private void triggerCombat()
