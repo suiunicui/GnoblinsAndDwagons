@@ -4,105 +4,107 @@ using UnityEngine;
 using ItemThings;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+namespace inventoryThings
 {
-    public GameObject slotPrefab;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>(35);
-    public Text goldText;
-    [SerializeField] public PlayerInventory playerInventory;
-
-    private void OnEnable(){
-        PlayerInventory.OnInventoryChange += DrawInventory;
-        PlayerInventory.ItemBought += SelectItem;
-        PlayerInventory.ClearSelection += DeselectSlotsCall;
-    }
-
-    private void Start(){
-        DrawInventory(playerInventory.inventory);
-        goldText.text = "Gold: " + playerInventory.gold;
-    }
-
-    private void OnDisable(){
-        PlayerInventory.OnInventoryChange -= DrawInventory;
-        PlayerInventory.ItemBought -= SelectItem;
-        PlayerInventory.ClearSelection -= DeselectSlotsCall;
-    }
-
-    void ResetInventory()
+    public class InventoryManager : MonoBehaviour
     {
-        foreach(Transform childTransform in transform)
-        {
-            Destroy(childTransform.gameObject);
-        }
-        inventorySlots = new List<InventorySlot>(35);
-    }
+        public GameObject slotPrefab;
+        public List<InventorySlot> inventorySlots = new List<InventorySlot>(35);
+        [SerializeField] public PlayerInventory playerInventory;
 
-    void DrawInventory(List<Item> inventory)
-    {
-        ResetInventory();
-
-        for (int i = 0; i < inventorySlots.Capacity; i++)
+        private void OnEnable()
         {
-            CreateInventorySlot();
+            PlayerInventory.OnInventoryChange += DrawInventory;
+            PlayerInventory.ClearSelection += DeselectSlotsCall;
         }
 
-        for (int i = 0; i < inventory.Count; i++)
+        private void Start()
         {
-            inventorySlots[i].DrawSlot(inventory[i]);
+            DrawInventory(playerInventory.inventory);
         }
-    }
 
-    void CreateInventorySlot()
-    {
-        GameObject newSlot = Instantiate(slotPrefab);
-        newSlot.transform.SetParent(transform, false);
-
-        InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
-        newSlotComponent.ClearSlot();
-
-        inventorySlots.Add(newSlotComponent);
-    }
-
-    public void DeselectAllSlots(int id =-1)
-    {
-        foreach (InventorySlot slot in inventorySlots)
+        private void OnDisable()
         {
-            slot.selectedShader.enabled = false;
-            slot.thisItemSelected = false;
+            PlayerInventory.OnInventoryChange -= DrawInventory;
+            PlayerInventory.ClearSelection -= DeselectSlotsCall;
         }
-        bool itemFound = false;
-        foreach (Item item in playerInventory.inventory)
+
+        void ResetInventory()
         {
-            if (item.specificId == id)
+            foreach (Transform childTransform in transform)
             {
-                playerInventory.selectedItem = new SelectedItem(item,Panel.Inventory);
-                itemFound = true;
+                Destroy(childTransform.gameObject);
+            }
+            inventorySlots = new List<InventorySlot>(35);
+        }
+
+        void DrawInventory(List<Item> inventory)
+        {
+            ResetInventory();
+
+            for (int i = 0; i < inventorySlots.Capacity; i++)
+            {
+                CreateInventorySlot();
             }
 
-        }
-        if (!itemFound)
-        playerInventory.selectedItem = null;
-    }
-
-    private void SelectItem(Item item)
-    {
-        foreach (InventorySlot slot in inventorySlots)
-        {
-            if (item.specificId == slot.itemId)
+            for (int i = 0; i < inventory.Count; i++)
             {
-                slot.FakeLeftClick();
+                inventorySlots[i].DrawSlot(inventory[i]);
             }
-
         }
-    }
 
-    private void DeselectSlotsCall()
-    {
-        foreach (InventorySlot slot in inventorySlots)
+        void CreateInventorySlot()
         {
-            slot.selectedShader.enabled = false;
-            slot.thisItemSelected = false;
+            GameObject newSlot = Instantiate(slotPrefab);
+            newSlot.transform.SetParent(transform, false);
+
+            InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
+            newSlotComponent.ClearSlot();
+
+            inventorySlots.Add(newSlotComponent);
         }
-        inventorySlots[0].DeselectSlot();
+
+        public void DeselectAllSlots(int id = -1)
+        {
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                slot.selectedShader.enabled = false;
+                slot.thisItemSelected = false;
+            }
+            bool itemFound = false;
+            foreach (Item item in playerInventory.inventory)
+            {
+                if (item.specificId == id)
+                {
+                    playerInventory.selectedItem = new SelectedItem(item, Panel.Inventory);
+                    itemFound = true;
+                }
+
+            }
+            if (!itemFound)
+                playerInventory.selectedItem = null;
+        }
+
+        private void SelectItem(Item item)
+        {
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                if (item.specificId == slot.itemId)
+                {
+                    slot.FakeLeftClick();
+                }
+
+            }
+        }
+
+        private void DeselectSlotsCall()
+        {
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                slot.selectedShader.enabled = false;
+                slot.thisItemSelected = false;
+            }
+            inventorySlots[0].DeselectSlot();
+        }
     }
 }

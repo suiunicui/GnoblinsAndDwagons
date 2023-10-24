@@ -6,89 +6,89 @@ using ItemThings;
 using UnityEngine.EventSystems;
 using System;
 
-public class InventorySlot : MonoBehaviour, IPointerClickHandler
+namespace inventoryThings
 {
-    public Image icon;
-    public Image border;
-    public int itemId;
-    public Image selectedShader;
-    public bool thisItemSelected;
-    private ShopManager shopManager;
-    private InventoryManager inventoryManager;
-    private ShowEquippedItems showEquippedItems;
-    private StatPanel statPanel;
-
-    public static event Action OnInventoryItemClicked;
-
-    private void Start()
+    public class InventorySlot : MonoBehaviour, IPointerClickHandler
     {
-        inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
-        shopManager = GameObject.Find("Shop_panel").GetComponent<ShopManager>();
-        statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
-        showEquippedItems = GameObject.Find("Equipped_Items").GetComponent<ShowEquippedItems>();
-        OnInventoryItemClicked?.Invoke();
-    }
-    public void ClearSlot()
-    {
-        icon.enabled = false;
-        border.enabled = true;
-        itemId = -1;
-        selectedShader.enabled = false;
-        thisItemSelected = false;
-    }
+        public Image icon;
+        public Image border;
+        public int itemId;
+        public Image selectedShader;
+        public bool thisItemSelected;
+        private InventoryManager inventoryManager;
+        private ShowEquippedItems showEquippedItems;
+        private StatPanel statPanel;
 
-    public void DrawSlot(Item item)
-    {
-        if (item==null){
-            ClearSlot();
-            return;
-        }
-        icon.enabled = true;
-        border.enabled = true;
-        icon.sprite = item.icon;
-        this.itemId = item.specificId;
-    }
+        public static event Action OnInventoryItemClicked;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        private void Start()
         {
-            OnLeftClick();
+            inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
+            statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+            showEquippedItems = GameObject.Find("Equipped_Items").GetComponent<ShowEquippedItems>();
+            OnInventoryItemClicked?.Invoke();
         }
-        if (eventData.button == PointerEventData.InputButton.Right)
+        public void ClearSlot()
         {
-            OnRightClick();
+            icon.enabled = false;
+            border.enabled = true;
+            itemId = -1;
+            selectedShader.enabled = false;
+            thisItemSelected = false;
         }
-    }
 
-    private void OnLeftClick()
-    {
-        shopManager.DeselectAllSlots();
-        showEquippedItems.DeselectAllSlots();
-        inventoryManager.DeselectAllSlots(itemId);
-        selectedShader.enabled= true;
-        thisItemSelected = true;
-        statPanel.Draw();
-        OnInventoryItemClicked?.Invoke();
-    }
-    private void OnRightClick(){}
+        public void DrawSlot(Item item)
+        {
+            if (item == null)
+            {
+                ClearSlot();
+                return;
+            }
+            icon.enabled = true;
+            border.enabled = true;
+            icon.sprite = item.icon;
+            this.itemId = item.specificId;
+        }
 
-    public void FakeLeftClick()
-    {
-        this.Start();
-        shopManager.DeselectAllSlots();
-        showEquippedItems.DeselectAllSlots();
-        inventoryManager.DeselectAllSlots(itemId);
-        selectedShader.enabled= true;
-        thisItemSelected = true;
-        statPanel.Draw();
-        OnInventoryItemClicked?.Invoke();
-    }
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                OnLeftClick();
+            }
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                OnRightClick();
+            }
+        }
 
-    public void DeselectSlot()
-    {
-        this.Start();
-        statPanel.Draw();
-        OnInventoryItemClicked?.Invoke();
+        private void OnLeftClick()
+        {
+            showEquippedItems.DeselectAllSlots();
+            inventoryManager.DeselectAllSlots(itemId);
+            selectedShader.enabled = true;
+            thisItemSelected = true;
+            statPanel.Draw();
+            OnInventoryItemClicked?.Invoke();
+        }
+        private void OnRightClick() { }
+
+        public void FakeLeftClick()
+        {
+            this.Start();
+            showEquippedItems.DeselectAllSlots();
+            inventoryManager.DeselectAllSlots(itemId);
+            selectedShader.enabled = true;
+            thisItemSelected = true;
+            statPanel.Draw();
+            OnInventoryItemClicked?.Invoke();
+        }
+
+        public void DeselectSlot()
+        {
+            this.Start();
+            statPanel.Draw();
+            OnInventoryItemClicked?.Invoke();
+        }
     }
 }
