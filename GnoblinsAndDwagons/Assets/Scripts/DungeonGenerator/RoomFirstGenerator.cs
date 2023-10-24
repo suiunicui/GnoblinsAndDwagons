@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using Random = UnityEngine.Random;
 
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
@@ -17,16 +18,22 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private int offset = 1;
 
     [SerializeField]
-    private GameObject levelExit, emptyChest, crate1, crate2;
+    private List<GameObject> clutter;
 
     [SerializeField]
-    private GameObject npcMiner;
+    private GameObject npcMiner, levelExit;
 
     [SerializeField]
-    private GameObject enemyMimic, enemyGnoblin, enemySkelington;
+    private GameObject enemyMimic;
+
+    [SerializeField]
+    private List<GameObject> lowLevelEnemies;
 
     [SerializeField]
     private GameStateMemory gameStateMemory;
+
+    [SerializeField]
+    GameObject playerController;
 
     //Generated data
     private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
@@ -64,11 +71,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     {
         BoundsInt room = roomList[Random.Range(0, roomList.Count)];
 
-        List<GameObject> clutter = new List<GameObject>();
-        clutter.Add(crate1);
-        clutter.Add(crate2);
-        clutter.Add(emptyChest);
-
         gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center + new Vector3(0.5f, 0.5f, 0));
 
         for(int i = 0; i<Random.Range(5,10); i++)
@@ -98,21 +100,87 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         roomList.Remove(room);
 
         foreach (BoundsInt loopRoom in roomList)
-        {   
-            Vector3Int entityPos = new Vector3Int(Random.Range(loopRoom.min.x + offset, loopRoom.max.x), Random.Range(loopRoom.min.y + offset, loopRoom.max.y), 0);
-            Instantiate(enemyMimic, entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
-            for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            int randomRoom = Random.Range(0, 100);
+            if(randomRoom < 60)
             {
-                entityPos = new Vector3Int(Random.Range(loopRoom.min.x + offset, loopRoom.max.x), Random.Range(loopRoom.min.y + offset, loopRoom.max.y), 0);
-                if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
-                {
-                    Instantiate(clutter[Random.Range(0, clutter.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
-                }
+                createMonsterRoom(loopRoom, corridors);
+            }else if (randomRoom < 80)
+            {
+                createEmptyRoom(loopRoom, corridors);
+            }
+            else
+            {
+                createMimicRoom(loopRoom, corridors);
             }
         }
 
         
     }
+
+    private void CreatePuzzelRoom(BoundsInt room, HashSet<Vector2Int> corridors)
+    {
+        GameObject controller = GameObject.Find("GameController");
+
+        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+
+    }
+
+    private void createMonsterRoom(BoundsInt room, HashSet<Vector2Int>  corridors)
+    {
+        GameObject controller = GameObject.Find("GameController");
+        
+        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        for (int i = 0; i < Random.Range(1, 5); i++)
+        {
+            entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                GameObject monster = Instantiate(lowLevelEnemies[Random.Range(0, lowLevelEnemies.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                Debug.Log(monster);
+                monsterController monsterScript = monster.GetComponent<monsterController>();
+
+                if (monsterScript == null) { Debug.Log("debug 3"); }
+                monsterScript.setPlayerObject(playerController);
+                Debug.Log("debug 2");
+                controller.GetComponent<GameController>().npcControllers.Add(monster); 
+            }
+        }
+        for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                Instantiate(clutter[Random.Range(0, clutter.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
+    }
+    private void createEmptyRoom(BoundsInt room, HashSet<Vector2Int> corridors)
+    {
+        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                Instantiate(clutter[Random.Range(0, clutter.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
+    }
+    private void createMimicRoom(BoundsInt room, HashSet<Vector2Int> corridors)
+    {
+        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        Instantiate(enemyMimic, entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+        for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                Instantiate(clutter[Random.Range(0, clutter.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
+    }
+
 
     private HashSet<Vector2Int> connectRooms(List<Vector2Int> roomCenters)
     {

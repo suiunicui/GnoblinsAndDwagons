@@ -196,7 +196,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2489705975942732330, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
   m_PrefabInstance: {fileID: 531732295}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1581848740}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b836530586a5e44a8dd004a95d746d4, type: 3}
@@ -6074,6 +6074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero1
       objectReference: {fileID: 0}
+    - target: {fileID: 5454538813015156100, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5658609771775034414, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: orthographic size
       value: 6.440268
@@ -6228,15 +6232,18 @@ MonoBehaviour:
   dungeonWidth: 50
   dungeonHeight: 50
   offset: 3
-  levelExit: {fileID: 6230106102254936353, guid: 1a7bc4744d22005409bf059b96b5e902, type: 3}
-  emptyChest: {fileID: 4227950179420794555, guid: 89da925b9c03a6d4b89fe3710cecd1cd, type: 3}
-  crate1: {fileID: 6214423537943087119, guid: a9ee50d563cec17409d8a585b8a02a29, type: 3}
-  crate2: {fileID: 6712424181209090271, guid: 057a78bd8c625d6409bfce2e7c82df24, type: 3}
+  clutter:
+  - {fileID: 6712424181209090271, guid: 057a78bd8c625d6409bfce2e7c82df24, type: 3}
+  - {fileID: 4227950179420794555, guid: 89da925b9c03a6d4b89fe3710cecd1cd, type: 3}
+  - {fileID: 6214423537943087119, guid: a9ee50d563cec17409d8a585b8a02a29, type: 3}
+  - {fileID: 4227950179420794555, guid: d4027d4356b95bf43950c75b6fc2d423, type: 3}
   npcMiner: {fileID: 4352767741435273477, guid: 0469e59fc6fb5a244943c953ec26326c, type: 3}
+  levelExit: {fileID: 6230106102254936353, guid: 1a7bc4744d22005409bf059b96b5e902, type: 3}
   enemyMimic: {fileID: 4227950179420794555, guid: 9720b70f73621864eb9245850b9c57a4, type: 3}
-  enemyGnoblin: {fileID: 0}
-  enemySkelington: {fileID: 0}
+  lowLevelEnemies:
+  - {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+  playerController: {fileID: 1581848740}
 --- !u!4 &708075080
 Transform:
   m_ObjectHideFlags: 0
@@ -6642,6 +6649,11 @@ PrefabInstance:
       addedObject: {fileID: 1786861606}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
+--- !u!1 &1581848740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5454538813015156100, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+  m_PrefabInstance: {fileID: 531732295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1786861605
 GameObject:
   m_ObjectHideFlags: 0
@@ -15978,75 +15990,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6081728757403706826, guid: e0554abd384e75e42a036c85e8023e9c, type: 3}
   m_PrefabInstance: {fileID: 1229702822}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3303289850864733251
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -17.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -28.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440287351721589663, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 32202177}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: interactableLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: solidObjectsLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: m_Name
-      value: Gnoblin
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -16062,4 +16005,3 @@ SceneRoots:
   - {fileID: 746859099}
   - {fileID: 1229702822}
   - {fileID: 608618857}
-  - {fileID: 3303289850864733251}

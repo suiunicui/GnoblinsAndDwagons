@@ -11,10 +11,10 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
+    [SerializeField] public PlayerController playerController;
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
-    [SerializeField] List<GameObject> npcControllers = new List<GameObject>();
+    [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
 
     GameState state;
 
@@ -32,7 +32,10 @@ public class GameController : MonoBehaviour
         };
         DialogManager.instance.onHideDialog += () =>
         {
-            if (state == GameState.DIALOG)
+            if (state == GameState.DIALOG && gameStateMemory.inCombat && !gameStateMemory.leaveCombat)
+            {
+                state = GameState.BATTLE;
+            }else if (state == GameState.DIALOG)
             {
                 state = GameState.FREE_ROAM;
             }
@@ -50,14 +53,16 @@ public class GameController : MonoBehaviour
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
             {
-                controller?.GetComponent<updatable>()?.HandleUpdate();
+                if(controller != null)
+                {
+                    controller.GetComponent<updatable>()?.HandleUpdate();
+                }
             }
         }else if (state == GameState.DIALOG)
         {
             DialogManager.instance.HandleUpdate();
         }else if (state == GameState.BATTLE)
         {
-          
         }
     }
     
