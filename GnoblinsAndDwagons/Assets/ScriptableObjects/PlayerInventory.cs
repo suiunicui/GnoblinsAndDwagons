@@ -24,7 +24,9 @@ public class PlayerInventory : ScriptableObject
 	{
 		AddItem.OnItemPurchased += Add;
 		EquipItem.OnItemEquipped += Equip;
+		inventoryThings.EquipItem.OnItemEquipped +=Equip;
 		EquipItem.OnItemUnequipped += Unequip;
+		inventoryThings.EquipItem.OnItemUnequipped +=Unequip;
 		SellItem.OnItemSold += Remove;
 	}
 
@@ -33,6 +35,8 @@ public class PlayerInventory : ScriptableObject
 		AddItem.OnItemPurchased -= Add;
 		EquipItem.OnItemEquipped -= Equip;
 		EquipItem.OnItemUnequipped -= Unequip;
+		inventoryThings.EquipItem.OnItemEquipped -=Equip;
+		inventoryThings.EquipItem.OnItemUnequipped -=Unequip;
 		SellItem.OnItemSold -= Remove;
 	}
 	public void Add(Item item)
@@ -92,11 +96,11 @@ public class PlayerInventory : ScriptableObject
 		{
 			inventory.Add(oldEquippedItem);
 		}
-		OnInventoryChange?.Invoke(inventory);
 		playerStats.Strength = equippedItems.getTotalStrength() + 2;
 		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
 		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
 		playerStats.Agility = equippedItems.getTotalAgility() + 2;
+		OnInventoryChange?.Invoke(inventory);
 		ClearSelection?.Invoke();
 	}
 
@@ -141,11 +145,11 @@ public class PlayerInventory : ScriptableObject
 			equippedItems.equippedBoots = new Item();
 			OnEquipmentChange?.Invoke();
 		}
-		OnInventoryChange?.Invoke(inventory);
 		playerStats.Strength = equippedItems.getTotalStrength() + 2;
 		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
 		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
 		playerStats.Agility = equippedItems.getTotalAgility() + 2;
+		OnInventoryChange?.Invoke(inventory);
 		ClearSelection?.Invoke();
 	}
 

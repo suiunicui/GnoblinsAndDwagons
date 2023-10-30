@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using inventoryThings;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
     FREE_ROAM,
     DIALOG,
-    BATTLE
+    BATTLE,
+    INVENTORY
 }
 
 public class GameController : MonoBehaviour
@@ -44,6 +48,14 @@ public class GameController : MonoBehaviour
         {
             state = GameState.BATTLE;
         };
+        inventoryThings.InventoryManager.instance.inInventory += () =>
+        {
+            state = GameState.INVENTORY;
+        };
+        inventoryThings.InventoryManager.instance.leaveInventory += () =>
+        {
+            gameStateMemory.leaveInventory = true;
+        };
     }
 
     private void Update()
@@ -63,6 +75,12 @@ public class GameController : MonoBehaviour
             DialogManager.instance.HandleUpdate();
         }else if (state == GameState.BATTLE)
         {
+        }
+        else if ( gameStateMemory.leaveInventory == true)
+        {
+            state = GameState.FREE_ROAM;
+            SceneManager.UnloadSceneAsync("Inventory");
+            gameStateMemory.leaveInventory = false;
         }
     }
     
