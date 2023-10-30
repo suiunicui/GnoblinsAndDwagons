@@ -12,7 +12,9 @@ namespace inventoryThings
     {
         public Image selectedShader;
         private InventoryManager inventoryManager;
-        private StatPanel statPanel;
+        private StatPanel selected_Item_Panel;
+        private EquippedItemStats equipped_Item_Panel;
+        private DisplayPlayerStats displayPlayerStats;
         [SerializeField] public PlayerInventory playerInventory;
 
         public static event Action OnClearSignal;
@@ -20,18 +22,19 @@ namespace inventoryThings
 
         private void Start()
         {
-            inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
-            statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+            selected_Item_Panel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+            equipped_Item_Panel = GameObject.Find("Equipped_Item_stats").GetComponent<EquippedItemStats>();
+            displayPlayerStats = GameObject.Find("Player_stats").GetComponent<DisplayPlayerStats>();
         }
 
         private void OnEnable()
         {
-            EquipmentSlot.OnClearSignal += HandleClearSignal;
+            OnClearSignal += HandleClearSignal;
         }
 
         private void OnDisable()
         {
-            EquipmentSlot.OnClearSignal -= HandleClearSignal;
+            OnClearSignal -= HandleClearSignal;
         }
         public void ClearSlot()
         {
@@ -65,8 +68,10 @@ namespace inventoryThings
                 this.playerInventory.selectedItem = new SelectedItem(this.playerInventory.equippedItems.equippedMainHand, Panel.Equipped_Items);
             if (gameObject.name.ToString() == "EquippedOffHand" && this.playerInventory.equippedItems.equippedOffHand.getValue() != 0)
                 this.playerInventory.selectedItem = new SelectedItem(this.playerInventory.equippedItems.equippedOffHand, Panel.Equipped_Items);
-            statPanel.Draw();
+            selected_Item_Panel.Draw();
+            equipped_Item_Panel.Draw();
             OnEquipmentSlotClicked?.Invoke();
+            displayPlayerStats.Draw();
         }
         private void OnRightClick() { }
 

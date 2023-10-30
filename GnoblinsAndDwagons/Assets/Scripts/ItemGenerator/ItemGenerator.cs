@@ -157,7 +157,7 @@ namespace ItemThings
 
             itemName = $"{randomRarity} {randomType} {itemName}";
 
-            value = (randomStrength + randomToughness + randomDexterity + randomAgility) * (int)(randomRarity);
+            value = (randomStrength + randomToughness + randomDexterity + randomAgility) * (int)randomRarity;
 
             return new Item(
                 randomStrength,

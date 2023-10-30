@@ -20,14 +20,12 @@ namespace inventoryThings
         private void OnEnable()
         {
             InventorySlot.OnInventoryItemClicked += OnChange;
-            ShopSlot.OnShopItemClicked += OnChange;
             EquipmentSlot.OnEquipmentSlotClicked += OnChange;
         }
 
         private void OnDisable()
         {
             InventorySlot.OnInventoryItemClicked -= OnChange;
-            ShopSlot.OnShopItemClicked -= OnChange;
             EquipmentSlot.OnEquipmentSlotClicked -= OnChange;
         }
 
