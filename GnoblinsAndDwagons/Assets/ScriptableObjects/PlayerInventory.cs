@@ -24,9 +24,9 @@ public class PlayerInventory : ScriptableObject
 	{
 		AddItem.OnItemPurchased += Add;
 		EquipItem.OnItemEquipped += Equip;
-		inventoryThings.EquipItem.OnItemEquipped +=Equip;
+		EquipItemInventory.OnItemEquipped +=Equip;
 		EquipItem.OnItemUnequipped += Unequip;
-		inventoryThings.EquipItem.OnItemUnequipped +=Unequip;
+		EquipItemInventory.OnItemUnequipped +=Unequip;
 		SellItem.OnItemSold += Remove;
 	}
 
@@ -35,8 +35,8 @@ public class PlayerInventory : ScriptableObject
 		AddItem.OnItemPurchased -= Add;
 		EquipItem.OnItemEquipped -= Equip;
 		EquipItem.OnItemUnequipped -= Unequip;
-		inventoryThings.EquipItem.OnItemEquipped -=Equip;
-		inventoryThings.EquipItem.OnItemUnequipped -=Unequip;
+		EquipItemInventory.OnItemEquipped -=Equip;
+		EquipItemInventory.OnItemUnequipped -=Unequip;
 		SellItem.OnItemSold -= Remove;
 	}
 	public void Add(Item item)

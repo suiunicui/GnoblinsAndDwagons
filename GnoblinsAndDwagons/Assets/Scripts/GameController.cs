@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using inventoryThings;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
@@ -48,11 +47,11 @@ public class GameController : MonoBehaviour
         {
             state = GameState.BATTLE;
         };
-        inventoryThings.InventoryManager.instance.inInventory += () =>
+        InventoryManagerInventory.instance.inInventory += () =>
         {
             state = GameState.INVENTORY;
         };
-        inventoryThings.InventoryManager.instance.leaveInventory += () =>
+        InventoryManagerInventory.instance.leaveInventory += () =>
         {
             gameStateMemory.leaveInventory = true;
         };
