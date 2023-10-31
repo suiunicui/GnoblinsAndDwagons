@@ -174,7 +174,7 @@ namespace ItemThings
         private Rarity GenerateRandomRarity(int commonChance, int uncommonChance, int rareChance, int gnepicChance, int legendaryChance)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 101); // Generate a random number between 1 and 100.
+            int randomNumber = random.Next(1, 100); // Generate a random number between 1 and 100.
 
             if (randomNumber <= commonChance)
             {

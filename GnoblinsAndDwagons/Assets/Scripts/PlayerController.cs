@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float scale;
     private bool isMoving = false;
-
     private Vector2 input;
     private Animator animator;
     public LayerMask solidObjectsLayer;
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (gameState.leaveShop)
         {
-            startPos = new Vector3(-4.7f,-2.8f,0f);
+            startPos = new Vector3(-4.7f, -2.8f, 0f);
         }
         else
         {
@@ -61,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 var targetPos = transform.position;
                 targetPos.x += input.x * scale;
                 targetPos.y += input.y * scale;
-                
+
                 if (isWalkable(targetPos))
                 {
                     StartCoroutine(Move(targetPos));
@@ -71,22 +70,22 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isMoving", isMoving);
 
-        if(Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
             interact();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.loadedSceneCount <= 1)
         {
-           SceneManager.LoadScene("Inventory", LoadSceneMode.Additive);
+            StartCoroutine(WaitForInventoryToLoadRoutine());
         }
     }
 
     void interact()
     {
         Vector3 faceDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        var interactPos = transform.position + 2*faceDir*scale;
-        
+        var interactPos = transform.position + 2 * faceDir * scale;
+
         Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
 
         var collider = Physics2D.OverlapCircle(interactPos, scale, interactableLayer);
@@ -98,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null || Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null) 
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null || Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null)
         {
             return false;
         }
@@ -120,5 +119,12 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+    }
+
+    IEnumerator WaitForInventoryToLoadRoutine()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("Inventory", LoadSceneMode.Additive);
+        yield return ao;
+        StartCoroutine(GameController.instance.StartInventorySubRoutine());
     }
 }

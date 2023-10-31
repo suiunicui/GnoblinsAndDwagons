@@ -12,8 +12,7 @@ public class InventoryManagerInventory : MonoBehaviour
     public GameObject slotPrefab;
     private DisplayPlayerStatsInventory displayPlayerStats;
     public List<InventorySlotInventory> inventorySlots = new List<InventorySlotInventory>(35);
-    public event Action inInventory;
-    public event Action leaveInventory;
+    public event Action inInventory, leaveInventory;
     [SerializeField] public PlayerInventory playerInventory;
 
     private void OnEnable()
@@ -27,17 +26,23 @@ public class InventoryManagerInventory : MonoBehaviour
         instance = this;
     }
 
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(0.05f);
+
+        inInventory?.Invoke();
+    }
+
     private void Start()
     {
         displayPlayerStats = GameObject.Find("Player_stats").GetComponent<DisplayPlayerStatsInventory>();
-        inInventory?.Invoke();
         DrawInventory(playerInventory.inventory);
+        StartCoroutine(waiter());
     }
 
     public void ExitInventory()
-    {
+    {   
         leaveInventory?.Invoke();
-        SceneManager.UnloadSceneAsync("Inventory");
     }
 
     private void OnDisable()
