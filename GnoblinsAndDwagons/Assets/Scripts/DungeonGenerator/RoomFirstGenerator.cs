@@ -35,6 +35,9 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     [SerializeField]
     GameObject playerController;
 
+    [SerializeField]
+    GameObject door;
+
     //Generated data
     private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
 
@@ -107,7 +110,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
                 createMonsterRoom(loopRoom, corridors);
             }else if (randomRoom < 80)
             {
-                createEmptyRoom(loopRoom, corridors);
+                CreatePuzzelRoom(loopRoom, corridors);
             }
             else
             {
@@ -120,9 +123,36 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     private void CreatePuzzelRoom(BoundsInt room, HashSet<Vector2Int> corridors)
     {
-        GameObject controller = GameObject.Find("GameController");
+        //GameObject controller = GameObject.Find("GameController");
 
-        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        //Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+
+        for (int wallx= room.min.x + offset; wallx < room.max.x; wallx++)
+        {
+            Vector2Int wall = new Vector2Int(wallx, room.min.y + offset-1);
+            if (corridors.Contains(wall))
+            {
+                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+            wall = new Vector2Int(wallx, room.max.y);
+            if (corridors.Contains(wall))
+            {
+                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
+        for (int wally = room.min.y + offset; wally < room.max.y; wally++)
+        {
+            Vector2Int wall = new Vector2Int(room.min.x + offset -1, wally);
+            if (corridors.Contains(wall))
+            {
+                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+            wall = new Vector2Int(room.max.x, wally);
+            if (corridors.Contains(wall))
+            {
+                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
 
     }
 

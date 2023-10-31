@@ -6244,6 +6244,7 @@ MonoBehaviour:
   - {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerController: {fileID: 1581848740}
+  door: {fileID: 7579643213661761650, guid: 65f2d88bc31a21948b93411d8a50ca7a, type: 3}
 --- !u!4 &708075080
 Transform:
   m_ObjectHideFlags: 0
