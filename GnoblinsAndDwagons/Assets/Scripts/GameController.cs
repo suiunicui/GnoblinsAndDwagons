@@ -18,11 +18,19 @@ public class GameController : MonoBehaviour
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
     [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
+    private bool doesBattleSystemExist = false;
+    public static GameController instance { get; private set; }
 
     GameState state;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
+
         if (gameStateMemory.inDungeon && gameStateMemory.leaveCombat == false)
         {
             dungeonController.handleStart();
@@ -38,49 +46,64 @@ public class GameController : MonoBehaviour
             if (state == GameState.DIALOG && gameStateMemory.inCombat && !gameStateMemory.leaveCombat)
             {
                 state = GameState.BATTLE;
-            }else if (state == GameState.DIALOG)
+            }
+            else if (state == GameState.DIALOG)
             {
                 state = GameState.FREE_ROAM;
             }
         };
-        BattleSystem.instance.StartCombat += () =>
+    }
+
+    private void Update()
+    {
+
+        if (BattleSystem.instance != null)
         {
-            state = GameState.BATTLE;
-        };
+            if (doesBattleSystemExist == false)
+            {
+                BattleSystem.instance.StartCombat += () =>
+                {
+                    state = GameState.BATTLE;
+                };
+                doesBattleSystemExist = true;
+            }
+        }
+
+
+        if (state == GameState.FREE_ROAM)
+        {
+            playerController.HandleUpdate();
+            foreach (var controller in npcControllers)
+            {
+                if (controller != null)
+                {
+                    controller.GetComponent<updatable>()?.HandleUpdate();
+                }
+            }
+        }
+        else if (state == GameState.DIALOG)
+        {
+            DialogManager.instance.HandleUpdate();
+        }
+        else if (state == GameState.BATTLE || state == GameState.INVENTORY)
+        {
+        }
+    }
+
+    public IEnumerator StartInventorySubRoutine()
+    {
+
         InventoryManagerInventory.instance.inInventory += () =>
         {
             state = GameState.INVENTORY;
         };
         InventoryManagerInventory.instance.leaveInventory += () =>
         {
-            gameStateMemory.leaveInventory = true;
+            SceneManager.UnloadSceneAsync("Inventory");
+            state = GameState.FREE_ROAM;
         };
+
+        yield return null;
     }
 
-    private void Update()
-    {
-        if (state == GameState.FREE_ROAM)
-        {
-            playerController.HandleUpdate();
-            foreach (var controller in npcControllers)
-            {
-                if(controller != null)
-                {
-                    controller.GetComponent<updatable>()?.HandleUpdate();
-                }
-            }
-        }else if (state == GameState.DIALOG)
-        {
-            DialogManager.instance.HandleUpdate();
-        }else if (state == GameState.BATTLE)
-        {
-        }
-        else if ( gameStateMemory.leaveInventory == true)
-        {
-            state = GameState.FREE_ROAM;
-            SceneManager.UnloadSceneAsync("Inventory");
-            gameStateMemory.leaveInventory = false;
-        }
-    }
-    
 }
