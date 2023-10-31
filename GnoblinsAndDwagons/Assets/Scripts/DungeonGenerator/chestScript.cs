@@ -25,7 +25,9 @@ public class chestScript : MonoBehaviour, Interactable
     public void Interact()
     {
         if (!isEmpty)
-        {             
+        {          
+            Debug.Log(playerInventory.inventory);
+            Debug.Log(storedItem);   
             playerInventory.inventory.Add(storedItem);
             isEmpty = true;
             DialogManager.instance.showDialog(itemDialog);
@@ -34,15 +36,16 @@ public class chestScript : MonoBehaviour, Interactable
            DialogManager.instance.showDialog(emptyDialog); 
         }
     }
-
+    
     // Start is called before the first frame update
     void Awake()
     {
+        generator = new ItemGenerator();
         storedItem = generator.generateRandomDungeonItem(commonChance, uncommonChance, rareChance, gnepicChance, legendaryChance);
+        isEmpty = false;
         //itemDialog.lines.Add("You found a " + storedItem.getName());
         //emptyDialog.lines.Add("It is empty");
         //emptyDialog.lines.Add("You already looted it");
-        isEmpty = false;
     }
 
 

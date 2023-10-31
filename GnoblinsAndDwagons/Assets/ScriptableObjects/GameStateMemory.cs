@@ -9,6 +9,7 @@ public class GameStateMemory : ScriptableObject
     public bool leaveShop = false;
     public bool leaveDungeon = false;
     public bool leaveCombat = false;
+    public bool leaveInventory = false;
 
     public int dungeonLevel = 0;
 

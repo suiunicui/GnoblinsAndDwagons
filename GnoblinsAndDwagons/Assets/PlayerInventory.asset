@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae6c0304927df34fbd121049a6d0252, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  gold: 32000
-  shopLevel: 3
+  gold: 9994916
+  shopLevel: 0
   playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}

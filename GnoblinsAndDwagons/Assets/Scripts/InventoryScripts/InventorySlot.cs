@@ -17,14 +17,18 @@ namespace inventoryThings
         public bool thisItemSelected;
         private InventoryManager inventoryManager;
         private ShowEquippedItems showEquippedItems;
-        private StatPanel statPanel;
+        private StatPanel selected_Item_Panel;
+        private EquippedItemStats equipped_Item_Panel;
+        private DisplayPlayerStats displayPlayerStats;
 
         public static event Action OnInventoryItemClicked;
 
         private void Start()
         {
             inventoryManager = GameObject.Find("Inventory_panel").GetComponent<InventoryManager>();
-            statPanel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+            selected_Item_Panel = GameObject.Find("Selected_Item_stats").GetComponent<StatPanel>();
+            equipped_Item_Panel = GameObject.Find("Equipped_Item_stats").GetComponent<EquippedItemStats>();
+            displayPlayerStats = GameObject.Find("Player_stats").GetComponent<DisplayPlayerStats>();
             showEquippedItems = GameObject.Find("Equipped_Items").GetComponent<ShowEquippedItems>();
             OnInventoryItemClicked?.Invoke();
         }
@@ -68,8 +72,10 @@ namespace inventoryThings
             inventoryManager.DeselectAllSlots(itemId);
             selectedShader.enabled = true;
             thisItemSelected = true;
-            statPanel.Draw();
+            selected_Item_Panel.Draw();
+            equipped_Item_Panel.Draw();
             OnInventoryItemClicked?.Invoke();
+            displayPlayerStats.Draw();
         }
         private void OnRightClick() { }
 
@@ -80,14 +86,17 @@ namespace inventoryThings
             inventoryManager.DeselectAllSlots(itemId);
             selectedShader.enabled = true;
             thisItemSelected = true;
-            statPanel.Draw();
+            selected_Item_Panel.Draw();
+            equipped_Item_Panel.Draw();
             OnInventoryItemClicked?.Invoke();
+            displayPlayerStats.Draw();
         }
 
         public void DeselectSlot()
         {
             this.Start();
-            statPanel.Draw();
+            selected_Item_Panel.Draw();
+            equipped_Item_Panel.Draw();
             OnInventoryItemClicked?.Invoke();
         }
     }
