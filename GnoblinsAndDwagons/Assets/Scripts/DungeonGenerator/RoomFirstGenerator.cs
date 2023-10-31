@@ -36,7 +36,15 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     GameObject playerController;
 
     [SerializeField]
-    GameObject door;
+    GameObject door; 
+
+    [SerializeField]
+    GameObject doorUnlocker;
+
+    [SerializeField]
+    GameObject doorLocker;
+
+    private int lockedDoorRoomIndex;
 
     //Generated data
     private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDict = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
@@ -66,7 +74,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
         tileMapVisualizer.paintFloor(floor);
         WallGenerator.createWalls(floor, tileMapVisualizer);
-
+        lockedDoorRoomIndex = 0;
         populateRooms(roomList, corridors);
     }
 
@@ -105,39 +113,71 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         foreach (BoundsInt loopRoom in roomList)
         {
             int randomRoom = Random.Range(0, 100);
-            if(randomRoom < 60)
-            {
-                createMonsterRoom(loopRoom, corridors);
-            }else if (randomRoom < 80)
-            {
-                CreatePuzzelRoom(loopRoom, corridors);
+            if(randomRoom < 5 && lockedDoorRoomIndex <= 2)
+            { 
+                CreateDoorPuzzelRoom(loopRoom, corridors);
             }
-            else
+            else if (randomRoom < 15)
             {
                 createMimicRoom(loopRoom, corridors);
+            } 
+            else if  (randomRoom < 80)
+            {
+               createMonsterRoom(loopRoom, corridors);
+            }
+            else 
+            { 
+                createEmptyRoom(loopRoom, corridors); 
             }
         }
 
         
     }
 
-    private void CreatePuzzelRoom(BoundsInt room, HashSet<Vector2Int> corridors)
+    private void CreateDoorPuzzelRoom(BoundsInt room, HashSet<Vector2Int> corridors)
     {
         //GameObject controller = GameObject.Find("GameController");
 
-        //Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        Vector3Int doorUnlockerPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        while(corridors.Contains((Vector2Int)doorUnlockerPos) == true)
+        {
+            doorUnlockerPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        }
+        GameObject doorUnlockerObject = Instantiate(doorUnlocker, doorUnlockerPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+        doorUnlockerObject.tag = "doorUnlocker" + lockedDoorRoomIndex;
+        doorUnlocker doorUnlockerScript = doorUnlockerObject.GetComponent<doorUnlocker>();
+        doorUnlockerScript.doorTag = "doorRoom" + lockedDoorRoomIndex;
+        doorUnlockerScript.isRoomLocked = false;
+
+
+        Vector3Int doorLockerPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+
+        while (corridors.Contains((Vector2Int)doorLockerPos) == true)
+        {
+            doorLockerPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        }
+        GameObject doorLockerObject = Instantiate(doorLocker, doorLockerPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+        doorLocker doorLockerScript = doorLockerObject.GetComponent<doorLocker>();
+        doorLockerScript.doorTag = "doorRoom" + lockedDoorRoomIndex;
+        doorLockerScript.unlockTag = "doorUnlocker" + lockedDoorRoomIndex;
 
         for (int wallx= room.min.x + offset; wallx < room.max.x; wallx++)
         {
             Vector2Int wall = new Vector2Int(wallx, room.min.y + offset-1);
             if (corridors.Contains(wall))
             {
-                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                GameObject doorObject = Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                doorObject.tag = "doorRoom" + lockedDoorRoomIndex;
+                doorObject.GetComponent<BoxCollider2D>().enabled = false;
+                doorObject.GetComponent<Renderer>().enabled = false;
             }
             wall = new Vector2Int(wallx, room.max.y);
             if (corridors.Contains(wall))
             {
-                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                GameObject doorObject = Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                doorObject.tag = "doorRoom" + lockedDoorRoomIndex;
+                doorObject.GetComponent<BoxCollider2D>().enabled = false;
+                doorObject.GetComponent<Renderer>().enabled = false;
             }
         }
         for (int wally = room.min.y + offset; wally < room.max.y; wally++)
@@ -145,15 +185,30 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             Vector2Int wall = new Vector2Int(room.min.x + offset -1, wally);
             if (corridors.Contains(wall))
             {
-                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                GameObject doorObject = Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                doorObject.tag = "doorRoom" + lockedDoorRoomIndex;
+                doorObject.GetComponent<BoxCollider2D>().enabled = false;
+                doorObject.GetComponent<Renderer>().enabled = false;
             }
             wall = new Vector2Int(room.max.x, wally);
             if (corridors.Contains(wall))
             {
-                Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                GameObject doorObject = Instantiate(door, new Vector3(wall.x, wall.y, 0) + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                doorObject.tag = "doorRoom" + lockedDoorRoomIndex;
+                doorObject.GetComponent<BoxCollider2D>().enabled = false;
+                doorObject.GetComponent<Renderer>().enabled = false;
             }
         }
-
+        lockedDoorRoomIndex++;
+        Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+        for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
+            if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
+            {
+                Instantiate(clutter[Random.Range(0, clutter.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            }
+        }
     }
 
     private void createMonsterRoom(BoundsInt room, HashSet<Vector2Int>  corridors)
@@ -167,12 +222,10 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
             {
                 GameObject monster = Instantiate(lowLevelEnemies[Random.Range(0, lowLevelEnemies.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
-                Debug.Log(monster);
                 monsterController monsterScript = monster.GetComponent<monsterController>();
 
                 if (monsterScript == null) { Debug.Log("debug 3"); }
                 monsterScript.setPlayerObject(playerController);
-                Debug.Log("debug 2");
                 controller.GetComponent<GameController>().npcControllers.Add(monster); 
             }
         }

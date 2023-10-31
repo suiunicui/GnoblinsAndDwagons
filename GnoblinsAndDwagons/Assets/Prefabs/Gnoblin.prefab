@@ -133,8 +133,8 @@ MonoBehaviour:
   monsterType: gnoblin
   enemyStats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
   Agility: 5
-  Strength: 2
-  Toughness: 2
+  Strength: 8
+  Toughness: 5
   Dexterity: 3
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   dialog:
