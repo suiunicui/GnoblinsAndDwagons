@@ -81,7 +81,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     {
         BoundsInt room = roomList[Random.Range(0, roomList.Count)];
 
-        gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center + new Vector3(0.5f, 0.5f, 0));
+        gameStateMemory.DungeonStartPos = Vector3Int.RoundToInt(room.center);
 
         for(int i = 0; i<Random.Range(5,10); i++)
         {
