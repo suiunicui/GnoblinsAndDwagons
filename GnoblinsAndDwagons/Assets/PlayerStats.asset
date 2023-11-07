@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: 
   type: 
-  Agility: 10
-  Strength: 100
-  Toughness: 10
-  Dexterity: 10
+  Agility: 60000
+  Strength: 60000
+  Toughness: 60000
+  Dexterity: 60000
