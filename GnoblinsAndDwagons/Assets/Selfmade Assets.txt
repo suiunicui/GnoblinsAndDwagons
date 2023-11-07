@@ -1,2 +1,8 @@
-Dwagon
-Smith
+SPRITES:
+Dwagon (sprite + animations)
+Smith (sprite + animation)
+
+
+
+Music:
+Dungeon music (composition and production)
