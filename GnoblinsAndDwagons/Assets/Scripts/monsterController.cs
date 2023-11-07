@@ -11,6 +11,7 @@ public class monsterController : MonoBehaviour, updatable
 {
     public float speed;
     public float moveDist;
+    [SerializeField] private int combatDist=1;
     private bool isMoving = false;
 
     public LayerMask solidObjectsLayer;
@@ -62,7 +63,7 @@ public class monsterController : MonoBehaviour, updatable
     {
         if (!isMoving)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < 1)
+            if (Vector3.Distance(player.transform.position, transform.position) < combatDist)
             {
                 triggerCombat();
             }
@@ -113,8 +114,8 @@ public class monsterController : MonoBehaviour, updatable
         gameStateMemory.inDungeon = false;
         gameStateMemory.inCombat = true;
         gameStateMemory.leaveCombat = false;
-        DialogManager.instance.showDialog(dialog, true, "combat");
-        Destroy(gameObject);
+        DialogManager.instance.showDialog(dialog, true, "combat", this.gameObject);
+
         
     }
 

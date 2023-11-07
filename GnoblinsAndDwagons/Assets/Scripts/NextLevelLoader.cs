@@ -15,6 +15,13 @@ public class NetxLevelLoader : MonoBehaviour, Interactable
         gameStateMemory.inCombat = false;
         gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel++;
-        SceneManager.LoadScene("RandomDungeon");
+        if(gameStateMemory.dungeonLevel < gameStateMemory.totalLevels)
+        {
+            SceneManager.LoadScene("RandomDungeon");
+        }
+        else
+        {
+            SceneManager.LoadScene("FinalLevel");
+        }
     }
 }
