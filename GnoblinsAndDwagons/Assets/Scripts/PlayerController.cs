@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         if (gameState.inDungeon)
         {
-            startPos = gameState.DungeonStartPos;
+            startPos = gameState.DungeonStartPos + new Vector3(0.5f, 0.5f, 0);
         }
         else if (gameState.leaveDungeon)
         {

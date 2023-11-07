@@ -13,6 +13,8 @@ public class MerchantController : MonoBehaviour, Interactable
         gameStateMemory.inShop = true;
         gameStateMemory.leaveDungeon = false;
         gameStateMemory.leaveShop = false;
+        gameStateMemory.leaveCombat = false;
+        gameStateMemory.inCombat = false;
         DialogManager.instance.showDialog(dialog, true, "Shop");
     }
 }

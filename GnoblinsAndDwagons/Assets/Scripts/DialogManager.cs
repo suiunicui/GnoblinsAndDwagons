@@ -45,7 +45,7 @@ public class DialogManager : MonoBehaviour
                 onHideDialog?.Invoke();
                 if(sceneChange)
                 {
-                    if(gameStateMemory.inCombat)
+                    if(gameStateMemory.inCombat || gameStateMemory.inShop)
                     {
                         if (gameStateMemory.leaveCombat) {
                             gameStateMemory.inCombat = false;
