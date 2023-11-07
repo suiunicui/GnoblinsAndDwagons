@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
     [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
+
     private bool doesBattleSystemExist = false;
     public static GameController instance { get; private set; }
 
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
 
         if (gameStateMemory.inDungeon && gameStateMemory.leaveCombat == false)
         {
+            gameStateMemory.DungeonStartPos = new Vector3Int(-11, 0, 0);
             dungeonController.handleStart();
         }
         playerController.handleStart();

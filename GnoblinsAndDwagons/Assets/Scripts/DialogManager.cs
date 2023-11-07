@@ -20,6 +20,7 @@ public class DialogManager : MonoBehaviour
 
     private bool sceneChange;
     private string sceneHolder;
+    private GameObject destroyCaller;
 
     private void Awake()
     {
@@ -43,6 +44,11 @@ public class DialogManager : MonoBehaviour
                 currentLine = 0;
                 dialogBox.SetActive(false);
                 onHideDialog?.Invoke();
+                Debug.Log(destroyCaller);
+                if(destroyCaller != null)
+                {
+                    Destroy(destroyCaller);
+                }
                 if(sceneChange)
                 {
                     if(gameStateMemory.inCombat || gameStateMemory.inShop)
@@ -61,15 +67,17 @@ public class DialogManager : MonoBehaviour
                         SceneManager.LoadScene(sceneHolder);
                     }
                 }
+                
             }
 
         }
     }
 
-    public void showDialog(Dialog dialog, bool changeScene = false, string newScene = "")
+    public void showDialog(Dialog dialog, bool changeScene = false, string newScene = "", GameObject caller = null)
     {
         sceneChange = changeScene;
         sceneHolder = newScene;
+        destroyCaller = caller;
 
         onShowDialog?.Invoke();
         this.dialog = dialog;
