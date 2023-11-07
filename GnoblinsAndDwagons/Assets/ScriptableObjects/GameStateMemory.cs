@@ -9,10 +9,10 @@ public class GameStateMemory : ScriptableObject
     public bool leaveShop = false;
     public bool leaveDungeon = false;
     public bool leaveCombat = false;
-    public bool leaveInventory = false;
 
     public int dungeonLevel = 0;
     public int totalLevels = 20;
 
+    public PlayerAvatar playerAvatar = new PlayerAvatar();
     public Vector3Int DungeonStartPos = new Vector3Int(0,0,0);
 }

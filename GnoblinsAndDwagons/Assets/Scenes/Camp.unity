@@ -244,7 +244,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
-  player: {fileID: 5365024778287629313}
+  player: {fileID: 0}
   monsterName: Drunk Salesman
   monsterType: Drunk
   enemyStats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
@@ -43944,6 +43944,10 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+    - target: {fileID: 2489705975942732330, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 5365024778287629318}
     - target: {fileID: 5454538813015156100, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: m_Name
       value: hero1
@@ -43952,6 +43956,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 3.6709094
       objectReference: {fileID: 0}
+    - target: {fileID: 7057455028569006442, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7291a0ea84b20fa48868f305c11232ec, type: 2}
     - target: {fileID: 7784859302863277840, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.45
@@ -44109,6 +44117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b836530586a5e44a8dd004a95d746d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &5365024778287629318 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7292508521963261370, guid: 7fcadba7280e7e543a47a71aa8c8a708, type: 3}
+  m_PrefabInstance: {fileID: 1705201394337469822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7420191074724752606
 PrefabInstance:
   m_ObjectHideFlags: 0

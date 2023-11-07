@@ -150,7 +150,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hero1
+  m_Name: hero_Human
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Blend
@@ -224,7 +224,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: Idle_human
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -281,10 +281,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2232851986856806944}
-    m_Position: {x: 300, y: 70, z: 0}
+    m_Position: {x: 330, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1864062908177344004}
-    m_Position: {x: 300, y: 180, z: 0}
+    m_Position: {x: 300, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3223527252756561957}
     m_Position: {x: 40, y: 280, z: 0}

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController =  Resources.Load<RuntimeAnimatorController>(gameState.playerAvatar.path);
     }
 
     public void handleStart()
@@ -79,6 +80,13 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(WaitForInventoryToLoadRoutine());
         }
+
+        // For testing the avatar shifting runtime
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        animator.runtimeAnimatorController =  Resources.Load<RuntimeAnimatorController>("Heroes/Human/hero_Human");
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        animator.runtimeAnimatorController =  Resources.Load<RuntimeAnimatorController>("Heroes/Elf/hero_Elf");
     }
 
     void interact()
