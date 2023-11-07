@@ -19,6 +19,6 @@ MonoBehaviour:
   leaveDungeon: 0
   leaveCombat: 0
   leaveInventory: 0
-  dungeonLevel: 19
+  dungeonLevel: 20
   totalLevels: 20
   DungeonStartPos: {x: -11, y: 0, z: 0}
