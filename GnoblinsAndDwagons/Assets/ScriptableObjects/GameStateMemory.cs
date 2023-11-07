@@ -12,5 +12,6 @@ public class GameStateMemory : ScriptableObject
 
     public int dungeonLevel = 0;
 
+    public PlayerAvatar playerAvatar = new PlayerAvatar();
     public Vector3Int DungeonStartPos = new Vector3Int(0,0,0);
 }
