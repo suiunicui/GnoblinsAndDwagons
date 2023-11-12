@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneLoader : MonoBehaviour, Interactable
+public class LoadSceneAfterCharacterSelection : MonoBehaviour, Interactable
 {
+
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] CombatStats playerStats;
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] public string sceneToLoad;
-
+    public Button button;
     public void Interact()
     {
         gameStateMemory.inShop = false;
@@ -27,4 +28,28 @@ public class SceneLoader : MonoBehaviour, Interactable
         playerInventory.shopLevel = 0;
         SceneManager.LoadScene(sceneToLoad);
     }
+
+    void Start()
+    {
+        button.image.CrossFadeAlpha(0.2f, 0.0f, false);
+        button.enabled = false;
+    }
+
+    void OnEnable()
+    {
+        HeroSelection.OnHeroSelectionClicked += enableButton;
+    }
+
+    void OnDisable()
+    {
+        HeroSelection.OnHeroSelectionClicked -= enableButton;
+    }
+
+    private void enableButton(string dummy)
+    {
+        button.image.CrossFadeAlpha(1, 0.0f, false);
+        button.enabled = true;
+    }
+
+
 }

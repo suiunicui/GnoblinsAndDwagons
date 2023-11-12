@@ -923,7 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b649ebbd8f2fa4a823a16c1ed2e6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: Camp
+  NextScene: CharacterSelection
 --- !u!1 &1202109301
 GameObject:
   m_ObjectHideFlags: 0
