@@ -11,12 +11,7 @@ public class SceneLoader : MonoBehaviour, Interactable
     [SerializeField] public string sceneToLoad;
     public void Interact()
     {
-        gameStateMemory.inShop = false;
-        gameStateMemory.inDungeon = false;
-        gameStateMemory.leaveDungeon = false;
-        gameStateMemory.leaveShop = false;
-        gameStateMemory.leaveCombat = false;
-        gameStateMemory.inCombat = false;
+        gameStateMemory.clearGameState();
         playerStats.Strength = 2;
         playerStats.Toughness = 2;
         playerStats.Dexterity = 2;

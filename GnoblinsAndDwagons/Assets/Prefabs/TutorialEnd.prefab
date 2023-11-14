@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7478167168256816986}
   - component: {fileID: 4940512698734010589}
+  - component: {fileID: 6523056930381791342}
   m_Layer: 0
-  m_Name: StartPoint
+  m_Name: TutorialEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6523056930381791342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620881606858084014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78da13e217dda5a4d8006ad45a4f8d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+  playerStats: {fileID: 0}
+  playerInventory: {fileID: 0}
+  sceneToLoad: StartScreen

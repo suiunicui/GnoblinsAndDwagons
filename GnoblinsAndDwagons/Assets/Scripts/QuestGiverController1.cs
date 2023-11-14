@@ -9,12 +9,8 @@ public class QuestGiverController : MonoBehaviour, Interactable
     [SerializeField] GameStateMemory gameStateMemory;
     public void Interact()
     {
+        gameStateMemory.clearGameState();
         gameStateMemory.inDungeon = true;
-        gameStateMemory.inShop = false;
-        gameStateMemory.leaveDungeon = false;
-        gameStateMemory.leaveShop= false;
-        gameStateMemory.inCombat = false;
-        gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel = 1;
         DialogManager.instance.showDialog(dialog, true, "EnterDungeon");
     }

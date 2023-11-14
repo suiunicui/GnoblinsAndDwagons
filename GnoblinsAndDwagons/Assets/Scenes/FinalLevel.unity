@@ -6037,6 +6037,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1713448914}
+    - target: {fileID: 6636943106969680301, guid: cca62049aad5a0a4fbc7a398ddf34e7b, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636943106969680301, guid: cca62049aad5a0a4fbc7a398ddf34e7b, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: This must be where the book is kept
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

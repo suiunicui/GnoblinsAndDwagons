@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
         {
             startPos = new Vector3(-4.7f, -2.8f, 0f);
         }
+        else if (gameState.inTutorial)
+        {
+            startPos = new Vector3(-10f, 4.5f, 0f);
+        }
         else
         {
             startPos = new Vector3(-16f, 5.5f, 0f);

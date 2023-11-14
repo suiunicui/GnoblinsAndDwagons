@@ -8,12 +8,9 @@ public class NetxLevelLoader : MonoBehaviour, Interactable
     [SerializeField] GameStateMemory gameStateMemory;
     public void Interact()
     {
-        gameStateMemory.inShop = false;
+        gameStateMemory.clearGameState();
         gameStateMemory.inDungeon = true;
         gameStateMemory.leaveDungeon = true;
-        gameStateMemory.leaveShop = false;
-        gameStateMemory.inCombat = false;
-        gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel++;
         if(gameStateMemory.dungeonLevel < gameStateMemory.totalLevels)
         {
