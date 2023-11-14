@@ -18,6 +18,8 @@ public class GameStateMemory : ScriptableObject
     {
         new PlayerAvatar(),
         new PlayerAvatar(0.75f,1.5f,0.5f,1.25f,PlayerAvatar.Elf),
+        new PlayerAvatar(1.25f,0.75f,1.5f,0.5f,PlayerAvatar.Dwarf),
+        new PlayerAvatar(1.5f,0.5f,1.25f,0.75f,PlayerAvatar.Orc)
     };
     public PlayerAvatar playerAvatar = new PlayerAvatar();
     public Vector3Int DungeonStartPos = new Vector3Int(0,0,0);
