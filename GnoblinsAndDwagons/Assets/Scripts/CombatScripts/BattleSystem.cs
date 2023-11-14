@@ -93,7 +93,7 @@ public class BattleSystem : MonoBehaviour
 				break;
 
 			case PlayerAction.HeavyAttack:
-				damageDealt = CalculateDamage(playerUnit.stats.Strength * 2, enemyUnit.stats.Toughness);
+				damageDealt = CalculateDamage(playerUnit.stats.Strength * 2, enemyUnit.stats.Toughness + enemyUnit.stats.Dexterity);
 				combatLog.AddLogMessage($"Player used Heavy Attack and dealt {damageDealt} damage to the enemy.");
 				Debug.Log("Player used Heavy Attack and dealt " + damageDealt + " damage to the enemy.");
 				break;
