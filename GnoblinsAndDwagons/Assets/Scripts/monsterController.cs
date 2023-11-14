@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -111,9 +112,10 @@ public class monsterController : MonoBehaviour, updatable
         enemyStats.Toughness = Toughness * gameStateMemory.dungeonLevel;
         enemyStats.Dexterity = Dexterity * gameStateMemory.dungeonLevel;
 
-        gameStateMemory.inDungeon = false;
+        bool tutorial = gameStateMemory.inTutorial;
+        gameStateMemory.clearGameState();
         gameStateMemory.inCombat = true;
-        gameStateMemory.leaveCombat = false;
+        gameStateMemory.inTutorial = tutorial;
         DialogManager.instance.showDialog(dialog, true, "combat", this.gameObject);
 
         

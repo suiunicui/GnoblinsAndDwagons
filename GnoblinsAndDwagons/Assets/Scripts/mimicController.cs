@@ -33,9 +33,9 @@ public class mimicController : MonoBehaviour, Interactable
         enemyStats.Toughness = Toughness;
         enemyStats.Dexterity = Dexterity;
 
-        gameStateMemory.inDungeon = false;
+
+        gameStateMemory.clearGameState();
         gameStateMemory.inCombat = true;
-        gameStateMemory.leaveCombat = false;
         DialogManager.instance.showDialog(dialog, true, "combat");
         Destroy(gameObject); 
 

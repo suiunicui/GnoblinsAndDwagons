@@ -33,6 +33,7 @@ public class UpgradeShop : MonoBehaviour
 
     public void OnClick()
     {
+        playerInventory.gold = playerInventory.gold -(playerInventory.shopLevel * 3000 + 1000);
         playerInventory.LevelUpShop();
         this.OnChange();
     }
@@ -48,7 +49,7 @@ public class UpgradeShop : MonoBehaviour
         {
             buttonText.text = "Invest in shop (" + (playerInventory.shopLevel * 3000 + 1000) + ")";
             button.image.CrossFadeAlpha(1, 0.0f, false);
-            if (playerInventory.gold >= playerInventory.shopLevel * 500 + 500)
+            if (playerInventory.gold >= playerInventory.shopLevel * 3000 + 1000)
             {
                 button.enabled = true;
             }

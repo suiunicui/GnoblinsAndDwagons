@@ -74,6 +74,11 @@ public class GameController : MonoBehaviour
 
         if (state == GameState.FREE_ROAM)
         {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                gameStateMemory.clearGameState();
+                SceneManager.LoadScene("StartScreen");
+            }
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
             {

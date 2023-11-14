@@ -9,12 +9,8 @@ public class MerchantController : MonoBehaviour, Interactable
     [SerializeField] GameStateMemory gameStateMemory;
     public void Interact()
     {
-        gameStateMemory.inDungeon = false;
+        gameStateMemory.clearGameState();
         gameStateMemory.inShop = true;
-        gameStateMemory.leaveDungeon = false;
-        gameStateMemory.leaveShop = false;
-        gameStateMemory.leaveCombat = false;
-        gameStateMemory.inCombat = false;
         DialogManager.instance.showDialog(dialog, true, "Shop");
     }
 }
