@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneLoader : MonoBehaviour, Interactable
+public class LoadSceneAfterCharacterSelection : MonoBehaviour, Interactable
 {
+
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] CombatStats playerStats;
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] public string sceneToLoad;
-
+    public Button button;
     public void Interact()
     {
         gameStateMemory.inShop = false;
@@ -19,12 +20,36 @@ public class SceneLoader : MonoBehaviour, Interactable
         gameStateMemory.leaveShop = false;
         gameStateMemory.leaveCombat = false;
         gameStateMemory.inCombat = false;
-        playerStats.Strength = (int)(2 * gameStateMemory.playerAvatar.strengthModifier);
-        playerStats.Toughness = (int)(2 * gameStateMemory.playerAvatar.toughnessModifier);
-        playerStats.Dexterity = (int)(2 *  gameStateMemory.playerAvatar.dexterityModifier);
-        playerStats.Agility = (int)(2 * gameStateMemory.playerAvatar.agilityModifier);
+        playerStats.Strength = 2;
+        playerStats.Toughness = 2;
+        playerStats.Dexterity = 2;
+        playerStats.Agility = 2;
         playerInventory.gold = 200;
         playerInventory.shopLevel = 0;
         SceneManager.LoadScene(sceneToLoad);
     }
+
+    void Start()
+    {
+        button.image.CrossFadeAlpha(0.2f, 0.0f, false);
+        button.enabled = false;
+    }
+
+    void OnEnable()
+    {
+        HeroSelection.OnHeroSelectionClicked += enableButton;
+    }
+
+    void OnDisable()
+    {
+        HeroSelection.OnHeroSelectionClicked -= enableButton;
+    }
+
+    private void enableButton(string dummy)
+    {
+        button.image.CrossFadeAlpha(1, 0.0f, false);
+        button.enabled = true;
+    }
+
+
 }
