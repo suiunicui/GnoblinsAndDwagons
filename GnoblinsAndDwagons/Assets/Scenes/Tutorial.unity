@@ -947,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[1]
@@ -959,15 +959,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[3]
-      value: 'Normal: '
+      value: 'Normal: Use your strength against the enemy toughness'
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[4]
-      value: 'Heavy: '
+      value: 'Heavy: Doubles your strength but the enemy can use both toughness and
+        dexterity to defend agains it'
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[5]
-      value: 'Quick: '
+      value: 'Quick: Use your agility against the enemy toughness'
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[6]
@@ -975,7 +976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: dialog.lines.Array.data[7]
-      value: 'Flee:'
+      value: 'Flee: '
       objectReference: {fileID: 0}
     - target: {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
       propertyPath: m_Name
