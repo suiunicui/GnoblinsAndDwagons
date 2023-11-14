@@ -15,10 +15,10 @@ MonoBehaviour:
   inDungeon: 0
   inShop: 0
   inCombat: 0
-  leaveShop: 0
+  leaveShop: 1
   leaveDungeon: 0
   leaveCombat: 0
   inTutorial: 0
-  dungeonLevel: 20
+  dungeonLevel: 0
   totalLevels: 20
-  DungeonStartPos: {x: -11, y: 0, z: 0}
+  DungeonStartPos: {x: -4, y: 9, z: 0}
