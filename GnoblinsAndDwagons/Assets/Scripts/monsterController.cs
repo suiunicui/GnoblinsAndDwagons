@@ -111,9 +111,8 @@ public class monsterController : MonoBehaviour, updatable
         enemyStats.Toughness = Toughness * gameStateMemory.dungeonLevel;
         enemyStats.Dexterity = Dexterity * gameStateMemory.dungeonLevel;
 
-        gameStateMemory.inDungeon = false;
+        gameStateMemory.clearGameState();
         gameStateMemory.inCombat = true;
-        gameStateMemory.leaveCombat = false;
         DialogManager.instance.showDialog(dialog, true, "combat", this.gameObject);
 
         

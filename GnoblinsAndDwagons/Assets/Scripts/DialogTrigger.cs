@@ -14,9 +14,6 @@ public class dialogTrigger : MonoBehaviour, updatable
     public GameObject player;
 
     [SerializeField]
-    GameStateMemory gameStateMemory;
-
-    [SerializeField]
     public Dialog dialog;
 
     public void HandleUpdate()

@@ -13,12 +13,7 @@ public class SceneLoader : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        gameStateMemory.inShop = false;
-        gameStateMemory.inDungeon = false;
-        gameStateMemory.leaveDungeon = false;
-        gameStateMemory.leaveShop = false;
-        gameStateMemory.leaveCombat = false;
-        gameStateMemory.inCombat = false;
+        gameStateMemory.clearGameState();
         playerStats.Strength = (int)(2 * gameStateMemory.playerAvatar.strengthModifier);
         playerStats.Toughness = (int)(2 * gameStateMemory.playerAvatar.toughnessModifier);
         playerStats.Dexterity = (int)(2 *  gameStateMemory.playerAvatar.dexterityModifier);
