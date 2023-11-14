@@ -6,10 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 public class BattleSystem : MonoBehaviour
 {
 	[SerializeField] private GameStateMemory _gameStateMemory;
+	[SerializeField] private PlayerInventory _playerInventory;
 	public event Action StartCombat;
 
 	public static BattleSystem instance { get; private set;}
@@ -180,6 +182,8 @@ public class BattleSystem : MonoBehaviour
 				_gameStateMemory.inDungeon = false;
                 _gameStateMemory.leaveCombat = true;
                 _gameStateMemory.inCombat = false;
+				_playerInventory.gold = 0;
+				_playerInventory.inventory = new List<ItemThings.Item>(35);
                 DialogManager.instance.showDialog(defeatdialog,true,"Camp");
 				break;
 			case BattleState.Fled:
