@@ -25,6 +25,7 @@ public class SceneLoader : MonoBehaviour, Interactable
         playerStats.Agility = (int)(2 * gameStateMemory.playerAvatar.agilityModifier);
         playerInventory.gold = 200;
         playerInventory.shopLevel = 0;
+        playerInventory.inventory = new List<ItemThings.Item>(35);
         SceneManager.LoadScene(sceneToLoad);
     }
 }
