@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 852417743}
   - component: {fileID: 852417745}
   - component: {fileID: 852417746}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: tileset-world_48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
