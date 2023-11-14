@@ -15,7 +15,7 @@ MonoBehaviour:
   inDungeon: 0
   inShop: 0
   inCombat: 0
-  leaveShop: 1
+  leaveShop: 0
   leaveDungeon: 0
   leaveCombat: 0
   inTutorial: 0
