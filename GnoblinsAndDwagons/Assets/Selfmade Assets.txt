@@ -6,3 +6,4 @@ Smith (sprite + animation)
 
 Music:
 Dungeon music (composition and production)
+Menu music (composition and production)
