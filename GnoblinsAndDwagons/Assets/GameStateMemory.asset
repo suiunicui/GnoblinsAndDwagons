@@ -21,4 +21,4 @@ MonoBehaviour:
   inTutorial: 0
   dungeonLevel: 0
   totalLevels: 20
-  DungeonStartPos: {x: -4, y: 9, z: 0}
+  DungeonStartPos: {x: 9, y: 8, z: 0}
