@@ -18,6 +18,7 @@ public class PlayerInventory : ScriptableObject
 	public int gold = 200;
 	public int shopLevel = 0;
 	[SerializeField] public CombatStats playerStats;
+	[SerializeField] public GameStateMemory gameState;
 
 
 	private void OnEnable()
@@ -96,10 +97,10 @@ public class PlayerInventory : ScriptableObject
 		{
 			inventory.Add(oldEquippedItem);
 		}
-		playerStats.Strength = equippedItems.getTotalStrength() + 2;
-		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
-		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
-		playerStats.Agility = equippedItems.getTotalAgility() + 2;
+		playerStats.Strength = (int)((equippedItems.getTotalStrength() + 2)*gameState.playerAvatar.strengthModifier);
+		playerStats.Toughness = (int)((equippedItems.getTotalToughness() + 2)*gameState.playerAvatar.toughnessModifier);
+		playerStats.Dexterity = (int)((equippedItems.getTotalDexterity() + 2)*gameState.playerAvatar.dexterityModifier);
+		playerStats.Agility = (int)((equippedItems.getTotalAgility() + 2)*gameState.playerAvatar.agilityModifier);
 		OnInventoryChange?.Invoke(inventory);
 		ClearSelection?.Invoke();
 	}
@@ -145,10 +146,10 @@ public class PlayerInventory : ScriptableObject
 			equippedItems.equippedBoots = new Item();
 			OnEquipmentChange?.Invoke();
 		}
-		playerStats.Strength = equippedItems.getTotalStrength() + 2;
-		playerStats.Toughness = equippedItems.getTotalToughness() + 2;
-		playerStats.Dexterity = equippedItems.getTotalDexterity() + 2;
-		playerStats.Agility = equippedItems.getTotalAgility() + 2;
+		playerStats.Strength = (int)((equippedItems.getTotalStrength() + 2)*gameState.playerAvatar.strengthModifier);
+		playerStats.Toughness = (int)((equippedItems.getTotalToughness() + 2)*gameState.playerAvatar.toughnessModifier);
+		playerStats.Dexterity = (int)((equippedItems.getTotalDexterity() + 2)*gameState.playerAvatar.dexterityModifier);
+		playerStats.Agility = (int)((equippedItems.getTotalAgility() + 2)*gameState.playerAvatar.agilityModifier);
 		OnInventoryChange?.Invoke(inventory);
 		ClearSelection?.Invoke();
 	}
