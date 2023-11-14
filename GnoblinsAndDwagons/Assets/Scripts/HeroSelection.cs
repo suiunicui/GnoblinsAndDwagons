@@ -49,7 +49,7 @@ public class HeroSelection : MonoBehaviour, IPointerClickHandler
     {
         OnHeroSelectionClicked?.Invoke(flavourText);
         selectionPanel.enabled = true;
-        gameState.playerAvatar = new PlayerAvatar(playerAvatarAnimator);
+        gameState.playerAvatar = gameState.selectablePlayerAvatars.Find(x => x.path.Contains(playerAvatarAnimator));
     }
     private void OnRightClick() { }
 
