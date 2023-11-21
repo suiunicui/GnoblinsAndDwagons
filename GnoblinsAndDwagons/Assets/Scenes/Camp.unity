@@ -44128,6 +44128,10 @@ PrefabInstance:
       propertyPath: gameStateMemory
       value: 
       objectReference: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+    - target: {fileID: 4971393127425036798, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: lettersPerSecond
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
       propertyPath: gameStateMemory
       value: 
@@ -44146,7 +44150,7 @@ PrefabInstance:
       objectReference: {fileID: 481122454}
     - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
       propertyPath: npcControllers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
       propertyPath: npcControllers.Array.data[0]
