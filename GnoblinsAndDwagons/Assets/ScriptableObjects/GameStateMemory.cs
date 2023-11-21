@@ -11,6 +11,7 @@ public class GameStateMemory : ScriptableObject
     public bool leaveDungeon = false;
     public bool leaveCombat = false;
     public bool inTutorial = false;
+    public bool load = false;
 
     public int dungeonLevel = 0;
     public int totalLevels = 20;
@@ -33,5 +34,6 @@ public class GameStateMemory : ScriptableObject
         leaveCombat = false;
         leaveShop = false;
         inTutorial = false;
+        load = false;
     }
 }
