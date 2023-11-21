@@ -14,7 +14,7 @@ public class returnButton : MonoBehaviour
         instance = this;
     }
 
-    void OnClick()
+    public void OnClick()
     {
         leaveEscapeMenu.Invoke();
     }

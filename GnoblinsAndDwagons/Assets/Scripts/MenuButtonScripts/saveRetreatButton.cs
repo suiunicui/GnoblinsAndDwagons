@@ -27,7 +27,7 @@ public class saveRetreatButton : MonoBehaviour
         }
     }
 
-    void OnClick()
+    public void OnClick()
     {
         if (gameStateMemory.inDungeon)
         {

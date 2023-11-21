@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
 
     private bool doesBattleSystemExist = false;
+    public bool doesEscapeMenuExist = false;
     public static GameController instance { get; private set; }
 
     GameState state;
@@ -55,14 +56,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FREE_ROAM;
             }
         };
-        returnButton.instance.leaveEscapeMenu += () =>
-        {
-            if(state == GameState.MENU)
-            {
-                state= GameState.FREE_ROAM;
-                SceneManager.UnloadSceneAsync("EscapeMenu");
-            }
-        };
+
 
     }
 
@@ -79,6 +73,25 @@ public class GameController : MonoBehaviour
                 };
                 doesBattleSystemExist = true;
             }
+        }
+        if (returnButton.instance != null)
+        {
+            if (doesEscapeMenuExist == false)
+            {
+                returnButton.instance.leaveEscapeMenu += () =>
+                {
+                    if (state == GameState.MENU)
+                    {
+                        state = GameState.FREE_ROAM;
+                        SceneManager.UnloadSceneAsync("EscapeMenu");
+                    }
+                };
+                doesEscapeMenuExist = true;
+            }
+        }
+        else
+        {
+            doesEscapeMenuExist = false;
         }
 
 
