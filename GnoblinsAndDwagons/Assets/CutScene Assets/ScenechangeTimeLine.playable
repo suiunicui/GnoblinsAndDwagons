@@ -22,14 +22,14 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.25
-    m_ClipIn: 0.9624622059985993
-    m_Asset: {fileID: -4298580296864403100}
-    m_Duration: 4.366666666666666
+    m_Start: 0
+    m_ClipIn: 0.9666666666666667
+    m_Asset: {fileID: -7480379846255833528}
+    m_Duration: 5.720680272108844
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7544366364485902141}
     m_EaseInDuration: 0
-    m_EaseOutDuration: 0.5
+    m_EaseOutDuration: 0
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:
@@ -96,7 +96,7 @@ MonoBehaviour:
     volume: 1
     stereoPan: 0
     spatialBlend: 0
---- !u!114 &-4298580296864403100
+--- !u!114 &-7480379846255833528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

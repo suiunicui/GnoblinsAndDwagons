@@ -6207,16 +6207,16 @@ MonoBehaviour:
   levelExit: {fileID: 6230106102254936353, guid: 1a7bc4744d22005409bf059b96b5e902, type: 3}
   enemyMimic: {fileID: 4227950179420794555, guid: 9720b70f73621864eb9245850b9c57a4, type: 3}
   lowLevelEnemies:
-  - {fileID: 4470928103268370958, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-  - {fileID: 4339712175928869139, guid: 0f32af20b97ee0d4a8ea17a95be234c0, type: 3}
-  - {fileID: 3793444688881550088, guid: b4f7db658ac13f44a94b33f343f7505b, type: 3}
+  - {fileID: 4470928103268370958, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+  - {fileID: 4339712175928869139, guid: 0b30cbc20f2a63a4eb72d330cd8a1e0f, type: 3}
+  - {fileID: 3793444688881550088, guid: ff913d5dcaab0c14cb107f3e8d721bdf, type: 3}
   midLevelEnemies:
-  - {fileID: 8710514041457729766, guid: 1e34b009a66c331479e20194acd3c4b6, type: 3}
-  - {fileID: 1326525874750150681, guid: ca06acb4fa6a9d7418de5c97d8f6c84c, type: 3}
+  - {fileID: 8710514041457729766, guid: 2d9bea32949a7eb46a26c45305a539e7, type: 3}
+  - {fileID: 1326525874750150681, guid: a469c3ef8d0524446b1fa65127a74f54, type: 3}
   highLevelEnemies:
-  - {fileID: 4521703216392123831, guid: b3ae881b826647e4e8497792ff381510, type: 3}
-  - {fileID: 4890408991760065314, guid: f1cdf755d6c16df47923f0e05dd3fe19, type: 3}
-  - {fileID: 1218208232789611252, guid: 14b4af2c637172c40b5693fe15063e61, type: 3}
+  - {fileID: 4521703216392123831, guid: 25612e9e7d5facd4a8351c247f3a1e15, type: 3}
+  - {fileID: 4890408991760065314, guid: 46e460ce13a1e8b49a082ecdbc9b7cb1, type: 3}
+  - {fileID: 1218208232789611252, guid: 4a8b220f6633e504c9eeb6faacb1a3fb, type: 3}
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerController: {fileID: 1581848740}
   door: {fileID: 7579643213661761650, guid: 65f2d88bc31a21948b93411d8a50ca7a, type: 3}

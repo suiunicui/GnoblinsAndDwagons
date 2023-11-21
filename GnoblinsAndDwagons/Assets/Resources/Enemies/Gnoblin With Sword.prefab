@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5560892553762880542}
   - component: {fileID: 1893502718724364066}
   m_Layer: 0
-  m_Name: Gnoblin_With_Sword
+  m_Name: Gnoblin With Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 0}
-  monsterName: Sword Gnoblin
-  monsterType: Sword Gnoblin
+  enemy: {fileID: 0}
+  monsterName: Gnoblin With Sword
+  monsterType: Gnoblin With Sword
   enemyStats: {fileID: 11400000, guid: 0b2ed2fd8e8eed843b4dabf52fc439ae, type: 2}
   Agility: 5
   Strength: 9
