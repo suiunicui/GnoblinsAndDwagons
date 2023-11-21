@@ -29,6 +29,12 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private List<GameObject> lowLevelEnemies;
 
     [SerializeField]
+    private List<GameObject> midLevelEnemies;
+
+    [SerializeField]
+    private List<GameObject> highLevelEnemies;
+
+    [SerializeField]
     private GameStateMemory gameStateMemory;
 
     [SerializeField]
@@ -213,6 +219,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private void createMonsterRoom(BoundsInt room, HashSet<Vector2Int>  corridors)
     {
         GameObject controller = GameObject.Find("GameController");
+        List<GameObject> enemyList = lowLevelEnemies;
         
         Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
         for (int i = 0; i < Random.Range(1, 5); i++)
@@ -220,7 +227,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
             if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
             {
-                GameObject monster = Instantiate(lowLevelEnemies[Random.Range(0, lowLevelEnemies.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                GameObject monster = Instantiate(enemyList[Random.Range(0, enemyList.Count)], entityPos + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
                 monsterController monsterScript = monster.GetComponent<monsterController>();
 
                 if (monsterScript == null) { Debug.Log("debug 3"); }
