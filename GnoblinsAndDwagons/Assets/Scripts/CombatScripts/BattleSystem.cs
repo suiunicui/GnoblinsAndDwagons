@@ -56,6 +56,9 @@ public class BattleSystem : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
+		playerPrefab.GetComponent<SpriteRenderer>().sprite =
+			Resources.Load<Sprite>(_gameStateMemory.playerAvatar.avatar);
+		//enemyPrefab.GetComponent<SpriteRenderer>().sprite = 
 		state = BattleState.Start;
 		StartCombat?.Invoke();
 		StartCoroutine(SetupBattle());
