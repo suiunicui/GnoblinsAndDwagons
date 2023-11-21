@@ -18,6 +18,7 @@ public class LoadCharacter : MonoBehaviour
         this.dataPersistenceManager.LoadGame();
 
         gameStateMemory.clearGameState();
+        gameStateMemory.load = true;
 		playerStats.Strength = (int)((playerInventory.equippedItems.getTotalStrength() + 2)*gameStateMemory.playerAvatar.strengthModifier);
 		playerStats.Toughness = (int)((playerInventory.equippedItems.getTotalToughness() + 2)*gameStateMemory.playerAvatar.toughnessModifier);
 		playerStats.Dexterity = (int)((playerInventory.equippedItems.getTotalDexterity() + 2)*gameStateMemory.playerAvatar.dexterityModifier);
