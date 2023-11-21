@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,5 +16,10 @@ public class CombatUnit : MonoBehaviour
 		currentHp -= dmg;
 
 		return currentHp <= 0;
+	}
+
+	private void Start()
+	{
+		unitName = stats.unitName;
 	}
 }

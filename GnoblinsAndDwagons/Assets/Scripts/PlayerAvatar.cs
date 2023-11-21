@@ -12,12 +12,14 @@ public class PlayerAvatar
     public static string Dwarf = "Heroes/Dwarf/hero_Dwarf";
     public static string Orc = "Heroes/Orc/hero_Orc";
     public string path;
+    public string avatar;
 
     public float strengthModifier,  agilityModifier, toughnessModifier, dexterityModifier= 1.00f;
 
-    public PlayerAvatar(float strengthModifier=1, float agilityModifier=1, float toughnessModifier=1, float dexterityModifier=1,string chosenAvatar = "Heroes/Human/hero_Human")
+    public PlayerAvatar(float strengthModifier=1, float agilityModifier=1, float toughnessModifier=1, float dexterityModifier=1,string chosenAvatar = "Heroes/Human/hero_Human", string CombatAvatar = "Heroes/Human/Combat")
     {
         this.path = chosenAvatar;
+        this.avatar = CombatAvatar;
         this.strengthModifier = strengthModifier;
         this.agilityModifier = agilityModifier;
         this.toughnessModifier = toughnessModifier;
