@@ -21,6 +21,7 @@ public class SceneLoader : MonoBehaviour, Interactable
         playerInventory.gold = 200;
         playerInventory.shopLevel = 0;
         playerInventory.inventory = new List<ItemThings.Item>(35);
+        playerInventory.equippedItems = new ItemThings.PlayerEquippedItems();
         SceneManager.LoadScene(sceneToLoad);
     }
 }
