@@ -184,6 +184,7 @@ public class BattleSystem : MonoBehaviour
                 _gameStateMemory.inCombat = false;
 				_playerInventory.gold = 0;
 				_playerInventory.inventory = new List<ItemThings.Item>(35);
+				_playerInventory.equippedItems = new ItemThings.PlayerEquippedItems();
                 DialogManager.instance.showDialog(defeatdialog,true,"Camp");
 				break;
 			case BattleState.Fled:
