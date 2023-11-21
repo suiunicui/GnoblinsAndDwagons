@@ -1561,6 +1561,7 @@ GameObject:
   - component: {fileID: 1840963486}
   - component: {fileID: 1840963485}
   - component: {fileID: 1840963484}
+  - component: {fileID: 1840963487}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -1632,9 +1633,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 998516466}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1840963487}
+        m_TargetAssemblyTypeName: LoadCharacter, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1682,6 +1683,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840963482}
   m_CullTransparentMesh: 1
+--- !u!114 &1840963487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840963482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7136895982b24e91dee128e299248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
+  playerInventory: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
 --- !u!1 &1940304146
 GameObject:
   m_ObjectHideFlags: 0
