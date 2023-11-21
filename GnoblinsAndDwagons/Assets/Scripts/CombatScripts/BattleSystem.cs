@@ -12,6 +12,7 @@ public class BattleSystem : MonoBehaviour
 {
 	[SerializeField] private GameStateMemory _gameStateMemory;
 	[SerializeField] private PlayerInventory _playerInventory;
+	[SerializeField] private CombatStats _enemystats;
 	public event Action StartCombat;
 
 	public static BattleSystem instance { get; private set;}
@@ -56,9 +57,7 @@ public class BattleSystem : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-		playerPrefab.GetComponent<SpriteRenderer>().sprite =
-			Resources.Load<Sprite>(_gameStateMemory.playerAvatar.avatar);
-		//enemyPrefab.GetComponent<SpriteRenderer>().sprite = 
+		playerPrefab.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(_gameStateMemory.playerAvatar.avatar);
 		state = BattleState.Start;
 		StartCombat?.Invoke();
 		StartCoroutine(SetupBattle());
@@ -72,7 +71,11 @@ public class BattleSystem : MonoBehaviour
 	    
 		var enemyObject = Instantiate(enemyPrefab, enemyBattleStation);
 		enemyUnit = enemyObject.GetComponent<CombatUnit>();
-		enemyName.text = enemyUnit.unitName;
+		var path = "Enemies/" + _enemystats.unitName;
+		var EnemySprite = Resources.Load<GameObject>(path).GetComponent<SpriteRenderer>().sprite;
+		enemyObject.GetComponent<SpriteRenderer>().sprite = EnemySprite;
+		enemyName.text = _enemystats.unitName;
+
 
 		yield return new WaitForSeconds(1f);
 	    
@@ -188,14 +191,14 @@ public class BattleSystem : MonoBehaviour
 				_playerInventory.gold = 0;
 				_playerInventory.inventory = new List<ItemThings.Item>(35);
 				_playerInventory.equippedItems = new ItemThings.PlayerEquippedItems();
-                DialogManager.instance.showDialog(defeatdialog,true,"Camp");
+                DialogManager.instance.showDialog(defeatdialog,true,"death");
 				break;
 			case BattleState.Fled:
                 _gameStateMemory.clearGameState();
                 _gameStateMemory.leaveDungeon = true;
                 _gameStateMemory.leaveCombat = true;
 
-                DialogManager.instance.showDialog(fleddialog,true,"Camp");
+                DialogManager.instance.showDialog(fleddialog,true,"Flee");
 				break;
 		}
 	}

@@ -10,6 +10,7 @@ using UnityEngine.Windows;
 
 public class monsterController : MonoBehaviour, updatable
 {
+    
     public float speed;
     public float moveDist;
     [SerializeField] private int combatDist=1;
@@ -19,6 +20,7 @@ public class monsterController : MonoBehaviour, updatable
     public LayerMask interactableLayer;
 
     public GameObject player;
+    public GameObject enemy;
 
     private Vector3 startPos;
 
