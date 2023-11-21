@@ -655,6 +655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   retreatButton: {fileID: 202066926}
+  playerInventory: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
 --- !u!1 &1395483675
 GameObject:
   m_ObjectHideFlags: 0
