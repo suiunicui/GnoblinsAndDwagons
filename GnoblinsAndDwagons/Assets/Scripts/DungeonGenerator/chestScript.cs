@@ -6,8 +6,12 @@ using ItemThings;
 public class chestScript : MonoBehaviour, Interactable
 {
     ItemGenerator generator;
+
     [SerializeField]
-    private int commonChance, uncommonChance, rareChance, gnepicChance, legendaryChance;
+    GameStateMemory gameStateMemory;
+
+    [SerializeField]
+    private int commonChance, uncommonChance, rareChance;
 
     public Item storedItem;
 
@@ -40,8 +44,10 @@ public class chestScript : MonoBehaviour, Interactable
     // Start is called before the first frame update
     void Awake()
     {
+        int dungeonLevel = gameStateMemory.dungeonLevel;
+        int dungeonMax = gameStateMemory.totalLevels;
         generator = new ItemGenerator();
-        storedItem = generator.generateRandomDungeonItem(commonChance, uncommonChance, rareChance, gnepicChance, legendaryChance);
+        storedItem = generator.generateRandomDungeonItem(commonChance + (dungeonMax-dungeonLevel)*2 , uncommonChance - (dungeonMax - dungeonLevel), rareChance - (dungeonMax - dungeonLevel), 0, 0);
         isEmpty = false;
         //itemDialog.lines.Add("You found a " + storedItem.getName());
         //emptyDialog.lines.Add("It is empty");
