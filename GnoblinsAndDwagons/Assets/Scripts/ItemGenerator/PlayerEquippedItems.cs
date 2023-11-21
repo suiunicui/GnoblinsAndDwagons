@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace ItemThings
 {
+    [Serializable]
     public class PlayerEquippedItems
     {
         public Item equippedHead  = new Item();

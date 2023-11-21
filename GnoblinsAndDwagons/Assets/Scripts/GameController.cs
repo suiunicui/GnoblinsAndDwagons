@@ -9,7 +9,8 @@ public enum GameState
     FREE_ROAM,
     DIALOG,
     BATTLE,
-    INVENTORY
+    INVENTORY,
+    MENU
 }
 
 public class GameController : MonoBehaviour
@@ -20,6 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
 
     private bool doesBattleSystemExist = false;
+    public bool doesEscapeMenuExist = false;
     public static GameController instance { get; private set; }
 
     GameState state;
@@ -54,6 +56,8 @@ public class GameController : MonoBehaviour
                 state = GameState.FREE_ROAM;
             }
         };
+
+
     }
 
     private void Update()
@@ -70,14 +74,33 @@ public class GameController : MonoBehaviour
                 doesBattleSystemExist = true;
             }
         }
+        if (returnButton.instance != null)
+        {
+            if (doesEscapeMenuExist == false)
+            {
+                returnButton.instance.leaveEscapeMenu += () =>
+                {
+                    if (state == GameState.MENU)
+                    {
+                        state = GameState.FREE_ROAM;
+                        SceneManager.UnloadSceneAsync("EscapeMenu");
+                    }
+                };
+                doesEscapeMenuExist = true;
+            }
+        }
+        else
+        {
+            doesEscapeMenuExist = false;
+        }
 
 
         if (state == GameState.FREE_ROAM)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                gameStateMemory.clearGameState();
-                SceneManager.LoadScene("StartScreen");
+                state = GameState.MENU;
+                SceneManager.LoadScene("EscapeMenu", LoadSceneMode.Additive);
             }
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
@@ -92,7 +115,7 @@ public class GameController : MonoBehaviour
         {
             DialogManager.instance.HandleUpdate();
         }
-        else if (state == GameState.BATTLE || state == GameState.INVENTORY)
+        else if (state == GameState.BATTLE || state == GameState.INVENTORY || state == GameState.MENU)
         {
         }
     }

@@ -178,23 +178,22 @@ public class BattleSystem : MonoBehaviour
 		{
 			case BattleState.Won:
                 _gameStateMemory.leaveCombat = true;
+				_gameStateMemory.inDungeon = true;
 				DialogManager.instance.showDialog(victorydialog,true,"RandomDungeon");
 				break;
 			case BattleState.Lost:
+				_gameStateMemory.clearGameState();
 				_gameStateMemory.leaveDungeon = true;
-				_gameStateMemory.inDungeon = false;
                 _gameStateMemory.leaveCombat = true;
-                _gameStateMemory.inCombat = false;
 				_playerInventory.gold = 0;
 				_playerInventory.inventory = new List<ItemThings.Item>(35);
 				_playerInventory.equippedItems = new ItemThings.PlayerEquippedItems();
                 DialogManager.instance.showDialog(defeatdialog,true,"Camp");
 				break;
 			case BattleState.Fled:
-				_gameStateMemory.leaveDungeon = true;
-				_gameStateMemory.inDungeon = false;
+                _gameStateMemory.clearGameState();
+                _gameStateMemory.leaveDungeon = true;
                 _gameStateMemory.leaveCombat = true;
-                _gameStateMemory.inCombat = false;
 
                 DialogManager.instance.showDialog(fleddialog,true,"Camp");
 				break;
