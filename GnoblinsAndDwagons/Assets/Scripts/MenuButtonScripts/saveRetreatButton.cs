@@ -13,6 +13,10 @@ public class saveRetreatButton : MonoBehaviour
     [SerializeField]
     ExitController retreatButton;
 
+    [SerializeField] 
+    PlayerInventory playerInventory;
+    private DataPersistenceManager dataPersistenceManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,25 @@ public class saveRetreatButton : MonoBehaviour
         {
             this.GetComponentInChildren<Text>().text = "Save";
         }
+
+        if (gameStateMemory.playerAvatar.path == PlayerAvatar.Human)
+        {
+            dataPersistenceManager = new DataPersistenceManager("Human");
+        }
+        else if (gameStateMemory.playerAvatar.path == PlayerAvatar.Elf)
+        {
+            dataPersistenceManager = new DataPersistenceManager("Elf");
+        }
+        else if (gameStateMemory.playerAvatar.path == PlayerAvatar.Dwarf)
+        {
+            dataPersistenceManager = new DataPersistenceManager("Dwarf");
+        }
+        else if(gameStateMemory.playerAvatar.path == PlayerAvatar.Orc)
+        {
+            dataPersistenceManager = new DataPersistenceManager("Orc");
+        }
+        dataPersistenceManager.gameState = this.gameStateMemory;
+        dataPersistenceManager.playerInventory = this.playerInventory;
     }
 
     public void OnClick()
@@ -35,7 +58,7 @@ public class saveRetreatButton : MonoBehaviour
         }
         else
         {
-            
+            dataPersistenceManager.SaveGame();
         }
     }
 }

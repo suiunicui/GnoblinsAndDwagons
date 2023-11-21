@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ItemThings
@@ -29,21 +30,21 @@ public enum Slot
     Armor,
     FootWear
 }
-
+[Serializable]
 public class Item
 {
-    private static int id =0;
+    public static int id =0;
     public int specificId;
     public Sprite icon;
-    private int Strength = 0;
-    private int Toughness = 0;
-    private int Dexterity = 0;
-    private int Agility = 0;
-    private Rarity Rarity;
-    private ItemType Type;
-    private string Name;
-    private int Value = 0;
-    private Slot slot;
+    public int Strength = 0;
+    public int Toughness = 0;
+    public int Dexterity = 0;
+    public int Agility = 0;
+    public Rarity Rarity;
+    public ItemType Type;
+    public string Name;
+    public int Value = 0;
+    public Slot slot;
 
 
     public Item(){}
