@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using Random = UnityEngine.Random;
 
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
@@ -219,10 +222,30 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private void createMonsterRoom(BoundsInt room, HashSet<Vector2Int>  corridors)
     {
         GameObject controller = GameObject.Find("GameController");
-        List<GameObject> enemyList = lowLevelEnemies;
-        
+        int monsterMax = 5; 
+        List<GameObject> enemyList;
+        if (gameStateMemory.dungeonLevel < 5)
+        {
+            enemyList = lowLevelEnemies;
+        }else if (gameStateMemory.dungeonLevel < 10)
+        {
+            enemyList = lowLevelEnemies;
+            enemyList.AddRange(midLevelEnemies);
+        }
+        else if (gameStateMemory.dungeonLevel < 15)
+        {
+            enemyList = highLevelEnemies;
+            enemyList.AddRange(midLevelEnemies);
+        }
+        else
+        {
+            enemyList = highLevelEnemies;
+            monsterMax = 3;
+        }
+
+
         Vector3Int entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
-        for (int i = 0; i < Random.Range(1, 5); i++)
+        for (int i = 0; i < Random.Range(1, monsterMax); i++)
         {
             entityPos = new Vector3Int(Random.Range(room.min.x + offset, room.max.x), Random.Range(room.min.y + offset, room.max.y), 0);
             if (entityPos != gameStateMemory.DungeonStartPos && corridors.Contains((Vector2Int)entityPos) == false)
