@@ -9,7 +9,8 @@ public enum GameState
     FREE_ROAM,
     DIALOG,
     BATTLE,
-    INVENTORY
+    INVENTORY,
+    MENU
 }
 
 public class GameController : MonoBehaviour
@@ -54,6 +55,15 @@ public class GameController : MonoBehaviour
                 state = GameState.FREE_ROAM;
             }
         };
+        returnButton.instance.leaveEscapeMenu += () =>
+        {
+            if(state == GameState.MENU)
+            {
+                state= GameState.FREE_ROAM;
+                SceneManager.UnloadSceneAsync("EscapeMenu");
+            }
+        };
+
     }
 
     private void Update()
@@ -76,8 +86,8 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                gameStateMemory.clearGameState();
-                SceneManager.LoadScene("StartScreen");
+                state = GameState.MENU;
+                SceneManager.LoadScene("EscapeMenu", LoadSceneMode.Additive);
             }
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
@@ -92,7 +102,7 @@ public class GameController : MonoBehaviour
         {
             DialogManager.instance.HandleUpdate();
         }
-        else if (state == GameState.BATTLE || state == GameState.INVENTORY)
+        else if (state == GameState.BATTLE || state == GameState.INVENTORY || state == GameState.MENU)
         {
         }
     }
