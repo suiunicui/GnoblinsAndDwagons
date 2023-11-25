@@ -29,7 +29,7 @@ public class AddItem : MonoBehaviour
     }
 
     public void OnClick(){
-        if (playerInventory.selectedItem.panel == Panel.Shop)
+        if (playerInventory.selectedItem.panel == Panel.Shop && playerInventory.gold >= playerInventory.selectedItem.selectedItem.getShopValue())
         {
             OnItemPurchased?.Invoke(playerInventory.selectedItem.selectedItem);
             goldText.text= "Gold: " + playerInventory.gold;

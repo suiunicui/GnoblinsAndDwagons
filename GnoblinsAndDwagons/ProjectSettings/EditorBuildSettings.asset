@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Flee.unity
     guid: 7d1ce442ccd282e40931f61e5c5b15ad
+  - enabled: 1
+    path: Assets/Scenes/LoadCharacter.unity
+    guid: ecab94824b08b1d4bacb32b3ce39bd25
   m_configObjects: {}

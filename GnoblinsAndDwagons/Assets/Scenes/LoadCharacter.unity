@@ -1292,8 +1292,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2005984003}
-        m_TargetAssemblyTypeName: LoadSceneAfterCharacterSelection, Assembly-CSharp
-        m_MethodName: Interact
+        m_TargetAssemblyTypeName: LoadCharacter, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1350,13 +1350,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2005983998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f914c61f9cf19439c38a3f4733a736, type: 3}
+  m_Script: {fileID: 11500000, guid: fee7136895982b24e91dee128e299248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
+  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerInventory: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
-  sceneToLoad: Cutscenes
   button: {fileID: 2005984000}
 --- !u!1001 &4288932187550768127
 PrefabInstance:
