@@ -308,7 +308,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: flavourText
-      value: Insert nice flavour here!!!
+      value: ' The sturdily clumsy dwarf, a comical sight with their stout frames
+        and bearded faces. Clanking around in heavy armor, they boast toughness but
+        trip over their own rugged boots. In a world of finesse and agility, dwarves
+        embody a paradox, sturdy yet stumbling through a realm of delicate maneuvers.'
       objectReference: {fileID: 0}
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: playerAvatarPath
@@ -317,6 +320,10 @@ PrefabInstance:
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: playerAvatarAnimator
       value: Heroes/Dwarf/hero_Dwarf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695294425343557987, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
+      propertyPath: m_Text
+      value: Dwarf
       objectReference: {fileID: 0}
     - target: {fileID: 6018889709495952246, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: m_Pivot.x
@@ -433,6 +440,10 @@ PrefabInstance:
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: playerAvatarAnimator
       value: Heroes/Elf/hero_Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695294425343557987, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
+      propertyPath: m_Text
+      value: Elf
       objectReference: {fileID: 0}
     - target: {fileID: 6018889709495952246, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: m_Pivot.x
@@ -981,7 +992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: flavourText
-      value: Insert flavour text here
+      value: ' The brutishly dull and filthy orc, a hulking mass of raw strength.
+        Their brawn is unmatched, but their minds dwell in shadows. Covered in grime,
+        they lumber through a world of strategy and subtlety, a stark contrast to
+        the refined inhabitants. In a tapestry of sophistication, orcs are the unpolished,
+        formidable blot.'
       objectReference: {fileID: 0}
     - target: {fileID: 4641618806812241993, guid: 7f61dfad0600b5647b7e62dd459c0069, type: 3}
       propertyPath: playerAvatarPath
