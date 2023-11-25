@@ -18,9 +18,9 @@ public class GameStateMemory : ScriptableObject
     public List<PlayerAvatar> selectablePlayerAvatars = new List<PlayerAvatar>()
     {
         new PlayerAvatar(),
-        new PlayerAvatar(0.75f,1.5f,0.5f,1.25f,PlayerAvatar.Elf, "Heroes/Elf/Combat"),
-        new PlayerAvatar(1.25f,0.75f,1.5f,0.5f,PlayerAvatar.Dwarf,"Heroes/Dwarf/Combat"),
-        new PlayerAvatar(1.5f,0.5f,1.25f,0.75f,PlayerAvatar.Orc, "Heroes/Orc/Combat")
+        new PlayerAvatar(0.75f,1.5f,0.5f,1.25f,PlayerAvatar.Elf, "Heroes/Elf/Combat","Elf"),
+        new PlayerAvatar(1.25f,0.75f,1.5f,0.5f,PlayerAvatar.Dwarf,"Heroes/Dwarf/Combat","Dwarf"),
+        new PlayerAvatar(1.5f,0.5f,1.25f,0.75f,PlayerAvatar.Orc, "Heroes/Orc/Combat","Orc")
     };
     public PlayerAvatar playerAvatar = new PlayerAvatar();
     public Vector3Int DungeonStartPos = new Vector3Int(0,0,0);

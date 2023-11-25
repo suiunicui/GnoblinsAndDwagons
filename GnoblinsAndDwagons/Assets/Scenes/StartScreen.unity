@@ -1118,7 +1118,7 @@ MonoBehaviour:
   gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
   playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
   playerInventory: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
-  sceneToLoad: Cutscenes
+  sceneToLoad: CharacterSelection
 --- !u!4 &998516467
 Transform:
   m_ObjectHideFlags: 0
@@ -1634,7 +1634,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1840963487}
-        m_TargetAssemblyTypeName: LoadCharacter, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadGame, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -1692,12 +1692,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840963482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee7136895982b24e91dee128e299248, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ee27f2e7e81d742821727708b80e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 98ddbcdc26afa5c4f96ea680f971b7c9, type: 2}
-  gameStateMemory: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}
-  playerInventory: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
 --- !u!1 &1940304146
 GameObject:
   m_ObjectHideFlags: 0

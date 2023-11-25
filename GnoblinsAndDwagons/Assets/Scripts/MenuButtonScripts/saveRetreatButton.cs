@@ -59,6 +59,7 @@ public class saveRetreatButton : MonoBehaviour
         else
         {
             dataPersistenceManager.SaveGame();
+            this.GetComponentInChildren<Text>().text = "Game saved";
         }
     }
 }

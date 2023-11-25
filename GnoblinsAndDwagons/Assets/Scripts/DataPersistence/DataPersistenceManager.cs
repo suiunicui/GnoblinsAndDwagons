@@ -29,7 +29,7 @@ public class DataPersistenceManager
         dataHandler.SaveGame(data);
     }
 
-    public void LoadGame()
+    public bool LoadGame()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         GameData loadedData = dataHandler.Load();
@@ -40,6 +40,9 @@ public class DataPersistenceManager
             playerInventory.equippedItems = loadedData.equippedItems;
             playerInventory.inventory = loadedData.inventory;
             gameState.playerAvatar = loadedData.player;
+            return true;
         }
+
+        return false;
     }
 }
