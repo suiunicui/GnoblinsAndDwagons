@@ -881,63 +881,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 636802688}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: Agility
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: Strength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: moveDist
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: Dexterity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: Toughness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[1]
-      value: You will now enter combat against it
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[2]
-      value: In the combat you have three types of attacks
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[3]
-      value: 'Normal: Use your strength against the enemy toughness'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[4]
-      value: 'Heavy: Doubles your strength but the enemy can use both toughness and
-        dexterity to defend agains it'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[5]
-      value: 'Quick: Use your agility against the enemy toughness'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[6]
-      value: If the enemy is too strong for you, you can attempt to flee
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
-      propertyPath: dialog.lines.Array.data[7]
-      value: 'Flee: '
-      objectReference: {fileID: 0}
     - target: {fileID: 1440287351721589663, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7410753
@@ -1002,9 +945,99 @@ PrefabInstance:
       propertyPath: Toughness
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: 'You will now enter combat against it. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: 'In the combat you have three types of attacks '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[3]
+      value: '''Normal: Use your strength against the enemy toughness'''
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[4]
+      value: '''Heavy: Doubles your strength but the enemy can use both toughness
+        and dexterity to defend against it''  '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[5]
+      value: '''Quick: Use your dexterity against the enemy toughness'''
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[6]
+      value: 'If the enemy is too strong for you, you can attempt to flee '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
+      propertyPath: dialog.lines.Array.data[7]
+      value: '''Flee:  Use your agility to escape your enemy '' '
+      objectReference: {fileID: 0}
     - target: {fileID: 4470928103268370958, guid: 431c5b8ebccf9714faafdf5908293d82, type: 3}
       propertyPath: m_Name
       value: Gnoblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 636802688}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: Agility
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: moveDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: Dexterity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: Toughness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: You will now enter combat against it
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: In the combat you have three types of attacks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[3]
+      value: 'Normal: Use your strength against the enemy toughness'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[4]
+      value: 'Heavy: Doubles your strength but the enemy can use both toughness and
+        dexterity to defend agains it'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[5]
+      value: 'Quick: Use your agility against the enemy toughness'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[6]
+      value: If the enemy is too strong for you, you can attempt to flee
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823141825868295480, guid: 47fc092210d65aa478b9824ab8cc8a2f, type: 3}
+      propertyPath: dialog.lines.Array.data[7]
+      value: 'Flee: '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
