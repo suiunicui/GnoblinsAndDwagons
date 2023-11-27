@@ -105,7 +105,7 @@ public class BattleSystem : MonoBehaviour
 				break;
 
 			case PlayerAction.QuickAttack:
-				damageDealt = CalculateDamage(playerUnit.stats.Agility, enemyUnit.stats.Toughness);
+				damageDealt = CalculateDamage(playerUnit.stats.Dexterity, enemyUnit.stats.Toughness);
 				combatLog.AddLogMessage($"Player used Quick Attack and dealt {damageDealt} damage to the enemy.");
 				Debug.Log("Player used Quick Attack and dealt " + damageDealt + " damage to the enemy.");
 				break;
