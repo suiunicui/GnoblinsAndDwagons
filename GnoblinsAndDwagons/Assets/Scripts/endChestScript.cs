@@ -16,6 +16,6 @@ public class endChestScript : MonoBehaviour, Interactable
         gameStateMemory.inCombat = false;
         gameStateMemory.leaveCombat = false;
         gameStateMemory.dungeonLevel = 0;
-        DialogManager.instance.showDialog(dialog, true, "startScreen");
+        DialogManager.instance.showDialog(dialog, true, "EndScene");
     }
 }
