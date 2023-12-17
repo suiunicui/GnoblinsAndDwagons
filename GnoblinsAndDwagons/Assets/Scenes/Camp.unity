@@ -44133,6 +44133,10 @@ PrefabInstance:
       value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 11400000, guid: 4517959c9466d6949bd0af6606fb681b, type: 2}
+    - target: {fileID: 7766758945843330560, guid: c562f8410874dbc4a87b9923090883bf, type: 3}
       propertyPath: gameStateMemory
       value: 
       objectReference: {fileID: 11400000, guid: 7ccab1016ce84954e9f300408f21550d, type: 2}

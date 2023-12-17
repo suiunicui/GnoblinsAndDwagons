@@ -60,10 +60,10 @@ public class bossController : MonoBehaviour, updatable
     {
         enemyStats.unitName = monsterName;
         enemyStats.type = monsterType;
-        enemyStats.Agility = Agility * gameStateMemory.dungeonLevel;
-        enemyStats.Strength = Strength * gameStateMemory.dungeonLevel;
-        enemyStats.Toughness = Toughness * gameStateMemory.dungeonLevel;
-        enemyStats.Dexterity = Dexterity * gameStateMemory.dungeonLevel;
+        enemyStats.Agility = Agility;
+        enemyStats.Strength = Strength;
+        enemyStats.Toughness = Toughness;
+        enemyStats.Dexterity = Dexterity;
 
         gameStateMemory.inDungeon = false;
         gameStateMemory.inCombat = true;

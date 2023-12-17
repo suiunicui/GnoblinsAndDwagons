@@ -16,9 +16,47 @@ MonoBehaviour:
   inShop: 0
   inCombat: 0
   leaveShop: 0
-  leaveDungeon: 0
+  leaveDungeon: 1
   leaveCombat: 0
   inTutorial: 0
-  dungeonLevel: 16
+  load: 0
+  dungeonLevel: 21
   totalLevels: 20
-  DungeonStartPos: {x: -18, y: 10, z: 0}
+  selectablePlayerAvatars:
+  - path: Heroes/Human/hero_Human
+    species: Human
+    avatar: Heroes/Human/Combat
+    strengthModifier: 1
+    agilityModifier: 1
+    toughnessModifier: 1
+    dexterityModifier: 1
+  - path: Heroes/Elf/hero_Elf
+    species: Elf
+    avatar: Heroes/Elf/Combat
+    strengthModifier: 0.75
+    agilityModifier: 1.5
+    toughnessModifier: 0.5
+    dexterityModifier: 1.25
+  - path: Heroes/Dwarf/hero_Dwarf
+    species: Dwarf
+    avatar: Heroes/Dwarf/Combat
+    strengthModifier: 1.25
+    agilityModifier: 0.75
+    toughnessModifier: 1.5
+    dexterityModifier: 0.5
+  - path: Heroes/Orc/hero_Orc
+    species: Orc
+    avatar: Heroes/Orc/Combat
+    strengthModifier: 1.5
+    agilityModifier: 0.5
+    toughnessModifier: 1.25
+    dexterityModifier: 0.75
+  playerAvatar:
+    path: Heroes/Human/hero_Human
+    species: Human
+    avatar: Heroes/Human/Combat
+    strengthModifier: 1
+    agilityModifier: 1
+    toughnessModifier: 1
+    dexterityModifier: 1
+  DungeonStartPos: {x: -11, y: 0, z: 0}

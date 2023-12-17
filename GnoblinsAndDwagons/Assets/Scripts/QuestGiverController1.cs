@@ -11,7 +11,15 @@ public class QuestGiverController : MonoBehaviour, Interactable
     {
         gameStateMemory.clearGameState();
         gameStateMemory.inDungeon = true;
-        gameStateMemory.dungeonLevel = 1;
-        DialogManager.instance.showDialog(dialog, true, "EnterDungeon");
+        if (gameStateMemory.dungeonLevel != 20) 
+        { 
+            gameStateMemory.dungeonLevel = 1;
+            DialogManager.instance.showDialog(dialog, true, "EnterDungeon");
+        }
+        else
+        {
+
+            DialogManager.instance.showDialog(dialog, true, "FinalLevel");
+        }
     }
 }

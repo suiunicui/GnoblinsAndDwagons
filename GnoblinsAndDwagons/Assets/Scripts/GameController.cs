@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameStateMemory gameStateMemory;
     [SerializeField] DungeonController dungeonController;
     [SerializeField] public List<GameObject> npcControllers = new List<GameObject>();
+    [SerializeField] public PlayerInventory inventory;
 
     private bool doesBattleSystemExist = false;
     public bool doesEscapeMenuExist = false;
@@ -101,6 +102,14 @@ public class GameController : MonoBehaviour
             {
                 state = GameState.MENU;
                 SceneManager.LoadScene("EscapeMenu", LoadSceneMode.Additive);
+            }
+            if (Input.GetKeyUp(KeyCode.F9))
+            {
+                inventory.gold = 1000000;
+            }
+            if (Input.GetKeyUp(KeyCode.F10))
+            {
+                gameStateMemory.dungeonLevel = 20;
             }
             playerController.HandleUpdate();
             foreach (var controller in npcControllers)
